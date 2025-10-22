@@ -1,0 +1,3158 @@
+collect counters top
+Function
+
+The collect counters top command sets the parameters for top N interface traffic statistics and enables the function to generate top N interface traffic statistics reports.
+Format
+
+collect counters top [ number ] interface { interface-type | all | layer-2 | layer-3 } [ sort-by statistics-type | interval interval-value ] *
+Parameters
+Parameter 	Description 	Value
+
+number
+	
+
+Specifies the number of busiest interfaces for which traffic statistics reports are to be generated.
+
+For example, if the value is 10, a traffic statistics report about top 10 busiest interfaces is generated.
+
+If you do not specify this parameter, a traffic statistics report about top 20 busiest interfaces is generated.
+	
+
+The value is an integer ranging from 1 to 50000.
+
+interface { interface-type | all | layer-2 | layer-3 }
+	
+
+Specifies the type of the interfaces for which a top N traffic statistics report is to be generated:
+
+    interface-type: indicates a specific type of interface.
+    all: indicates all interfaces.
+    layer-2: indicates Layer 2 interfaces.
+    layer-3: indicates Layer 3 interfaces.
+
+	
+
+The specified interfaces must be Ethernet physical interfaces or Eth-Trunk interfaces.
+
+sort-by statistics-type
+	
+
+Specifies the statistics type by which ports are determined to be the busiest.
+
+If you do not specify sort-by statistics-type, statistics are sorted by the total number of bytes in descending order.
+	
+The value can be:
+
+    utilization: indicates to sort statistics by bandwidth utilization.
+    bytes: indicates to sort statistics by the total number of bytes.
+    packets: indicates to sort statistics by the total number of packets.
+    multicast: indicates to sort statistics by the total number of multicast packets.
+    broadcast: indicates to sort statistics by the total number of broadcast packets.
+    errors: indicates to sort statistics by the total number of error packets.
+    discards: indicates to sort statistics by the total number of dropped packets.
+
+interval interval-value
+	
+
+Specifies the interval at which statistics are collected.
+	
+
+The value is an integer ranging from 1 to 999, in seconds. The default value is 30.
+
+-------------------------------------------------------------------------------------
+bandwidth (Interface view)
+Function
+
+The bandwidth command sets the interface bandwidth obtained by the NMS from the MIB.
+
+The undo bandwidth command restores the default configuration.
+
+By default, the interface bandwidth obtained by the NMS from the MIB depends on the interface type. For example, the bandwidth of a GE interface is 1000 Mbit/s.
+
+Only the S5731-H, S5731-S, S5731S-H, S5731S-S, S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S support this command.
+Format
+
+bandwidth bandwidth [ kbps ]
+
+undo bandwidth
+Parameters
+Parameter 	Description 	Value
+
+bandwidth
+	
+
+Specifies the bandwidth of an interface.
+	
+
+The value is an integer ranging from 1 to 1000000, and the unit is Mbit/s.
+
+kbps
+	
+
+Indicates the unit of an interface bandwidth is kbit/s.
+
+If kbps is not specified, the unit of an interface bandwidth is Mbit/s.
+	
+
+----------------------------------------------------------------------------
+description (interface view)
+Function
+
+The description command configures the description for an interface.
+
+The undo description command restores the default description of an interface.
+
+By default, the description of an interface is null.
+Format
+
+description description
+
+undo description
+Parameters
+
+Parameter
+	
+
+Description
+	
+
+Value
+
+description
+	
+
+Specifies the interface description.
+	
+
+The value is a string of 1 to 242 characters. The character string is case sensitive. It can contain blanks but cannot contain the question mark (?).
+-------------------------------------------------------------------------------------
+display counters
+Function
+
+The display counters command displays traffic statistics on an interface.
+Format
+
+display counters [ inbound | outbound ] [ interface interface-type [ interface-number ] ] [ nonzero ]
+Parameters
+Parameter 	Description 	Value
+
+inbound
+	
+
+Displays incoming traffic statistics on an interface.
+	
+
+-
+
+outbound
+	
+
+Displays outgoing traffic statistics on an interface.
+	
+
+-
+
+interface interface-type [ interface-number ]
+	
+
+Displays traffic statistics on a specified interface.
+
+    interface-type specifies the interface type.
+    interface-number specifies the interface number.
+
+If the interface number is not specified, traffic statistics on all the interfaces of the specified type are displayed.
+	
+
+-
+
+nonzero
+	
+
+Displays statistics about interface traffic.
+
+If the numbers of bytes, octets packets, unicast packets, multicast packets, and broadcast packets on an interface are all 0s, traffic statistics on this interface are not displayed.
+	
+
+-----------------------------------------------------------------------------------------------
+display counters discard
+Function
+
+The display counters discard command displays statistics about dropped packets.
+Format
+
+display counters discard [ inbound | outbound ] [ interface interface-type [ interface-number ] ]
+Parameters
+Parameter 	Description 	Value
+
+inbound
+	
+
+Displays statistics about incoming packets dropped.
+	
+
+-
+
+outbound
+	
+
+Displays statistics about outgoing packets dropped.
+	
+
+-
+
+interface interface-type [ interface-number ]
+	
+
+Specifies the interface type and number of an interface on which statistics about dropped packets are to be displayed. If interface-number is not specified, traffic statistics on all interfaces with the type specified by interface-type are displayed.
+	
+
+-----------------------------------------------------------------------------------------------------
+display counters error
+Function
+
+The display counters error command displays error packet statistics.
+Format
+
+display counters error [ inbound | outbound ] [ interface interface-type [ interface-number ] ]
+Parameters
+Parameter 	Description 	Value
+
+inbound
+	
+
+Displays inbound error packet statistics.
+	
+
+-
+
+outbound
+	
+
+Displays outbound error packet statistics.
+	
+
+-
+
+interface interface-type [ interface-number ]
+	
+Displays error packet statistics on the specified interface.
+
+    interface-type specifies the interface type.
+    interface-number specifies the interface number.
+
+If interface type and interface number are not specified, the statistics of error packets on all interfaces are displayed.
+	
+
+---------------------------------------------------------------------------------------------------------
+display counters interface
+Function
+
+The display counters interface command displays traffic statistics on an interface, including typical packet statistics and number of packets discarded in queues.
+Format
+
+display counters interface interface-type interface-number verbose
+
+display counters interface verbose [ nonzero ]
+Parameters
+
+Parameter
+	
+
+Description
+	
+
+Value
+
+interface-type interface-number
+	
+
+Specifies the interface type and number.
+
+    interface-type specifies the interface type.
+    interface-number specifies the interface number.
+
+	
+
+-
+
+verbose
+	
+
+Displays detailed traffic statistics on an interface, including typical packet statistics and number of packets discarded in queues.
+	
+
+-
+
+nonzero
+	
+
+Displays non-zero traffic statistics on an interface, including typical packet statistics and number of packets discarded in queues.
+	
+
+---------------------------------------------------------------------------------------------------------------
+display counters rate
+Function
+
+The display counters rate command displays the incoming or outgoing traffic rate of an interface.
+Format
+
+display counters rate [ inbound | outbound ] [ interface interface-type [ interface-number ] ] [ nonzero ]
+Parameters
+Parameter 	Description 	Value
+
+inbound
+	
+
+Displays the incoming traffic rate of an interface.
+	
+
+-
+
+outbound
+	
+
+Displays the outgoing traffic rate of an interface.
+	
+
+-
+
+interface interface-type [ interface-number ]
+	
+
+Displays the traffic rate of a specified interface.
+
+    interface-type specifies the interface type.
+    interface-number specifies the interface number.
+
+If the interface number is not specified, the traffic rates of all the interfaces of the specified type are displayed.
+	
+
+-
+
+nonzero
+	
+
+Displays the traffic rate of an interface.
+
+If the numbers of bytes, Octets packets, unicast packets, multicast packets, and broadcast packets on an interface are all 0s, the traffic rate of this interface is not displayed.
+----------------------------------------------------------------------------------------------------------------display counters top interface
+Function
+
+The display counters top interface command displays top N interface traffic statistics reports.
+Format
+
+display counters top interface report [ report-number ]
+Parameters
+Parameter 	Description 	Value
+
+report-number
+	
+
+Specifies the number of a top N interface traffic statistics report. If you do not specify this parameter, the command output displays the summary information about all top N interface traffic statistics reports.
+	
+
+The value is an integer ranging from 1 to 5.
+Views
+
+All views
+Default Level
+
+1: Monitoring level
+Usage Guidelines
+
+Usage Scenario
+
+The collect counters top command generates top N interface traffic statistics reports, but does not display these reports. To view the generated reports, run the display counters top interface report [ report-number ] command.
+
+Precautions
+
+Before you run the display counters top interface report [ report-number ] command, ensure that a top N interface traffic statistics report has been generated using the collect counters top command. Otherwise, the "There is no TOPN interface counters report." message is displayed after you run the display counters top interface report [ report-number ] command.
+Example
+# Display the summary information about all top N interface traffic statistics reports.
+
+<HUAWEI> display counters top interface report
+Id Start Time                   Interval Number Sort-By   Status Interface-Type
+-------------------------------------------------------------------------------
+1  2012-09-05 09:03:13-08:00    30       20     bytes     doing  GigabitEthernet
+
+Table 1 Description of the display counters top interface report command output
+
+Item
+	
+
+Description
+
+Id
+	
+
+Indicates the number of a top N interface traffic statistics report.
+
+Start Time
+	
+
+Indicates the start time of statistics collection.
+
+Interval
+	
+
+Indicates the statistics collection interval.
+
+Number
+	
+
+Indicates the number of busiest interfaces for which interface statistics reports are to be generated.
+
+Sort By
+	
+Indicates the statistics type by which ports are determined to be the busiest, which can be:
+
+    utilization: indicates to sort statistics by bandwidth utilization.
+    bytes: indicates to sort statistics by the total number of bytes.
+    packets: indicates to sort statistics by the total number of packets.
+    multicast: indicates to sort statistics by the total number of multicast packets.
+    broadcast: indicates to sort statistics by the total number of broadcast packets.
+    errors: indicates to sort statistics by the total number of error packets.
+    discards: indicates to sort statistics by the total number of dropped packets.
+
+Status
+	
+Indicates the generation status of a top N interface traffic statistics report, which can be:
+
+    doing: The report is being generated.
+    done: The report has been generated.
+
+Interface-Type
+	
+Indicates the type of interfaces for which the top N interface traffic statistics report is generated, which can be:
+
+    all: indicates all interfaces.
+    layer-2: indicates Layer 2 interfaces.
+    layer-3: indicates Layer 3 interfaces.
+    Specified interface type: indicates Ethernet physical interfaces or Eth-Trunk interfaces.
+
+# Display the detailed information about the top N interface traffic statistics report numbered 1.
+
+<HUAWEI> display counters top interface report 1
+Owner             : RT1(10.1.1.1)                                                                                               
+Start Time        : 2012-09-17 13:26:06
+End Time          : 2012-09-17 13:26:36
+Interface Type    : GigabitEthernet                                                                                                 
+Sort By           : bytes                                                                                                           
+Interval          : 30 seconds 
+Port       Band  Util Bytes      Packets    Broadcast  Multicast  Error Discards                                                    
+           width      (In + Out) (In + Out) (In + Out) (In + Out)                                                                   
+-------  ----- ------ ---------- ---------- ---------- ---------- ----- --------                                                    
+GE0/0/1   1000M   0% 974        4          0          4          0     0       
+
+Table 2 Description of the display counters top interface report 1 command output
+
+Item
+	
+
+Description
+
+Owner
+	
+
+Indicates the device on which the top N interface traffic statistics report is generated.
+
+Start Time
+	
+
+Indicates the start time of statistics collection.
+
+End Time
+	
+
+Indicates the end time of statistics collection.
+
+Interface Type
+	
+Indicates the type of interfaces for which the top N interface traffic statistics report is generated, which can be:
+
+    all: indicates all interfaces.
+    layer-2: indicates Layer 2 interfaces.
+    layer-3: indicates Layer 3 interfaces.
+    Specified interface type: indicates Ethernet physical interfaces or Eth-Trunk interfaces.
+
+Sort By
+	
+Indicates the statistics type by which ports are determined to be the busiest, which can be:
+
+    utilization: indicates to sort statistics by bandwidth utilization.
+    bytes: indicates to sort statistics by the total number of bytes.
+    packets: indicates to sort statistics by the total number of packets.
+    multicast: indicates to sort statistics by the total number of multicast packets.
+    broadcast: indicates to sort statistics by the total number of broadcast packets.
+    errors: indicates to sort statistics by the total number of error packets.
+    discards: indicates to sort statistics by the total number of dropped packets.
+
+Interval
+	
+
+Indicates the statistics collection interval.
+
+Port
+	
+
+Indicates the interface name.
+
+Band
+
+width
+	
+
+Indicates interface bandwidth.
+
+Util
+	
+
+Indicates bandwidth utilization.
+
+Bytes
+	
+
+Indicates the total number of sent and received bytes.
+
+Packets
+	
+
+Indicates the total number of sent and received packets.
+
+Multicast
+	
+
+Indicates the total number of sent and received multicast packets.
+
+Broadcast
+	
+
+Indicates the total number of sent and received broadcast packets.
+
+Error
+	
+
+Indicates the total number of error packets.
+
+Discards
+	
+
+Indicates the total number of dropped packets.
+--------------------------------------------------------------------------------
+display interface
+Function
+
+The display interface command displays the interface running status and statistics.
+Format
+
+display interface [ interface-type [ interface-number [.subinterface-number ] | main ] | main ]
+
+display interface slot slot-id [ main ]
+Parameters
+
+Parameter
+	
+
+Description
+	
+
+Value
+
+interface-type [ interface-number ]
+	
+Displays the running status and traffic statistics of an interface.
+
+    interface-type specifies the interface type.
+    interface-number specifies the interface number.
+
+If the interface type is specified but no interface number is specified, the running status of all the interfaces of this type is displayed.
+	
+
+-
+
+subinterface-number
+	
+
+Displays the running status and traffic statistics of a sub-interface.
+	
+
+The value is an integer that ranges from 1 to 4096.
+
+main
+	
+
+Displays running status and traffic statistics about an interface.
+
+    If an interface has no sub-interfaces, status and traffic statistics about the interface are displayed whether you specify the main parameter or not.
+    If an interface has sub-interfaces, status and traffic statistics about the interface and sub-interfaces are displayed if you do not specify the main parameter.
+
+	
+
+-
+
+slot slot-id
+	
+
+Specifies the slot ID.
+	
+
+-
+Views
+
+All views
+Default Level
+
+1: Monitoring level
+Usage Guidelines
+
+Usage Scenario
+
+The running status and statistics of an interface includes the physical status, basic configuration, and statistics about forwarded packets on the interface. You can use the display interface command to collect traffic statistics or locate faults on an interface.
+
+Precautions
+
+    If no interface type is specified, the running status and statistics of all the interfaces is displayed. If the interface type is specified but no interface number is specified, the running status of all the interfaces of this type is displayed.
+
+    When the XGE service interface of the S5731-H includes Ignoreds, Runts, and Fragments packets, the bytes statistics are incorrect.
+
+    Only the S5731-H, S5731-S, S5731S-H, S5731S-S, S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S support sub-interfaces.
+
+Example
+
+# Display the running status, basic configuration, and statistics about forwarded packets on GE0/0/1.
+
+<HUAWEI> display interface gigabitethernet 0/0/1
+GigabitEthernet 0/0/1 current state : UP        
+Line protocol current state : UP      
+Description:                          
+Switch Port, Link-type : access(negotiated),
+PVID :    1, TPID : 8100(Hex), The Maximum Frame Length is 9216    
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 00e0-fc12-3456 
+Last physical up time   : 2018-07-04 18:59:25                                   
+Last physical down time : 2018-07-04 19:02:07                                   
+Current system time: 2018-07-10 16:03:43 
+Port Mode: COMMON COPPER                                                        
+Speed : 1000,   Loopback: NONE                                                  
+Duplex: FULL,   Negotiation: ENABLE                                             
+Mdi   : AUTO,   Flow-control: DISABLE    
+Last 300 seconds input rate 0 bits/sec, 0 packets/sec                           
+Last 300 seconds output rate 0 bits/sec, 0 packets/sec                          
+Input peak rate 50765440 bits/sec, Record time: 2018-07-04 19:01:29             
+Output peak rate 748160 bits/sec, Record time: 2018-07-04 19:01:29  
+Input:  850737 packets, 74865496 bytes                                          
+  Unicast:                     850735,  Multicast:                           2  
+  Broadcast:                        0,  Jumbo:                               0  
+  Discard:                          0,  Pause:                               0  
+  Frames:                           0                                           
+                                                                                
+  Total Error:                      0                                           
+  CRC:                              0,  Giants:                              0  
+  Jabbers:                          0,  Fragments:                           0  
+  Runts:                            0,  DropEvents:                          0  
+  Alignments:                       0,  Symbols:                             0  
+  Ignoreds:                         0                                           
+                                                                                
+Output:  11905 packets, 1000668 bytes                                           
+  Unicast:                          0,  Multicast:                           3  
+  Broadcast:                        0,  Jumbo:                               0  
+  Discard:                          0,  Pause:                           11902  
+                                                                                
+  Total Error:                      0                                           
+  Collisions:                       0,  ExcessiveCollisions:                 0  
+  Late Collisions:                  0,  Deferreds:                           0  
+  Buffers Purged:                   0                                           
+                                                                                
+    Input bandwidth utilization threshold : 80.00%                              
+    Output bandwidth utilization threshold: 80.00%                              
+    Input bandwidth utilization  :    0%                                        
+    Output bandwidth utilization :    0%     
+
+# Display the running status, basic configuration, and statistics about forwarded packets on 100GE0/0/1.
+
+<HUAWEI> display interface 100GE 0/0/1 
+100GE0/0/1 current state : DOWN                                                                                                      
+Line protocol current state : DOWN                                                                                                   
+Description:                                                                                                                         
+Switch Port, Link-type : access(negotiated),                                                                                          
+PVID :    1, TPID : 8100(Hex), The Maximum Frame Length is 9216                                                                      
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 00e0-fc12-3456                                                      
+Last physical up time   : -                                                                                                          
+Last physical down time : 2019-02-26 09:45:16                                                                                        
+Current system time: 2019-02-26 09:47:43                                                                                             
+Port Mode: COMMON FIBER                                                                                                              
+Speed : 100000, Loopback: NONE                                                                                                       
+Duplex: FULL,   Negotiation: DISABLE                                                                                                 
+Mdi   : -,      Flow-control: DISABLE                                                                                                
+FEC   : NONE                                                                                                                         
+Last 300 seconds input rate 0 bits/sec, 0 packets/sec                                                                                
+Last 300 seconds output rate 0 bits/sec, 0 packets/sec                                                                               
+Input peak rate 0 bits/sec, Record time: -                                                                                           
+Output peak rate 0 bits/sec, Record time: -                                                                                           
+                                                                                                                                    
+Input:  0 packets, 0 bytes                                                                                                             
+Unicast:                          0,  Multicast:                           0                                                         
+Broadcast:                        0,  Jumbo:                               0                                                         
+Discard:                          0,  Pause:                               0                                                         
+                                                                                                                                     
+Total Error:                      0                                                                                                  
+CRC:                              0,  Giants:                              0                                                         
+Runts:                            0,  Fragments:                           0                                                         
+Alignments:                       0,  Symbols:                             0                                                         
+Ignoreds:                         0                                                                                                  
+                                                                                                                                   
+Output:  0 packets, 0 bytes                                                                                                            
+Unicast:                          0,  Multicast:                           0                                                         
+Broadcast:                        0,  Jumbo:                               0                                                         
+Discard:                          0,  Pause:                               0                                                         
+                                                                                                                                                                                                                                                                            Input bandwidth utilization threshold : 80.00%                                                                                       
+Output bandwidth utilization threshold: 80.00%                                                                                       
+Input bandwidth utilization  :    0%                                                                                                 
+Output bandwidth utilization :    0%                                                                                                                                                                                                                                 
+
+Item
+	
+
+Description
+Table 1 Description of this command output
+
+Item
+	
+
+Description
+
+current state
+	
+Current status of the interface:
+
+    UP: The interface is physically Up.
+
+    DOWN: The interface is physically Down.
+
+    Protected port: An interface is added to an interface protection group and set to be a protected interface. To add an interface to an interface protection group and set the interface to be a protected interface, run the port protect-group and protect-group member commands.
+
+    Administratively down: The administrator has run the shutdown command on the interface.
+    TRIGGER DOWN (BFD): When BFD detects a fault, the physical status of the interface becomes Down according to the OAM association.
+    TRIGGER DOWN (3AH): When 3AH detects a fault, the physical status of the interface becomes Down according to the OAM association.
+    TRIGGER DOWN (1AG): When 1AG detects a fault, the physical status of the interface becomes Down according to the OAM association.
+    ERROR DOWN(auto-defend): When the interface receives packets from an attack source, the physical status of the interface becomes Down.
+    ERROR DOWN(efm-threshold-event): When the number of error frames, error codes, or error frame seconds of EFM OAM detected by the interface reaches or exceeds the threshold within a set period, the physical status of the interface becomes Down according to the OAM association.
+    ERROR DOWN(efm-remote-failure): When EFM detects a remote failure, the physical status of the interface becomes Down according to the OAM association.
+    ERROR DOWN(bpdu-protection): If an edge interface receives RST BPDUs after BPDU protection is enabled, the physical status of the edge interface becomes Down.
+    ERROR DOWN(error-statistics): If the system detects that the number of error packets received by the interface exceeds the threshold, the physical status of the interface becomes Down.
+    ERROR DOWN(transceiver-power-low): If the system detects that the optical power of the interface falls below the configured lower alarm threshold, the physical status of the interface becomes Down.
+    ERROR DOWN(port-security): When the number of learned MAC address entries reaches the threshold, the interface goes Down.
+    ERROR DOWN(mac-address-flapping): When the learned MAC address flaps, the interface goes Down.
+    ERROR DOWN(dhcp-packet-overspeed): When the DHCP packet rate of the interface exceeds the threshold, the physical status of the associated interface becomes Down.
+    ERROR DOWN(link-flap): When the link flaps, the physical status of the associated interface becomes Down.
+    ERROR DOWN(data-integrity-error): The chip memory identifier has a data integrity error and the physical status of the interface becomes Down.
+    LOOPBACK-DETECT DOWN: The interface goes Down due to loopback detection.
+    LINK-FLAP DOWN: The interface goes physically Down due to automatic link flapping detection.
+    UP(E-TRUNK-DOWN): The Eth-Trunk interface goes Down because of E-Trunk negotiation.
+
+NOTE:
+
+There is a delay before the interface state is reported, so an interface undergoes a short-time intermediate state before it transitions to the ERROR DOWN state. The intermediate state is ERROR DOWN (ERROR DOWN reason), up. This state does not affect functioning of the interface.
+
+When the physical status of the interface is ERROR DOWN(data-integrity-error), perform the following operations:
+
+    Check whether the error-down auto-recovery cause data-integrity-error interval interval-value command has been configured on the switch. If the command has been configured, go to step 2. Otherwise, go to step 3.
+    Check whether the interface restores to Up state after the time specified by interval-value expires. If the interface does not restore to Up state, go to step 3.
+    Run the undo shutdown command in the interface view to enable the interface and check whether the interface restores to Up state. If the interface does not restore to Up state, go to step 4.
+    Run the reset slot command to restart the switch. After the switch restarts, check whether the interface restores to Up state. If the interface does not restore to Up state, go to step 5.
+    Replace the switch.
+
+Line protocol current state
+	
+Link layer protocol status of the interface:
+
+    UP: The link layer protocol of the interface is working properly.
+
+    UP (BFD status down): BFD associated with the interface is Down.
+
+    UP (Main BFD status down): The BFD session associated with the main interface becomes Down and is associated with the sub-interface status. This state is displayed only for sub-interfaces.
+
+    UP (spoofing): The link layer protocol of the interface is always Up with the spoofing feature enabled.
+
+    DOWN: The link-layer protocol status of the interface is Down or no IP address is assigned to the interface.
+
+    For example, if no IP address is assigned to an IP service-capable interface, its protocol status is Down.
+    DOWN (CFM down): CFM detects a fault or receives a fault notification message from its associated module. In this case, the link layer protocol of the interface becomes CFM Down.
+    DOWN (EFM down): EFM detects a fault or receives a fault notification message from its associated module. In this case, the link layer protocol of the interface becomes EFM Down.
+    DOWN (DLDP down): DLDP detects a fault or receives a fault notification message from its associated module. In this case, the link layer protocol of the interface becomes DLDP Down.
+    DOWN (MACsec down): MACsec is not enabled on the peer interface. In this case, the link layer protocol of the interface becomes MACsec Down.
+    NOTE:
+
+    DOWN (MACsec down) is displayed only after the MACsec plug-in is installed.
+
+    You can search for Plug-in Usage Guide at the Huawei technical support website (Enterprise Network or Carrier), and choose the desired plug-in usage guide based on the switch model and software version. If you do not have permission to access the website, contact technical support personnel.
+    DOWN (Observe-port forwarding down): The interface status becomes Down because the packet forwarding function is disabled on the observing port or in the observing port group where the port resides.
+    DOWN(BFD status down): indicates that BFD detects a fault and changes the link status of the interface to BFD DOWN. In this state, the interface discards Layer 2 and Layer 3 packets but permits BFD packets.
+    DOWN(Main BFD status down): indicates that BFD detects a fault and changes the link status of the main interface and its sub-interfaces to BFD DOWN. This state is applicable only to sub-interfaces. In this state, Layer 2 and Layer 3 packets are discarded, but BFD packets are permitted.
+
+Description
+	
+
+Interface description.
+
+To configure the description for an interface, run the description command.
+
+Switch Port
+	
+
+A Layer 2 interface.
+
+To switch an interface to the Layer 3 mode, run the undo portswitch command.
+
+If the interface is a Layer 3 interface, Route Port is displayed here.
+
+PVID
+	
+
+Default VLAN ID of the interface.
+
+Link-type
+	
+Link type of an interface, which is displayed only when the interface works in Layer 2 mode:
+
+    access(configured): The interface is manually configured as the access type.
+    hybrid: The interface is manually configured as the hybrid type.
+    trunk(configured): The interface is manually configured as the trunk type.
+    dot1q-tunnel: The interface is manually configured as the dot1q-tunnel type.
+    access(negotiated): The interface is automatically negotiated as the access type.
+    trunk(negotiated): The interface is automatically negotiated as the trunk type.
+
+To set the link type for an interface, run the port link-type command.
+
+The Maximum Frame Length
+	
+
+Maximum frame length allowed by the interface.
+
+To set the maximum frame length, run the jumboframe enable command.
+
+TPID
+	
+
+Type of frames that are supported on the interface.
+
+By default, this field displays 0x8100, indicating an 802.1Q frame.
+
+This field is displayed only for a Layer 2 interface.
+
+IP Sending Frames' Format
+	
+
+Format of frames sent by the IP protocol, including PKTFMT_ETHNT_2, Ethernet_802.3, and Ethernet_SNAP.
+
+Hardware address
+	
+
+MAC address of the interface.
+
+Port Mode
+	
+
+Working mode of the interface:
+
+    COMMON COPPER: The interface works as an electrical interface.
+    COMMON FIBER: The interface works as an optical interface.
+
+If the interface is a combo interface:
+
+    COMBO AUTO: The combo interface automatically selects the working mode.
+    FORCE FIBER: The combo interface is configured as an optical interface.
+    FORCE COPPER: The combo interface is configured as an electrical interface.
+
+To configure the working mode for an interface, run the combo-port command.
+
+Supported rates
+	
+
+Rate supported by the interface.
+NOTE:
+
+Only the XG electrical interface of MultiGE electrical interfaces and XG electrical interface on the ES5D21X08T00 subcard support this parameter.
+
+Transceiver
+	
+
+Type of the optical module.
+
+    This field is not displayed for electrical interfaces.
+    If an optical or copper module is inserted into the optical interface, the field indicates the model of the optical or copper module.
+    If an optical or copper module is not inserted into the optical interface, the field is not displayed.
+    If the optical interface is connected to the high-speed cable, the field indicates the type of the cable.
+
+Last physical up time
+	
+
+Last time the interface went Up physically. If this field displays "-", the physical status of the interface does not change.
+
+If the system is configured with a time zone and is in the daylight saving time, the time is displayed in the format of YYYY-MM-DD HH:MM:SS UTC±HH:MM DST.
+
+Last physical down time
+	
+
+Last time the interface went Down physically. If this field displays "-", the physical status of the interface does not change.
+
+If the system is configured with a time zone and is in the summer daylight saving time, the time is displayed in the format of YYYY-MM-DD HH:MM:SS UTC±HH:MM DST.
+
+Current system time
+	
+
+Current system time.
+
+If the time zone is configured and the daylight saving time is used, the time is in YYYY-MM-DD HH:MM:SS±HH:MM format.
+
+Speed
+	
+
+Current rate of the interface.
+
+    In auto-negotiation mode, the auto speed command configures the rate of an interface.
+    In non-auto-negotiation mode, the speed command configures the rate of an interface.
+
+Loopback
+	
+
+Loopback configuration of the interface.
+
+    NONE: Loopback detection is not configured.
+    INTERNAL: Internal loopback detection is configured.
+    EXTERNAL: external loopback detection is configured.
+
+To configure loopback on an interface, run the loopback command.
+
+Duplex
+	
+
+Duplex mode of the interface:
+
+    FULL: The interface works in full-duplex mode.
+    HALF: The interface works in half-duplex mode.
+
+    In auto-negotiation mode, the auto duplex command configures the duplex mode of an interface.
+    In non-auto-negotiation mode, the duplex command configures the duplex mode of an interface.
+
+Negotiation
+	
+
+Auto-negotiation mode of the interface. To configure the auto-negotiation mode for an interface, run the negotiation auto command.
+
+    ENABLE: The interface works in auto-negotiation mode.
+    DISABLE: The interface works in non-auto-negotiation mode.
+
+Mdi
+	
+
+Network cable type of the interface.
+
+To configure the network cable type of an interface, run the mdi command.
+
+The Mdi field displays - for an optical interface.
+
+Flow-control
+	
+
+Whether flow control is enabled:
+
+    ENABLE: Flow control is enabled on the interface.
+    DISABLE: Flow control and received flow control is disabled on the interface.
+    RECEIVE ENABLE: Receive flow control is enabled on the interface.
+
+NOTE:
+
+If the flow-control command has been executed to enable flow control on an Ethernet interface, or the flow-control receive command has been executed to enable received flow control on an Ethernet interface, this field displays DISABLE in the following situations:
+
+    The interface is in Down state.
+    The interface works in half-duplex mode.
+
+FEC
+	
+Whether FEC is enabled on an interface:
+
+    RS-FEC: RS-FEC is enabled on the interface.
+    BASE-R: BASE-R FEC is enabled on the interface.
+    NONE: The optical module is not properly installed and FEC is not configured; FEC is disabled; or FEC is not supported because a 40G optical module (except CFP 40GE optical module) is installed on a 100GE interface.
+
+When FEC is not configured, whether FEC is enabled on the interface depends on the medium. When a CFP 40GE/100GE optical module is installed on the interface, FEC cannot be configured on the interface and this field displays -.
+
+Last 300 seconds input rate
+	
+
+Incoming packet rate (bits per second and packets per second) within the last 300 seconds.
+
+Last 300 seconds output rate
+	
+
+Outgoing packet rate (bits per second and packets per second) within the last 300 seconds.
+
+Input peak rate 0 bits/sec,Record time
+	
+
+Maximum rate of incoming packets and time when the maximum rate is reached.
+
+Output peak rate 0 bits/sec,Record time
+	
+
+Maximum rate of outgoing packets and time when the maximum rate is reached.
+
+Input
+	
+
+Total number of received packets.
+
+Output
+	
+
+Total number of sent packets.
+
+Unicast
+	
+
+Number of unicast packets that are received or sent by the interface.
+
+Multicast
+	
+
+Number of multicast packets that are received or sent by the interface.
+
+For the S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S the value of this field contains the number of pause frames.
+
+For the S5736-S24T4XC, S5736-S24U4XC, S5736-S48T4XC, and S5736-S48U4XC, the value of the Multicast field contains the number of outgoing pause frames on GE electrical interfaces.
+
+Broadcast
+	
+
+Number of broadcast packets that are received or sent by the interface.
+
+Jumbo
+	
+
+For the S5731-H, S5731-S, S5731S-H, S5731S-S, S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S, the value of this field contains the number of received packets with length ranging from 1518 bytes to the jumbo frame length configured on the interface and correct CRC values.
+
+To set the maximum jumbo frame length, run the jumboframe enable command.
+NOTE:
+
+Only S5731-H, S5731-S, S5731S-H, S5731S-S, S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S support statistics on Jumbo frames.
+
+Discard
+	
+
+Number of packets discarded by the interface during physical layer detection.
+
+On the S5736-S, after you run the reset qos queue statistics command, the number of packets discarded by the interface is cleared.
+
+Total Error
+	
+
+Number of error packets found during physical layer detection.
+
+CRC
+	
+
+Number of packets with length ranging from 64 bytes to 1518 bytes and incorrect FCS values.
+
+For the S5731-H, S5731S-H, S5731S-S, S5732-H, S5736-S, S6730-H, S6730S-H, S6730-S, and S6730S-S, the value of this field includes the number of received packets longer than the maximum jumbo frame length and with incorrect FCS values.
+
+For the S5736-S, the value of this field contains the number of received packets with length ranging from 1518 bytes to the jumbo frame size configured on the interface and incorrect FCS values.
+
+Giants
+	
+
+Number of received frames with length exceeding the maximum jumbo frame length.
+
+Jabbers
+	
+
+The S5731-S, S5731S-S, S5731-H, S5731S-H, S5732-H, S5736-S, S6730S-S, and S6730-H do not have the Jabbers field. On the other product models, this field indicates the number of received packets with length exceeding the maximum jumbo frame length and incorrect FCS values.
+
+Fragments
+	
+
+Number of received fragmented packets. A fragmented packet is a packet shorter than 64 bytes and with incorrect CRC values.
+
+For the S5731-H, S5731-S, S5731S-H, S5731S-S, S6730-H, S6730S-H, S6730-S, and S6730S-S, the value of this field contains the number of undersized frames with the correct CRC values received is displayed.
+
+On the S5736-S, the command output does not contain the Fragments field to display statistics about received fragmented packets.
+
+Runts
+	
+
+Number of received undersized frames with correct CRC values.
+
+For the S5736-S, the value of this field includes the number of received fragmented packets shorter than 64 bytes and with incorrect CRC values.
+
+DropEvents
+	
+
+Number of received packets that are discarded due to GBP full or back pressure.
+
+Alignments
+	
+
+Number of received frames with alignment errors.
+
+Symbols
+	
+
+Number of received frames with coding errors.
+
+Ignoreds
+	
+
+Number of received MAC control frames whose OpCode is not PAUSE.
+
+Frames
+	
+
+Number of packets with incorrect 802.3 length.
+
+Pause
+	
+
+Number of pause frames.
+NOTE:
+
+The following interfaces do not support the function of collecting Pause frame statistics when flow control is not enabled:
+
+Collisions
+	
+Number of packets with 1 to 15 collisions during packet forwarding.
+NOTE:
+
+If the command output contains only this field and the ExcessiveCollisions field is not displayed, the field also includes the number of frames that are canceled due to consecutive 16 collisions.
+
+ExcessiveCollisions
+	
+
+Number of packets with 16 collisions and fail to be sent.
+
+Late Collisions
+	
+
+Number of packets with conflict and delayed.
+
+Deferreds
+	
+
+Number of delayed packets without conflict.
+
+Buffers Purged
+	
+
+Number of packets aged in the cache.
+
+Input bandwidth utilization threshold
+	
+
+Threshold for inbound bandwidth usage.
+
+Output bandwidth utilization threshold
+	
+
+Threshold for outbound bandwidth usage.
+
+Input bandwidth utilization
+	
+
+Inbound bandwidth usage.
+
+For the S5736-S, the bandwidth usage of Giants packets is calculated based on the configured jumbo frame length.
+
+To set the maximum jumbo frame length, run the jumboframe enable command.
+
+Output bandwidth utilization
+	
+
+Outbound bandwidth usage.
+
+For the S5736-S, the bandwidth usage of Giants packets is calculated based on the configured jumbo frame length.
+
+To set the maximum jumbo frame length, run the jumboframe enable command.
+---------------------------------------------------------------------------------------------
+display interface brief
+Function
+
+The display interface brief command displays brief information about the status and configuration of interfaces.
+Format
+
+display interface brief [ main ]
+Parameters
+
+Parameter
+	
+
+Description
+	
+
+Value
+
+main
+	
+
+Displays brief information about an Ethernet main interface, but does not display sub-interface information.
+
+If no sub-interface is configured on the main interface, the command output is the same as that without the main parameter.
+	
+
+-
+Views
+
+All views
+Default Level
+
+1: Monitoring level
+Usage Guidelines
+
+Usage Scenario
+
+The display interface brief command displays brief information about interfaces, including the physical status, link layer protocol status, inbound and outbound bandwidth usage within a certain period, and numbers of sent and received error packets. This information helps locate faults on interfaces.
+
+Precautions
+
+To clear statistics on an interface, run the reset counters interface command.
+Example
+
+# Display brief information about the status and configuration of interfaces.
+
+<HUAWEI> display interface brief
+PHY: Physical                                                                   
+*down: administratively down                                                    
+#down: LBDT down  
+                                                 
+(l): loopback                                                                   
+(s): spoofing                                                                   
+(E): E-Trunk down   
+(b): BFD down                                                                   
+(e): ETHOAM down                                                                
+(dl): DLDP down                                                                 
+(lb): LBDT block                                                                
+(lp): Loop-detect block                                                         
+(ms): MACsec down
+(o): Observe-port forwarding down
+InUti/OutUti: input utility/output utility                                      
+Interface                   PHY   Protocol InUti OutUti   inErrors  outErrors   
+GigabitEthernet0/0/1        up    up       0.06%   100%          0   21217388   
+GigabitEthernet0/0/2        up    up        100%   100%          0          0   
+GigabitEthernet0/0/3        up    up          0%   100%          0          0   
+GigabitEthernet0/0/4        up    up        100%   100%          0          0   
+GigabitEthernet0/0/5        up    up         99%   100%          0          0   
+GigabitEthernet0/0/6        down  down        0%     0%         10          0   
+GigabitEthernet0/0/7        down  down        0%     0%         12          0   
+GigabitEthernet0/0/8        down  down        0%     0%          0          0   
+GigabitEthernet0/0/9        down  down        0%     0%          0          0   
+GigabitEthernet0/0/10       down  down        0%     0%          0          0   
+GigabitEthernet0/0/11       down  down        0%     0%          0          0   
+GigabitEthernet0/0/12       down  down        0%     0%          0          0   
+GigabitEthernet0/0/13       down  down        0%     0%          0          0   
+GigabitEthernet0/0/14       down  down        0%     0%          0          0   
+GigabitEthernet0/0/15       down  down        0%     0%          0          0   
+GigabitEthernet0/0/16       down  down        0%     0%          0          0   
+GigabitEthernet0/0/17       down  down        0%     0%          0          0   
+GigabitEthernet0/0/18       down  down        0%     0%          0          0   
+GigabitEthernet0/0/19       down  down        0%     0%          0          0   
+GigabitEthernet0/0/20       down  down        0%     0%          0          0   
+GigabitEthernet0/0/21       down  down        0%     0%          0          0   
+GigabitEthernet0/0/22       down  down        0%     0%          0          0   
+GigabitEthernet0/0/23       down  down        0%     0%          0          0   
+GigabitEthernet0/0/24       down  down        0%     0%          0          0   
+MEth0/0/1                   down  down        0%     0%          0          0   
+NULL0                       up    up(s)       0%     0%          0          0   
+
+Item
+	
+
+Description
+Table 1 Description of the display interface brief command output
+
+Item
+	
+
+Description
+
+Interface
+	
+
+Type and number of an interface.
+
+PHY
+	
+Physical status of an interface:
+
+    up: indicates that the interface is working properly.
+    down: indicates that the physical layer of the interface fails.
+    *down: Administratively Down, indicating that the administrator has run the shutdown command on the interface.
+    ^down: indicates that the interface is a backup interface.
+    #down: LBDT down, indicating that loop detection is enabled on the interface. The interface is shut down when the device detects a loop on the downstream network or between interfaces.
+    -down: indicates that the interface is shut down due to automatic link flapping detection.
+    (l): indicates that the loopback function is enabled on the interface.
+    (b): indicates that the physical layer of the interface is in BFD down state.
+
+Protocol
+	
+Link layer protocol status of the interface:
+
+    up: indicates that the interface is working properly.
+    down: indicates that the link layer protocol fails.
+    up(lp)/down(lp): indicates that the interface status is Block due to the loop detected by the L2VPN loop detection function on the interface.
+    (s): indicates that the spoofing function is enabled on the interface.
+
+    (E): indicating that the Eth-Trunk goes down because of the E-Trunk negotiation failure.
+    (b): indicates that the link layer of the interface is in BFD down state.
+    (e): indicates that the link layer of the interface is in ETHOAM down state.
+    (dl): indicates that the link layer of the interface is in DLDP down state.
+    (lb): indicates that the interface is blocked due to loops on the downstream network or between interfaces.
+    (lp): indicates that the interface status becomes Down due to loops in the VLAN where the interface resides.
+    (ms): indicates that the link layer of the interface is in MACsec down state because MACsec is not enabled on the peer interface.
+    NOTE:
+
+    (ms): MACsec down is displayed only after the MACsec plug-in is installed.
+
+    You can search for Plug-in Usage Guide at the Huawei technical support website (Enterprise Network or Carrier), and choose the desired plug-in usage guide based on the switch model and software version. If you do not have permission to access the website, contact technical support personnel.
+    (o): indicates that the interface status becomes Down because the packet forwarding function is disabled on the observing port or in the observing port group where the port resides.
+
+InUti
+	
+
+Average inbound bandwidth usage of an interface within the last 300 seconds.
+
+Average inbound bandwidth usage within the last 300 seconds = Average inbound traffic rate within the last 300 seconds/Interface bandwidth
+
+When the average bandwidth usage is smaller than 0.005% and greater than 0, the value 0 is displayed. When the average bandwidth usage is smaller than 0.01% and greater than 0.005%, the value 0.01% is displayed. When the interface bandwidth becomes lower, for example, the speed command is executed to reduce the bandwidth of an Ethernet interface, the bandwidth usage be displayed as 100% because the traffic volume is not adjusted in time. "--" indicates that an interface does not support the display of bandwidth usage.
+
+OutUti
+	
+
+Average outbound bandwidth usage within the last 300 seconds.
+
+Average outbound bandwidth usage within the last 300 seconds = Average outbound traffic rate within the last 300 seconds/Interface bandwidth
+
+When the average bandwidth usage is smaller than 0.005% and greater than 0, the value 0 is displayed. When the average bandwidth usage is smaller than 0.01% and greater than 0.005%, the value 0.01% is displayed. When the interface bandwidth becomes lower, for example, the speed command is executed to reduce the bandwidth of an Ethernet interface, the bandwidth usage may be displayed as 100% because the traffic volume is not adjusted in time. "--" indicates that an interface does not support the display of bandwidth usage.
+
+inErrors
+	
+
+The number of error packets received by an interface. The value ranges from 0 to 4294967295. The count restarts after the value exceeds the upper limit.
+
+The value becomes 0 when you run the reset counters interface command in the user view or when the number of received packets reaches the maximum value 0xFFFFFFFF.
+
+outErrors
+	
+
+The number of error packets sent by an interface. The value ranges from 0 to 4294967295. The count restarts after the value exceeds the upper limit.
+
+The value becomes 0 when you run the reset counters interface command in the user view or when the number of sent packets reaches the maximum value 0xFFFFFFFF.
+---------------------------------------------------------------------------------------------------
+display interface description
+Function
+
+The display interface description command displays the description of an interface.
+Format
+
+display interface description [ interface-type [ interface-number ] ]
+
+display interface description [ interface-type ] main
+Parameters
+
+Parameter
+	
+
+Description
+	
+
+Value
+
+interface-type [ interface-number ]
+	
+
+Displays the description of a specified interface.
+
+If an interface type is specified but no interface number is specified, the description of all interfaces of the specified type is displayed.
+	
+
+-
+
+main
+	
+
+Displays the description of the main interface.
+
+    If an interface has no sub-interfaces, description about the interface is displayed regardless of whether you specify the main parameter.
+    If an interface has sub-interfaces, description about the interface and sub-interfaces is displayed if you do not specify the main parameter.
+
+	
+
+-
+Views
+
+All views
+Default Level
+
+1: Monitoring level
+Usage Guidelines
+
+Usage Scenario
+
+The display interface command can also display the description of an interface. To quickly view the description of an interface, you are advised to use the display interface description command.
+
+Precautions
+
+If no interface type is specified, the description of all interfaces is displayed. If an interface type is specified but no interface number is specified, the description of all interfaces of the specified type is displayed.
+
+If there is a great deal of statistics about traffic on Eth-Trunk interfaces, you are recommended to specify trunk-id to filter output information. Otherwise, a problem may occur due to excessive output information: The displayed information is repeatedly refreshed, and therefore required information cannot be located.
+
+Only the S5731-H, S5731-S, S5731S-H, S5731S-S, S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S support sub-interfaces.
+Example
+
+# Display the description of GE0/0/1.
+
+<HUAWEI> display interface description gigabitethernet 0/0/1
+PHY: Physical                                                                   
+*down: administratively down                                                    
+#down: LBDT down                                                   
+(l): loopback                                                                   
+(s): spoofing                                                                   
+(E): E-Trunk down   
+(b): BFD down                                                                   
+(e): ETHOAM down                                                                
+(dl): DLDP down
+(lb): LBDT block                                                                
+(ms): MACsec down
+Interface                     PHY     Protocol Description                      
+GE0/0/1                       down    down                
+
+Item
+	
+
+Description
+Table 1 Description of the display interface description command output
+
+Item
+	
+
+Description
+
+Interface
+	
+
+Type and number of an interface. If the bandwidth of an interface exceeds 1 GB, the bandwidth value is displayed following the interface name.
+
+PHY
+	
+Physical status of an interface:
+
+    up: indicates that the interface is working properly.
+
+    down: indicates that the physical layer of the interface fails.
+
+    *down: administratively down, indicating that the administrator has run the shutdown command on the interface.
+    #down: LBDT down, indicating that loopback detection is enabled on the interface. The interface is shut down when the device detects a loop on the downstream network or between interfaces.
+
+    (l): loopback, indicating that the loopback function is enabled on the interface.
+
+    (b): BFD down, indicating that the physical layer of the interface is in BFD Down state.
+
+Protocol
+	
+Link layer protocol status of the interface:
+
+    up: indicates that the interface is working properly.
+
+    down: indicates that the link layer protocol of the interface fails.
+
+    (s): spoofing, indicating that the spoofing function is enabled on the interface.
+
+    (E): E-Trunk down, indicating that the interface goes down because of the E-Trunk negotiation failure.
+
+    (b): indicates that the link layer of the interface is in BFD down state.
+
+    (e): ETHOAM down, indicating that the link layer protocol of the interface is in ETHOAM down state.
+
+    (dl): DLDP down, indicating that the link layer protocol of the interface is in DLDP down state.
+    (lb): indicates that the interface is blocked due to loops on the downstream network or between interfaces.
+    (ms): MACsec down, indicating that the interface is Down because MACsec is not enabled on the peer interface.
+
+NOTE:
+
+(ms): MACsec down is displayed only after the MACsec plug-in is installed.
+
+You can search for Plug-in Usage Guide at the Huawei technical support website (Enterprise Network or Carrier), and choose the desired plug-in usage guide based on the switch model and software version. If you do not have permission to access the website, contact technical support personnel.
+
+Description
+	
+
+Interface description.
+-------------------------------------------------------------------------
+display ip interface
+Function
+
+The display ip interface command displays the IP configuration and statistics on interfaces. The statistics include the number of packets and bytes received and sent by interfaces, number of multicast packets sent and received by interfaces, and number of broadcast packets received, sent, forwarded, and discarded by interfaces.
+
+The display ip interface brief command displays brief information about interface IP addresses, including the IP address, subnet mask, physical status, link-layer protocol status, and number of interfaces in different states.
+Format
+
+display ip interface [ interface-type interface-number ]
+
+display ip interface brief [ interface-type [ interface-number ] | slot slot-id [ card card-number ] ]
+
+display ip interface brief [ interface-type ] &<1-8>
+Parameters
+Parameter 	Description 	Value
+
+interface-type interface-number
+	
+
+Specifies the type and number of an interface. If no interface is specified, IP configuration and statistics about all interfaces are displayed.
+	
+
+-
+
+brief
+	
+
+Displays brief information, including the IP address, subnet mask, physical status, link-layer protocol status, and number of interfaces in different states.
+	
+
+-
+
+slot slot-id
+	
+
+Displays the IP configuration and statistics of interfaces on the specified slot.
+
+If the slot number is not specified, brief information related to the IP addresses of the interfaces on all interface boards and main control boards is displayed.
+	
+
+-
+
+card card-number
+	
+
+Displays the IP configuration and statistics of interfaces on specified card.
+	
+
+-
+Views
+
+All views
+Default Level
+
+1: Monitoring level
+Usage Guidelines
+You can run the display ip interface brief command to view the following information:
+
+    IP configurations of all interfaces
+    IP configurations of interfaces of the specified type and a specified interface
+    IP configurations of interfaces that have IP addresses
+
+This command, however, cannot display the IP configurations of Layer 2 interfaces or Eth-Trunk member interfaces.
+
+    You can run the display interface description command to view the interface description.
+
+    You can run the display interface command to view detailed information about the running status and statistics on the interface.
+
+    Only the S5731-H, S5731-S, S5731S-H, S5731S-S, S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S support sub-interfaces.
+
+Example
+# Display IP information about VLANIF15.
+
+<HUAWEI> display ip interface vlanif 15 
+Vlanif15 current state : UP
+Line protocol current state : UP
+The Maximum Transmit Unit : 1500 bytes
+input packets : 766390, bytes : 41540847, multicasts : 681817
+output packets : 242239, bytes : 14679482, multicasts : 172333
+Directed-broadcast packets:
+ received packets:            0, sent packets:            0
+ forwarded packets:           0, dropped packets:           0
+Internet Address is 10.1.1.119/24
+Broadcast address : 10.1.1.255
+TTL being 1 packet number:    164035
+TTL invalid packet number:         0
+ICMP packet input number:          0
+  Echo reply:                      0
+  Unreachable:                     0
+  Source quench:                   0
+  Routing redirect:                0
+  Echo request:                    0
+  Router advert:                   0
+  Router solicit:                  0
+  Time exceed:                     0
+  IP header bad:                   0
+  Timestamp request:               0
+  Timestamp reply:                 0
+  Information request:             0
+  Information reply:               0
+  Netmask request:                 0
+  Netmask reply:                   0
+  Unknown type:                    0    
+
+Table 1 Description of the display ip interface command output
+
+Item
+	
+
+Description
+
+Vlanif15 current state
+	
+Physical status of the interface:
+
+    UP: indicates that the interface is physically Up.
+
+    DOWN: indicates that the interface is physically Down.
+
+    Administratively down: indicates that the administrator has run the shutdown (interface view) command on the interface.
+
+Line protocol current state
+	
+Link layer protocol status of the interface:
+
+    UP: The link layer protocol of the interface is running properly.
+
+    DOWN: The link layer protocol of the interface is Down or no IP address is configured on the interface.
+
+The Maximum Transmit Unit
+	
+
+MTU of the interface. The default MTU of an Ethernet interface or a serial interface is 1500 bytes. Packets longer than the MTU are fragmented before being transmitted. If fragmentation is not allowed, the packets are discarded.
+
+input packets : 766390, bytes : 41540847, multicasts : 681817
+	
+
+Total number of packets, bytes, and multicast packets received by the interface.
+
+output packets : 242239, bytes : 14679482, multicasts : 172333
+	
+
+Total number of packets, bytes, and multicast packets sent by the interface.
+
+Directed-broadcast packets
+	
+
+Number of packets broadcast on the interface directly.
+
+received packets
+	
+
+Total number of received packets.
+
+sent packets
+	
+
+Total number of sent packets.
+
+forwarded packets
+	
+
+Total number of forwarded packets.
+
+dropped packets
+	
+
+Total number of discarded packets.
+
+Internet Address is
+	
+
+IP address assigned to the interface and mask length.
+
+Broadcast address
+	
+
+Broadcast address of the interface.
+
+TTL being 1 packet number
+	
+
+Number of packets with TTL 1.
+
+TTL invalid packet number
+	
+
+Number of packets with invalid TTL.
+
+ICMP packet input number
+	
+
+Number of received ICMP packets.
+
+Echo reply
+	
+
+Number of Echo Reply packets.
+
+Unreachable
+	
+
+Number of Destination Unreachable packets.
+
+Source quench
+	
+
+Number of Source Quench packets.
+
+Routing redirect
+	
+
+Number of Redirect packets.
+
+Echo request
+	
+
+Number of Echo Request packets.
+
+Router advert
+	
+
+Number of Router Advertisement packets.
+
+Router solicit
+	
+
+Number of Router Solicitation packets.
+
+Time exceed
+	
+
+Number of Time Exceeded packets.
+
+IP header bad
+	
+
+Number of IP header error packets.
+
+Timestamp request
+	
+
+Number of Timestamp Request packets.
+
+Timestamp reply
+	
+
+Number of Timestamp Reply packets.
+
+Information request
+	
+
+Number of Information Request packets.
+
+Information reply
+	
+
+Number of Information Reply packets.
+
+Netmask request
+	
+
+Number of Address Mask Request packets.
+
+Netmask reply
+	
+
+Number of Address Mask Reply packets.
+
+Unknown type
+	
+
+Number of unknown packets.
+# Display brief IP information about VLANIF15.
+
+<HUAWEI> display ip interface brief vlanif 15
+*down: administratively down
+^down: standby
+(l): loopback
+(s): spoofing
+(E): E-Trunk down
+Interface                         IP Address/Mask      Physical   Protocol
+Vlanif15                          10.1.1.119/24        up         up        
+
+Table 2 Description of the display ip interface brief command output
+
+Item
+	
+
+Description
+
+*down:
+	
+
+Reason why an interface is physically Down. Administratively down indicates that the administrator has run the shutdown command on the interface.
+
+^down
+	
+
+^down: indicates that the interface is a backup interface.
+
+(l): loopback
+	
+
+The letter "l" refers to loopback.
+
+(s): spoofing
+	
+
+The letter "s" refers to spoofing.
+
+(E): E-Trunk down
+	
+
+Indicates that the Eth-Trunk is Down because of the protocol negotiation on the E-Trunk.
+
+Interface
+	
+
+Interface type and number.
+
+IP Address/Mask
+	
+
+IP address and mask of an interface.
+
+Physical
+	
+Physical status of an interface:
+
+    Up: indicates that the interface is physically Up. (l) indicates that the loopback function is configured on the interface.
+
+    Down: indicates that the interface becomes faulty.
+
+    *down: indicates that the administrator has run the shutdown (interface view) command on the interface. (l) indicates that the loopback function is configured on the interface.
+
+    !down: indicates that the FIB module is suspended. In this case, the link protocol status of the interface is Down.
+
+Protocol
+	
+
+Link protocol status of the interface:
+
+    Up: indicates that the link protocol of the interface is running properly. (s) indicates that the link protocol status of the interface is Up when this interface is created and has no IP address configured. This is an inherent attribute of an interface. When this interface is configured with an IP address, (s) is still displayed.
+
+    Down: indicates that the link protocol of the interface fails or no IP address is configured on the interface.
+
+(l) indicates that the loopback function is configured on the interface.
+--------------------------------------------------------------------------
+display ip interface description
+Function
+
+The display ip interface description command displays IP-related information (such as the IP address, subnet mask, physical layer status, link layer protocol status, and number of interfaces in different states) and description of an interface.
+Format
+
+display ip interface description [ interface-type [ interface-number ] | interface-type &<1-8> | slot slot-number [ card card-number ] ]
+Parameters
+Parameter 	Description 	Value
+
+interface-type
+	
+
+Indicates the interface type. If no interface type is specified, IP-related configurations and statistics of all interfaces are displayed.
+	
+
+-
+
+interface-number
+	
+
+Indicates the interface number, which is used together with interface-type to identify an interface. If no interface number is specified, IP-related configurations and statistics of interfaces in the same type are displayed.
+	
+
+-
+
+interface-type
+	
+
+Indicates that the command can display IP-related information about interfaces of multiple types. The command can display IP-related information about interfaces in a maximum of eight types.
+	
+
+-
+
+slot slot-number
+	
+
+Specifies the interface board number.
+	
+
+-
+
+card card-number
+	
+
+Indicates the card number. If no card number is specified, IP-related information about all interfaces on all cards in a specified slot is displayed.
+	
+
+-
+Views
+
+All views
+Default Level
+
+1: Monitoring level
+Usage Guidelines
+
+Usage Scenario
+
+Instead of running the display ip interface brief and display interface description commands, you can run the display ip interface description command to view both IP-related information and description of an interface, which facilitates the user operation.
+
+The display ip interface description command cannot display information about Layer 2 interfaces. When it runs on an Eth-Trunk interface, it displays the status and description of Eth-Trunk member interfaces.
+Example
+
+# View IP-related information and description of a specified interface.
+
+<HUAWEI> display ip interface description
+Codes:
+      Ana(Analogmodem),       Asy(Async),             Cell(Cellular),
+      Dia(Dialer),            Eth(Ethernet)           GE(GigabitEthernet),
+      H(Hssi),                Ima(Ima-group),         Loop(LoopBack),
+      MTun(MTunnel),          S(Serial),              Tun(Tunnel),
+      VE(Virtual-Ethernet),   VT(Virtual-Template)
+
+      d(dampened),            D(down),                *D(administratively down)
+      ^D(standby),            l(loopback),             s(spoofing),
+      U(up)                   E(E-Trunk down)
+
+
+------------------------------------------------------------------------------  
+Number of interfaces whose physical status is Up: 9                          
+Number of interfaces whose physical status is Down: 1                          
+Number of interfaces whose protocol status is Up: 9                          
+Number of interfaces whose protocol status is Down: 1                       
+                                                                                
+Interface                      IP Address/Mask    Phy  Prot Description         
+Loop0                          10.3.0.2/32        U    U(s)                     
+Loop1                          unassigned         U    U(s)                     
+MEth0/0/1                      192.168.150.143/24 U    U                        
+NULL0                          unassigned         U    U(s)                     
+Tun1                           unassigned         U    D                        
+Vlanif10                       unassigned         D    D                        
+Vlanif20                       10.1.2.2/24        D    D                        
+Vlanif30                       10.1.1.1/24        D    D                        
+Vlanif100                      unassigned         *D   D 
+
+Item
+	
+
+Description
+Table 1 Description of the display ip interface description command output
+
+Item
+	
+
+Description
+
+Codes:
+	
+
+The following information provides the full spelling and explanation of the abbreviated interface names, physical status, and link layer protocols.
+Full spelling of the abbreviated interface names is as follows:
+
+    Ana: Analogmodem interfaces
+    Asy: Async interfaces
+    Cell: Cellular interfaces
+    Dia: Dialer interfaces
+    Eth: Ethernet interfaces
+    GE: GigabitEthernet interfaces
+    H: Hssi interfaces
+    Ima: IMA-Group interfaces
+    Loop: Loopback interfaces
+    MTun: MTunnel interfaces
+    S: Serial interfaces
+    Tun: Tunnel interfaces
+    VE: Virtual-Ethernet interfaces
+    VT: Virtual-Template interfaces
+
+Explanation of the abbreviated physical status of the interface is as follows:
+
+    U: indicates that the physical status of the interface is Up.U(l) indicates that the interface is enabled with the loopback function.
+    D: indicates that the physical status of the interface is Down.
+    *D: indicates that the network administrator has run the shutdown command on the interface.
+    !D: indicates that the FIB module is in the overload suspension state. The link layer protocol of the interface goes Down.
+    ^D: indicates that the FIB module is in the standby state.
+    s: indicates that the interface is in spoofing status.
+    E: the Eth-Trunk goes Down because of E-Trunk negotiation.
+
+Explanation of the abbreviated link layer protocol status is as follows:
+
+    U: indicates that the status of the link layer protocol on the interface is Up. U(s) indicates that the link layer protocol of the interface is Up even though the interface is not configured with an IP address. (s) is an inherent attribute of the interface and will be displayed when the interface is configured with an IP address. (d) indicates that the protocol module of the interface is dampened.
+    D: indicates that the link layer protocol of the interface is Down or no IP address is assigned to the interface.
+
+Number of interfaces whose physical status is Up:
+	
+
+Indicates the number of interfaces whose physical status is Up.
+
+Number of interfaces whose physical status is Down:
+	
+
+Indicates the number of interfaces whose physical status is Down.
+
+Number of interfaces whose protocol status is Up:
+	
+
+Indicates the number of interfaces whose link layer protocol is Up.
+
+Number of interfaces whose protocol status is Down:
+	
+
+Indicates the number of interfaces whose link layer protocol is Down.
+
+Interface
+	
+
+Indicates the name and number of an interface.
+
+IP Address/Mask
+	
+
+Indicates the IP address and subnet mask of an interface.
+
+Phy
+	
+
+Indicates the physical status of an interface.
+
+Prot
+	
+
+Indicates the link layer protocol status of an interface.
+
+Description
+	
+
+Indicates the description of an interface, expressed in characters. A maximum of 20 characters can be displayed. When the length of the description is greater than 20 characters, only the first 16 characters are displayed and the last 3 characters are replaced by ellipsis (...). If the description of an interface is the default setting, no information is displayed.
+-------------------------------------------------------------------------------------display this interface
+Function
+
+The display this interface command displays interface information in the current interface view.
+Format
+
+display this interface
+Parameters
+
+None
+Views
+
+Interface view
+Default Level
+
+1: Monitoring level
+Usage Guidelines
+
+In the interface view, you can run the display this interface command to rapidly view the status of the interface and packet statistics on the interface.
+Example
+
+# Display information about GE0/0/1.
+
+<HUAWEI> system-view
+[HUAWEI] interface gigabitethernet 0/0/1
+[HUAWEI-GigabitEthernet0/0/1] display this interface
+GigabitEthernet0/0/1 current state : UP            
+Line protocol current state : UP                                              
+Description:                                                                    
+Switch Port,Link-type : access(negotiated),
+ PVID :    1, TPID : 8100(Hex), The Maximum Frame Length is 9216    
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 00e0-fc12-3456 
+Last physical up time   : -
+Last physical down time : 2000-04-01 23:55:43 
+Current system time: 2012-08-24 00:41:35+08:00                                  
+Port Mode: COMMON FIBER, Transceiver: 1000_BASE_SX_SFP                                                         
+Speed : 1000,  Loopback: NONE                                                   
+Duplex: FULL,  Negotiation: ENABLE                                              
+Mdi   : -, Flow-control: DISABLE                 
+Last 300 seconds input rate 0 bits/sec, 0 packets/sec                           
+Last 300 seconds output rate 0 bits/sec, 0 packets/sec                          
+Input peak rate 0 bits/sec, Record time: 2007-12-26 07:23:14                                      
+Output peak rate 0 bits/sec, Record time: 2007-12-26 07:23:14                                     
+                                                                                
+Input:  0 packets, 0 bytes                                                      
+  Unicast:                          0,  Multicast:                           0  
+  Broadcast:                        0,  Jumbo:                               0  
+  Discard:                          0,  Pause:                               0  
+  Frames:                           0  
+
+  Total Error:                      0 
+  CRC:                              0,  Giants:                              0  
+  Jabbers:                          0,  Fragments:                           0  
+  Runts:                            0,  DropEvents:                          0  
+  Alignments:                       0,  Symbols:                             0  
+  Ignoreds:                         0
+                                    
+Output:  0 packets, 0 bytes                 
+  Unicast:                          0,  Multicast:                           0  
+  Broadcast:                        0,  Jumbo:                               0  
+  Discard:                          0,  Pause:                               0  
+  
+  Total Error:                      0            
+  Collisions:                       0,  ExcessiveCollisions:                 0  
+  Late Collisions:                  0,  Deferreds:                           0  
+  Buffers Purged:                   0 
+                                                                                
+    Input bandwidth utilization threshold : 80.00%                             
+    Output bandwidth utilization threshold: 80.00%                             
+    Input bandwidth utilization  :    0%                                        
+    Output bandwidth utilization :    0% 
+
+Item
+	
+
+Description
+Table 1 Description of this command output
+
+Item
+	
+
+Description
+
+current state
+	
+Current status of the interface:
+
+    UP: The interface is physically Up.
+
+    DOWN: The interface is physically Down.
+
+    Protected port: An interface is added to an interface protection group and set to be a protected interface. To add an interface to an interface protection group and set the interface to be a protected interface, run the port protect-group and protect-group member commands.
+
+    Administratively down: The administrator has run the shutdown command on the interface.
+    TRIGGER DOWN (BFD): When BFD detects a fault, the physical status of the interface becomes Down according to the OAM association.
+    TRIGGER DOWN (3AH): When 3AH detects a fault, the physical status of the interface becomes Down according to the OAM association.
+    TRIGGER DOWN (1AG): When 1AG detects a fault, the physical status of the interface becomes Down according to the OAM association.
+    ERROR DOWN(auto-defend): When the interface receives packets from an attack source, the physical status of the interface becomes Down.
+    ERROR DOWN(efm-threshold-event): When the number of error frames, error codes, or error frame seconds of EFM OAM detected by the interface reaches or exceeds the threshold within a set period, the physical status of the interface becomes Down according to the OAM association.
+    ERROR DOWN(efm-remote-failure): When EFM detects a remote failure, the physical status of the interface becomes Down according to the OAM association.
+    ERROR DOWN(bpdu-protection): If an edge interface receives RST BPDUs after BPDU protection is enabled, the physical status of the edge interface becomes Down.
+    ERROR DOWN(error-statistics): If the system detects that the number of error packets received by the interface exceeds the threshold, the physical status of the interface becomes Down.
+    ERROR DOWN(transceiver-power-low): If the system detects that the optical power of the interface falls below the configured lower alarm threshold, the physical status of the interface becomes Down.
+    ERROR DOWN(port-security): When the number of learned MAC address entries reaches the threshold, the interface goes Down.
+    ERROR DOWN(mac-address-flapping): When the learned MAC address flaps, the interface goes Down.
+    ERROR DOWN(dhcp-packet-overspeed): When the DHCP packet rate of the interface exceeds the threshold, the physical status of the associated interface becomes Down.
+    ERROR DOWN(link-flap): When the link flaps, the physical status of the associated interface becomes Down.
+    ERROR DOWN(data-integrity-error): The chip memory identifier has a data integrity error and the physical status of the interface becomes Down.
+    LOOPBACK-DETECT DOWN: The interface goes Down due to loopback detection.
+    LINK-FLAP DOWN: The interface goes physically Down due to automatic link flapping detection.
+    UP(E-TRUNK-DOWN): The Eth-Trunk interface goes Down because of E-Trunk negotiation.
+
+NOTE:
+
+There is a delay before the interface state is reported, so an interface undergoes a short-time intermediate state before it transitions to the ERROR DOWN state. The intermediate state is ERROR DOWN (ERROR DOWN reason), up. This state does not affect functioning of the interface.
+
+When the physical status of the interface is ERROR DOWN(data-integrity-error), perform the following operations:
+
+    Check whether the error-down auto-recovery cause data-integrity-error interval interval-value command has been configured on the switch. If the command has been configured, go to step 2. Otherwise, go to step 3.
+    Check whether the interface restores to Up state after the time specified by interval-value expires. If the interface does not restore to Up state, go to step 3.
+    Run the undo shutdown command in the interface view to enable the interface and check whether the interface restores to Up state. If the interface does not restore to Up state, go to step 4.
+    Run the reset slot command to restart the switch. After the switch restarts, check whether the interface restores to Up state. If the interface does not restore to Up state, go to step 5.
+    Replace the switch.
+
+Line protocol current state
+	
+Link layer protocol status of the interface:
+
+    UP: The link layer protocol of the interface is working properly.
+
+    UP (BFD status down): BFD associated with the interface is Down.
+
+    UP (Main BFD status down): The BFD session associated with the main interface becomes Down and is associated with the sub-interface status. This state is displayed only for sub-interfaces.
+
+    UP (spoofing): The link layer protocol of the interface is always Up with the spoofing feature enabled.
+
+    DOWN: The link-layer protocol status of the interface is Down or no IP address is assigned to the interface.
+
+    For example, if no IP address is assigned to an IP service-capable interface, its protocol status is Down.
+    DOWN (CFM down): CFM detects a fault or receives a fault notification message from its associated module. In this case, the link layer protocol of the interface becomes CFM Down.
+    DOWN (EFM down): EFM detects a fault or receives a fault notification message from its associated module. In this case, the link layer protocol of the interface becomes EFM Down.
+    DOWN (DLDP down): DLDP detects a fault or receives a fault notification message from its associated module. In this case, the link layer protocol of the interface becomes DLDP Down.
+    DOWN (MACsec down): MACsec is not enabled on the peer interface. In this case, the link layer protocol of the interface becomes MACsec Down.
+    NOTE:
+
+    DOWN (MACsec down) is displayed only after the MACsec plug-in is installed.
+
+    You can search for Plug-in Usage Guide at the Huawei technical support website (Enterprise Network or Carrier), and choose the desired plug-in usage guide based on the switch model and software version. If you do not have permission to access the website, contact technical support personnel.
+    DOWN (Observe-port forwarding down): The interface status becomes Down because the packet forwarding function is disabled on the observing port or in the observing port group where the port resides.
+    DOWN(BFD status down): indicates that BFD detects a fault and changes the link status of the interface to BFD DOWN. In this state, the interface discards Layer 2 and Layer 3 packets but permits BFD packets.
+    DOWN(Main BFD status down): indicates that BFD detects a fault and changes the link status of the main interface and its sub-interfaces to BFD DOWN. This state is applicable only to sub-interfaces. In this state, Layer 2 and Layer 3 packets are discarded, but BFD packets are permitted.
+
+Description
+	
+
+Interface description.
+
+To configure the description for an interface, run the description command.
+
+Switch Port
+	
+
+A Layer 2 interface.
+
+To switch an interface to the Layer 3 mode, run the undo portswitch command.
+
+If the interface is a Layer 3 interface, Route Port is displayed here.
+
+PVID
+	
+
+Default VLAN ID of the interface.
+
+Link-type
+	
+Link type of an interface, which is displayed only when the interface works in Layer 2 mode:
+
+    access(configured): The interface is manually configured as the access type.
+    hybrid: The interface is manually configured as the hybrid type.
+    trunk(configured): The interface is manually configured as the trunk type.
+    dot1q-tunnel: The interface is manually configured as the dot1q-tunnel type.
+    access(negotiated): The interface is automatically negotiated as the access type.
+    trunk(negotiated): The interface is automatically negotiated as the trunk type.
+
+To set the link type for an interface, run the port link-type command.
+
+The Maximum Frame Length
+	
+
+Maximum frame length allowed by the interface.
+
+To set the maximum frame length, run the jumboframe enable command.
+
+TPID
+	
+
+Type of frames that are supported on the interface.
+
+By default, this field displays 0x8100, indicating an 802.1Q frame.
+
+This field is displayed only for a Layer 2 interface.
+
+IP Sending Frames' Format
+	
+
+Format of frames sent by the IP protocol, including PKTFMT_ETHNT_2, Ethernet_802.3, and Ethernet_SNAP.
+
+Hardware address
+	
+
+MAC address of the interface.
+
+Port Mode
+	
+
+Working mode of the interface:
+
+    COMMON COPPER: The interface works as an electrical interface.
+    COMMON FIBER: The interface works as an optical interface.
+
+If the interface is a combo interface:
+
+    COMBO AUTO: The combo interface automatically selects the working mode.
+    FORCE FIBER: The combo interface is configured as an optical interface.
+    FORCE COPPER: The combo interface is configured as an electrical interface.
+
+To configure the working mode for an interface, run the combo-port command.
+
+Supported rates
+	
+
+Rate supported by the interface.
+NOTE:
+
+Only the XG electrical interface of MultiGE electrical interfaces and XG electrical interface on the ES5D21X08T00 subcard support this parameter.
+
+Transceiver
+	
+
+Type of the optical module.
+
+    This field is not displayed for electrical interfaces.
+    If an optical or copper module is inserted into the optical interface, the field indicates the model of the optical or copper module.
+    If an optical or copper module is not inserted into the optical interface, the field is not displayed.
+    If the optical interface is connected to the high-speed cable, the field indicates the type of the cable.
+
+Last physical up time
+	
+
+Last time the interface went Up physically. If this field displays "-", the physical status of the interface does not change.
+
+If the system is configured with a time zone and is in the daylight saving time, the time is displayed in the format of YYYY-MM-DD HH:MM:SS UTC±HH:MM DST.
+
+Last physical down time
+	
+
+Last time the interface went Down physically. If this field displays "-", the physical status of the interface does not change.
+
+If the system is configured with a time zone and is in the summer daylight saving time, the time is displayed in the format of YYYY-MM-DD HH:MM:SS UTC±HH:MM DST.
+
+Current system time
+	
+
+Current system time.
+
+If the time zone is configured and the daylight saving time is used, the time is in YYYY-MM-DD HH:MM:SS±HH:MM format.
+
+Speed
+	
+
+Current rate of the interface.
+
+    In auto-negotiation mode, the auto speed command configures the rate of an interface.
+    In non-auto-negotiation mode, the speed command configures the rate of an interface.
+
+Loopback
+	
+
+Loopback configuration of the interface.
+
+    NONE: Loopback detection is not configured.
+    INTERNAL: Internal loopback detection is configured.
+    EXTERNAL: external loopback detection is configured.
+
+To configure loopback on an interface, run the loopback command.
+
+Duplex
+	
+
+Duplex mode of the interface:
+
+    FULL: The interface works in full-duplex mode.
+    HALF: The interface works in half-duplex mode.
+
+    In auto-negotiation mode, the auto duplex command configures the duplex mode of an interface.
+    In non-auto-negotiation mode, the duplex command configures the duplex mode of an interface.
+
+Negotiation
+	
+
+Auto-negotiation mode of the interface. To configure the auto-negotiation mode for an interface, run the negotiation auto command.
+
+    ENABLE: The interface works in auto-negotiation mode.
+    DISABLE: The interface works in non-auto-negotiation mode.
+
+Mdi
+	
+
+Network cable type of the interface.
+
+To configure the network cable type of an interface, run the mdi command.
+
+The Mdi field displays - for an optical interface.
+
+Flow-control
+	
+
+Whether flow control is enabled:
+
+    ENABLE: Flow control is enabled on the interface.
+    DISABLE: Flow control and received flow control is disabled on the interface.
+    RECEIVE ENABLE: Receive flow control is enabled on the interface.
+
+NOTE:
+
+If the flow-control command has been executed to enable flow control on an Ethernet interface, or the flow-control receive command has been executed to enable received flow control on an Ethernet interface, this field displays DISABLE in the following situations:
+
+    The interface is in Down state.
+    The interface works in half-duplex mode.
+
+FEC
+	
+Whether FEC is enabled on an interface:
+
+    RS-FEC: RS-FEC is enabled on the interface.
+    BASE-R: BASE-R FEC is enabled on the interface.
+    NONE: The optical module is not properly installed and FEC is not configured; FEC is disabled; or FEC is not supported because a 40G optical module (except CFP 40GE optical module) is installed on a 100GE interface.
+
+When FEC is not configured, whether FEC is enabled on the interface depends on the medium. When a CFP 40GE/100GE optical module is installed on the interface, FEC cannot be configured on the interface and this field displays -.
+
+Last 300 seconds input rate
+	
+
+Incoming packet rate (bits per second and packets per second) within the last 300 seconds.
+
+Last 300 seconds output rate
+	
+
+Outgoing packet rate (bits per second and packets per second) within the last 300 seconds.
+
+Input peak rate 0 bits/sec,Record time
+	
+
+Maximum rate of incoming packets and time when the maximum rate is reached.
+
+Output peak rate 0 bits/sec,Record time
+	
+
+Maximum rate of outgoing packets and time when the maximum rate is reached.
+
+Input
+	
+
+Total number of received packets.
+
+Output
+	
+
+Total number of sent packets.
+
+Unicast
+	
+
+Number of unicast packets that are received or sent by the interface.
+
+Multicast
+	
+
+Number of multicast packets that are received or sent by the interface.
+
+For the S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S the value of this field contains the number of pause frames.
+
+For the S5736-S24T4XC, S5736-S24U4XC, S5736-S48T4XC, and S5736-S48U4XC, the value of the Multicast field contains the number of outgoing pause frames on GE electrical interfaces.
+
+Broadcast
+	
+
+Number of broadcast packets that are received or sent by the interface.
+
+Jumbo
+	
+
+For the S5731-H, S5731-S, S5731S-H, S5731S-S, S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S, the value of this field contains the number of received packets with length ranging from 1518 bytes to the jumbo frame length configured on the interface and correct CRC values.
+
+To set the maximum jumbo frame length, run the jumboframe enable command.
+NOTE:
+
+Only S5731-H, S5731-S, S5731S-H, S5731S-S, S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S support statistics on Jumbo frames.
+
+Discard
+	
+
+Number of packets discarded by the interface during physical layer detection.
+
+On the S5736-S, after you run the reset qos queue statistics command, the number of packets discarded by the interface is cleared.
+
+Total Error
+	
+
+Number of error packets found during physical layer detection.
+
+CRC
+	
+
+Number of packets with length ranging from 64 bytes to 1518 bytes and incorrect FCS values.
+
+For the S5731-H, S5731S-H, S5731S-S, S5732-H, S5736-S, S6730-H, S6730S-H, S6730-S, and S6730S-S, the value of this field includes the number of received packets longer than the maximum jumbo frame length and with incorrect FCS values.
+
+For the S5736-S, the value of this field contains the number of received packets with length ranging from 1518 bytes to the jumbo frame size configured on the interface and incorrect FCS values.
+
+Giants
+	
+
+Number of received frames with length exceeding the maximum jumbo frame length.
+
+Jabbers
+	
+
+The S5731-S, S5731S-S, S5731-H, S5731S-H, S5732-H, S5736-S, S6730S-S, and S6730-H do not have the Jabbers field. On the other product models, this field indicates the number of received packets with length exceeding the maximum jumbo frame length and incorrect FCS values.
+
+Fragments
+	
+
+Number of received fragmented packets. A fragmented packet is a packet shorter than 64 bytes and with incorrect CRC values.
+
+For the S5731-H, S5731-S, S5731S-H, S5731S-S, S6730-H, S6730S-H, S6730-S, and S6730S-S, the value of this field contains the number of undersized frames with the correct CRC values received is displayed.
+
+On the S5736-S, the command output does not contain the Fragments field to display statistics about received fragmented packets.
+
+Runts
+	
+
+Number of received undersized frames with correct CRC values.
+
+For the S5736-S, the value of this field includes the number of received fragmented packets shorter than 64 bytes and with incorrect CRC values.
+
+DropEvents
+	
+
+Number of received packets that are discarded due to GBP full or back pressure.
+
+Alignments
+	
+
+Number of received frames with alignment errors.
+
+Symbols
+	
+
+Number of received frames with coding errors.
+
+Ignoreds
+	
+
+Number of received MAC control frames whose OpCode is not PAUSE.
+
+Frames
+	
+
+Number of packets with incorrect 802.3 length.
+
+Pause
+	
+
+Number of pause frames.
+NOTE:
+
+The following interfaces do not support the function of collecting Pause frame statistics when flow control is not enabled:
+
+Collisions
+	
+Number of packets with 1 to 15 collisions during packet forwarding.
+NOTE:
+
+If the command output contains only this field and the ExcessiveCollisions field is not displayed, the field also includes the number of frames that are canceled due to consecutive 16 collisions.
+
+ExcessiveCollisions
+	
+
+Number of packets with 16 collisions and fail to be sent.
+
+Late Collisions
+	
+
+Number of packets with conflict and delayed.
+
+Deferreds
+	
+
+Number of delayed packets without conflict.
+
+Buffers Purged
+	
+
+Number of packets aged in the cache.
+
+Input bandwidth utilization threshold
+	
+
+Threshold for inbound bandwidth usage.
+
+Output bandwidth utilization threshold
+	
+
+Threshold for outbound bandwidth usage.
+
+Input bandwidth utilization
+	
+
+Inbound bandwidth usage.
+
+For the S5736-S, the bandwidth usage of Giants packets is calculated based on the configured jumbo frame length.
+
+To set the maximum jumbo frame length, run the jumboframe enable command.
+
+Output bandwidth utilization
+	
+
+Outbound bandwidth usage.
+
+For the S5736-S, the bandwidth usage of Giants packets is calculated based on the configured jumbo frame length.
+
+To set the maximum jumbo frame length, run the jumboframe enable command.
+-----------------------------------------------------------------------------
+
+interface
+Function
+
+The interface command displays the interface view or sub-interface view.
+
+The undo interface command deletes a sub-interface.
+Format
+
+interface interface-type interface-number
+
+undo interface interface-type interface-number
+Parameters
+Parameter 	Description 	Value
+interface-type interface-number 	
+
+Specifies the type and number of an interface. The interface type and number can be closely next to each other or separated by a space character.
+
+To create a sub-interface, enter the sub-interface view, or delete a sub-interface, specify interface-number in the format of main interface number.sub-interface number. For example, the number of sub-interface 1 on GE0/0/1 is GE0/0/1.1.
+	-
+Views
+
+System view
+Default Level
+
+2: Configuration level
+Usage Guidelines
+
+Usage Scenario
+
+After the specified interface view is displayed, you can set attributes for the interface.
+
+Precautions
+
+    VLAN termination sub-interfaces cannot be created on a VCMP client.
+
+    You need to set the interface type before creating a sub-interface. Only hybrid and trunk interfaces on the preceding series of cards support Ethernet sub-interface configuration.
+
+    Physical interfaces cannot be created or deleted. You can only run the interface interface-type interface-number command to enter the view of an existing physical interface.
+
+    Sub-interfaces can be created. Run the interface interface-type interface-number command to create a sub-interface and enter the sub-interface view.
+
+    Sub-interfaces can be deleted. Run the undo interface interface-type interface-number command to delete a sub-interface.
+
+    Only the S5731-H, S5731-S, S5731S-H, S5731S-S, S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S support sub-interfaces.
+
+Example
+
+# Display the view of GE0/0/1.
+
+<HUAWEI> system-view
+[HUAWEI] interface gigabitethernet 0/0/1
+[HUAWEI-GigabitEthernet0/0/1]
+
+# Create sub-interface GE0/0/1.1.
+
+<HUAWEI> system-view
+[HUAWEI] interface gigabitethernet 0/0/1
+[HUAWEI-GigabitEthernet0/0/1] port link-type hybrid
+[HUAWEI-GigabitEthernet0/0/1] quit
+[HUAWEI] interface gigabitethernet 0/0/1.1
+
+# Delete sub-interface GE0/0/1.1.
+
+<HUAWEI> system-view
+[HUAWEI] undo interface gigabitethernet 0/0/1.1
+
+
+-----------------------------------------------------------------------------
+
+mtu (Interface view)
+Function
+
+Using the mtu command, you can set the maximum transmission unit (MTU) of an interface.
+
+Using the undo mtu command, you can restore the default MTU of an interface.
+
+By default, the MTU of an interface is 1500 bytes.
+Format
+
+mtu mtu
+
+undo mtu
+Parameters
+
+Parameter
+	
+
+Description
+	
+
+Value
+
+mtu
+	
+
+Specifies the MTU of an interface.
+	
+
+    For a layer 3 physical interface, a VLANIF interface, an Eth-Trunk interface, a physical sub-interface, and an Eth-Trunk sub-interface, the value is an integer that ranges from 128 to 9216, in bytes.
+    For a VE sub-interface, the value is an integer that ranges from 46 to 1500, in bytes.
+    For a VBDIF interface, the value is an integer that ranges from 128 to 1560, in bytes.
+
+    For a tunnel interface, the value is an integer. For the S5731-H, S5731-S, S5731S-H, S5731S-S, S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S the value ranges from 128 to 9216. For other switch models, the value ranges from 128 to 1530.
+
+Views
+
+Interface view
+Default Level
+
+2: Configuration level
+Usage Guidelines
+
+Usage Scenario
+
+The maximum transmission unit (MTU) determines the maximum number of bytes in IP packets each time a sender can send. The MTU of an IP packet refers to the number of bytes from the IP header of the packet to the data.
+
+The size of data frames is limited at the network layer. Any time the IP layer receives an IP packet to be sent, it checks to which local interface the packet needs to be sent and obtains the MTU configured on the interface. Generally, the IP layer compares the MTU with the packet length. If the packet length is longer than the MTU, the IP layer fragments the packet into smaller packets, which are shorter than or equal to the MTU. If unfragmentation is configured, some packets may be discarded during data transmission at the IP layer. To ensure jumbo packets are not dropped during transmission, you need to configure forcible fragmentation. In this case, you can run the mtu command to set the size of a fragment.
+
+The switch checks the MTU of CPU-forwarded IP packets. If the packet length is greater than the MTU, the switch fragments the packets. When the length of an IP packet forwarded by the chip is greater than the MTU, switches of different models and with different configurations process the packet differently.
+Table 1 Packet processing on switches of different models and with different configurations
+
+Model
+	
+
+Configuration
+	
+
+Packet Type
+	
+
+Result
+
+S5731-H, S5731-S, S5731S-H, S5731S-S, S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S
+	
+
+The ipv4 fragment enable command is not configured.
+	
+
+GRE packet
+	
+
+If the packet carries the fragment flag, the switch fragments the packet before forwarding it. Otherwise, the switch discards the packet.
+
+The ipv4 fragment enable command is not configured.
+	
+
+Non-GRE packet
+	
+
+The switch forwards the packet without fragmenting it.
+
+The ipv4 fragment enable command is configured.
+	
+
+GRE packet
+	
+
+If the packet carries the fragment flag, the switch fragments the packet before forwarding it. Otherwise, the switch discards the packet.
+
+The ipv4 fragment enable command is configured.
+	
+
+Non-GRE packet
+	
+
+The switch fragments the packet before forwarding it.
+
+Devices except S5731-H, S5731-S, S5731S-H, S5731S-S, S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S
+	
+
+NA
+	
+
+All packet types
+	
+
+The switch forwards the packet without fragmenting it.
+
+Prerequisites
+
+Run the undo portswitch command to change the working mode of Ethernet physical interfaces from Layer 2 mode to Layer 3 mode.
+
+Precautions
+
+    After changing the maximum transmission unit (MTU) using the mtu command on an interface, you need to restart the interface to make the new MTU take effect. To restart the interface, run the shutdown command and then the undo shutdown command, or run the restart command in the interface view.
+
+    If IPv6 is run on a tunnel interface and the MTU set using the mtu command on the interface is smaller than 1280, IPv6 works abnormally on this interface. To prevent this problem, set the MTU of a tunnel interface to a value greater than or equal to 1280 if IPv6 runs on the tunnel interface.
+
+    Configuring the MTU of an interface affects the maximum number of bytes for IP packets to be sent by the interface at a time. This configuration also affects the maximum frame length of sent Ethernet packets. The Ethernet packet size cannot exceed the maximum frame length allowed by the peer interface, which can be set using the jumboframe enable command.
+
+Example
+
+# Set the MTU of GE0/0/1 to 1200 bytes.
+
+<HUAWEI> system-view
+[HUAWEI] interface gigabitethernet 0/0/1
+[HUAWEI-GigabitEthernet0/0/1] undo portswitch
+[HUAWEI-GigabitEthernet0/0/1] mtu 1200
+[HUAWEI-GigabitEthernet0/0/1] restart
+
+# Set the MTU of VLANIF 100 to 1492 bytes.
+
+<HUAWEI> system-view
+[HUAWEI] interface Vlanif 100
+[HUAWEI-Vlanif100] mtu 1492
+[HUAWEI-Vlanif100] restart
+
+# Set the MTU of Tunnel 1 to 1492 bytes.
+
+<HUAWEI> system-view
+[HUAWEI] interface tunnel 1
+[HUAWEI-Tunnel1] mtu 1492
+[HUAWEI-Tunnel1] shutdown
+[HUAWEI-Tunnel1] undo shutdown
+
+--------------------------------------------------------------------------
+
+port description
+Function
+
+The port description command configures description about the device type connected to an interface.
+
+The undo port description command restores the default setting.
+
+By default, no description about the device type connected to an interface is configured.
+Format
+
+port description { router | switch | phone | desktop }
+
+undo port description
+Parameters
+
+Parameter
+	
+
+Description
+	
+
+Value
+
+router
+	
+
+Indicates that the interface is connected to a router.
+	
+
+-
+
+switch
+	
+
+Indicates that the interface is connected to a switch.
+	
+
+-
+
+phone
+	
+
+Indicates that the interface is connected to an IP phone.
+	
+
+-
+
+desktop
+	
+
+Indicates that the interface is connected to a desktop terminal, such as a PC.
+	
+
+-
+Views
+
+Ethernet interface view, GE interface view, XGE interface view, MultiGE interface view, 25GE interface view, 40GE interface view, 100GE interface view, Eth-Trunk interface view, port group view
+Default Level
+
+2: Configuration level
+Usage Guidelines
+
+Usage Scenario
+
+You can run this command to configure description about the device type connected to an interface to facilitate device management and maintenance. For example, you can run port description router command to indicate that the interface is connected to a router.
+
+Precautions
+
+After you configure this command on an interface, the interface can still switch between Layer 2 and Layer 3 modes.
+Example
+# Specify description of the Ethernet interface GE0/0/1 to router to indicate that the interface is connected to a router.
+
+<HUAWEI> system-view
+[HUAWEI] interface gigabitethernet 0/0/1
+[HUAWEI-GigabitEthernet0/0/1] port description router
+
+-------------------------------------------------------------------
+
+reset counters if-mib interface
+Function
+
+The reset counters if-mib interface command clears interface traffic statistics in the Network Management System (NMS).
+Format
+
+reset counters if-mib interface [ interface-type [ interface-number ] ]
+Parameters
+Parameter 	Description 	Value
+interface-type [ interface-number ] 	
+Clears traffic statistics on a specified interface in the NMS.
+
+    interface-type specifies the interface type.
+    interface-number specifies the interface number.
+
+If an interface type is specified but no interface number is specified, traffic statistics on all interfaces of the specified type are cleared.
+	-
+Views
+
+User view
+Default Level
+
+3: Management level
+Usage Guidelines
+
+Usage Scenario
+
+Before collecting traffic statistics on a specific interface within a period in the NMS, clear existing traffic statistics on this interface in the NMS.
+
+For details on how to view interface traffic statistics in the NMS, see the NMS documentation.
+
+Precautions
+
+    If no interface type and number are specified, traffic statistics of all interfaces in the NMS are cleared.
+
+    After you run the reset counters if-mib interface command, traffic statistics on all interfaces in the NMS are cleared. Therefore, confirm the action before you run this command.
+
+    Running the reset counters if-mib interface command does not affect the interface traffic statistics displayed by the display interface command. To clear the interface traffic statistics displayed by the display interface command, run the reset counters interface command.
+
+Example
+
+# Clear traffic statistics on GE0/0/1 in the NMS.
+
+<HUAWEI> reset counters if-mib interface gigabitethernet 0/0/1
+
+---------------------------------------------------------------------------
+
+reset counters interface
+Function
+
+The reset counters interface command clears traffic statistics about a specified interface.
+Format
+
+reset counters interface [ interface-type [ interface-number ] ]
+Parameters
+
+Parameter
+	
+
+Description
+	
+
+Value
+
+interface-type [ interface-number ]
+	
+Clears traffic statistics on a specified interface.
+
+    interface-type specifies the interface type.
+    interface-number specifies the interface number.
+
+If an interface type is specified but no interface number is specified, traffic statistics on all interfaces of the specified type are cleared.
+	
+
+-
+Views
+
+User view
+Default Level
+
+3: Management level
+Usage Guidelines
+
+Usage Scenario
+
+Before collecting traffic statistics on an interface within a certain period, run the reset counters interface command to clear existing traffic statistics.
+
+Precautions
+
+    Statistics cannot be restored after being cleared. Therefore, exercise caution before clearing the statistics.
+
+    Traffic accounting is based on the packet statistics on an interface. The clearing of the packet statistics on an interface by using the reset counters interface command affects the traffic accounting result. Therefore, do not randomly clear the packet statistics on an interface in a normal application environment.
+
+    If no interface type is specified, traffic statistics on all types of interfaces are cleared. If an interface type is specified but no interface number is specified, traffic statistics on all interfaces of the specified type are cleared.
+
+    Running the reset counters interface command clears the last part of the display interface command output. That is, statistics about received and transmitted packets on the interface are cleared.
+    The reset counters interface command does not clear the interface traffic statistics collected by the NMS. To clear such statistics, run the reset counters if-mib interface command.
+
+Example
+
+# Clear traffic statistics on all interfaces.
+
+<HUAWEI> reset counters interface
+
+# Clear traffic statistics on VLANIF10.
+
+<HUAWEI> reset counters interface vlanif 10
+
+-----------------------------------------------------------------
+
+reset counters top interface
+Function
+
+The reset counters top interface command clears top N interface traffic statistics reports.
+Format
+
+reset counters top interface report [ report-number ]
+Parameters
+Parameter 	Description 	Value
+report-number 	Specifies the number of the top N interface traffic statistics report to be deleted. If you do not specify this parameter, the command clears all top N interface traffic statistics reports. 	The value is an integer ranging from 1 to 5.
+Views
+
+User view
+Default Level
+
+3: Management level
+Usage Guidelines
+
+Usage Scenario
+
+The top N interface traffic statistics function allows a device to generate a maximum of five top N interface traffic statistics reports. If you want to generate new top N interface traffic statistics reports when five top N interface traffic statistics reports already exist, run the reset counters top interface report [ report-number ] command to clear existing ones.
+
+Precautions
+
+    After you run the reset counters top interface report report-number command to clear a specified top N interface traffic statistics report, the numbers of other top N interface traffic statistics reports remain unchanged.
+    You can run the reset counters top interface report [ report-number ] command even if less than five top N interface traffic statistics reports exist. 
+
+Example
+# Clear all top N interface traffic statistics reports.
+
+<HUAWEI> reset counters top interface report
+
+# Clear the top N interface traffic statistics report numbered 1.
+
+<HUAWEI> reset counters top interface report 1
+
+-----------------------------------------------------------------------
+
+restart (interface view)
+Function
+
+The restart command restarts an interface.
+Format
+
+restart
+Parameters
+
+None
+Views
+
+Ethernet interface view, GE interface view, XGE interface view, MultiGE interface view, 40GE interface view, 100GE interface view, Eth-Trunk interface view, VLANIF interface view, Sub-interface view, Tunnel interface view, VE interface view
+Default Level
+
+2: Configuration level
+Usage Guidelines
+
+Usage Scenario
+
+After modifying parameters of an interface, run the restart command to make the modification take effect.
+
+Precautions
+
+    Restarting an interface during data transmission will cause data frame loss or service interruption. Exercise caution when you use the restart command.
+
+    Running the restart command is equivalent to running the shutdown command and the undo shutdown command in sequence.
+
+    Only the S5731-H, S5731-S, S5731S-H, S5731S-S, S5732-H, S6730-H, S6730S-H, S6730-S, and S6730S-S support sub-interfaces.
+
+Example
+
+# Restart GE0/0/1.
+
+<HUAWEI> system-view
+[HUAWEI] interface gigabitethernet 0/0/1
+[HUAWEI-GigabitEthernet0/0/1] restart
+
+-----------------------------------------------------------------------
+
+set flow-stat interval
+Function
+
+The set flow-stat interval command sets the interval for collecting the traffic statistics on interfaces.
+
+The undo set flow-stat interval command restores the default interval for collecting traffic statistics on interfaces.
+
+By default, the interval for collecting traffic statistics on interfaces is 300 seconds.
+Format
+
+set flow-stat interval interval-time
+
+undo set flow-stat interval
+Parameters
+
+Parameter
+	
+
+Description
+	
+
+Value
+
+interval-time
+	
+
+Specifies the interval for collecting traffic statistics on interfaces.
+	
+
+The value is an integer that ranges from 10 to 600, in seconds. In addition, the value must be a multiple of 10. The default value is 300s.
+Views
+
+System view, Interface view
+Default Level
+
+2: Configuration level
+Usage Guidelines
+
+Usage Scenario
+
+By using the set flow-stat interval command to set the interval for collecting traffic statistics on interfaces, you can collect and analyze traffic statistics according to your needs. You can also take traffic control measures based on the traffic statistics to prevent network congestion and service interruption.
+
+    When congestion occurs, set the interval for collecting traffic statistics on an interface to less than 300 seconds, or 30 seconds if congestion worsens. Then observe the traffic distribution on the interface within a short period of time. If data packets cause congestion, take proper measures to control the rate of the packets.
+
+    When the network bandwidth is sufficient and services are running properly, set the interval for collecting traffic statistics on an interface to more than 300 seconds. If the value of any traffic parameter is not within the specified range, change the interval for collecting traffic statistics to observe the traffic volume in real time.
+
+Precautions
+
+    The interval configured in the system view takes effect on all the interfaces that use the default interval.
+
+    The interval configured in the interface view takes effect only on the current interface.
+
+    The interval configured in the interface view takes precedence over the interval configured in the system view.
+
+Example
+
+# Set the interval for collecting traffic statistics on GE0/0/1 to 400s.
+
+<HUAWEI> system-view
+[HUAWEI] interface gigabitethernet 0/0/1
+[HUAWEI-GigabitEthernet0/0/1] set flow-stat interval 400
+
+----------------------------------------------------------------
+
+shutdown (interface view)
+Function
+
+The shutdown command disables an interface.
+
+The undo shutdown command enables an interface.
+
+By default, interfaces are enabled.
+Format
+
+shutdown
+
+undo shutdown
+Parameters
+
+None
+Views
+
+Interface view
+Default Level
+
+2: Configuration level
+Usage Guidelines
+
+Usage Scenario
+
+After modifying parameters of an interface, run the shutdown and undo shutdown commands to make the modification take effect.
+
+When an interface is not connected to a cable or fiber, you can use the shutdown command to disable the interface to prevent exceptions caused by interference.
+
+Precautions
+
+    When the device supports the autocomplete function, you must enter at least the characters shut before the device can automatically complete the shutdown command.
+
+    Disabling an interface during data transmission will cause data frame loss or service interruption. Exercise caution when you use the shutdown command.
+
+    Some logical interfaces, such as loopback, and null interfaces, do not support the shutdown and undo shutdown commands.
+
+    If you run the shutdown command in the Eth-Trunk interface view, all Eth-Trunk member interfaces are disabled.
+
+    Running the shutdown and undo shutdown commands is equivalent to running the restart command.
+
+    When an interface is configured with a sub-interface, the default interval for running the shutdown and undo shutdown commands on the main interface is 15 seconds.
+
+    When a physical interface functions as an Eth-Trunk member interface, the default interval for running the shutdown and undo shutdown commands on this interface is 15 seconds.
+
+Example
+
+# Shut down GE0/0/1.
+
+<HUAWEI> system-view
+[HUAWEI] interface gigabitethernet 0/0/1
+[HUAWEI-GigabitEthernet0/0/1] shutdown
+

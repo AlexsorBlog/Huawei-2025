@@ -1,0 +1,3838 @@
+return
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display license esn
+MainBoard:
+ESN: 2102355FTE
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display version
+Huawei Versatile Routing Platform Software
+VRP (R) software, Version 8.231 (NetEngine 8000 V800R023C10SPC500)
+Copyright (C) 2012-2024 Huawei Technologies Co., Ltd.
+HUAWEI NetEngine 8000 M4 uptime is 168 days, 5 hours, 11 minutes
+
+NetEngine 8000 M4 version information:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+BKP  version information:
+  PCB        Version  : CR81BKP04A REV A
+  IPU  Slot  Quantity : 1
+  CARD Slot  Quantity : 5
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+IPU version information:
+
+IPU (Master) 5 : uptime is 168 days, 5 hours, 10 minutes
+  StartupTime 2025/04/24   11:16:50
+  SDRAM Memory Size   : 16384 M bytes
+  FLASH Memory Size   : 128 M bytes
+  CFCARD Memory Size  : 12927 M bytes
+  IPU CR8PM4BASDC2 version information:
+  CPU PCB     Version : DP21CPUA REV A
+  EPLD        Version : 100
+  NPU PCB     Version : CR81E4NBIYFS REV A
+  EPLD        Version : 100
+  FPGA        Version : 104
+  NP          Version : 110
+  TM          Version : 110
+  NSE         Version : NSE REV A
+  BootROM     Version : 12.35
+  PIC1: CR5DE2NE4X14 version information
+  StartupTime         : 2025/04/24    11:18:19 DST
+  PCB Version         : CR51E2NBF1 REV A
+  FPGA Version        : 002
+  CHIP Version        : 100
+  PIC2: CR5D00E1NC97 version information
+  StartupTime         : 2025/08/05    09:11:22 DST
+  PCB Version         : CR51E1NCK0 REV B
+  EPLD Version        : 107
+  FPGA Version        : 109
+  CHIP Version        : 100
+  PIC3: CR5D00E1NC97 version information
+  StartupTime         : 2025/04/24    11:18:21 DST
+  PCB Version         : CR51E1NCK0 REV B
+  EPLD Version        : 107
+  FPGA Version        : 109
+  CHIP Version        : 100
+  PIC4: CR5DE2NE4X14 version information
+  StartupTime         : 2025/04/24    11:18:23 DST
+  PCB Version         : CR51E2NBF1 REV A
+  FPGA Version        : 002
+  CHIP Version        : 100
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Power version information: 
+
+POWER 6's version information:
+  PCB     Version : DP22PDC1K2A1 REV C
+
+POWER 7's version information:
+  PCB     Version : DP22PDC1K2A1 REV C
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+FAN version information: 
+
+FAN 8's version information:
+  PCB      Version : ANR1FAN01 REV B
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+CLK version information:
+
+CLK 9 : uptime is 168 days, 5 hours, 10 minutes
+  StartupTime 2025/04/24   11:16:50
+  FPGA     Version : 256
+  DSP      Version : 30502015
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display bgp peer
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display current-configuration configuration bgp
+#
+return
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display current-configuration configuration | section include nqa twamp-light
+Info: It will take a long time if the content you search is too much or the string you input is too long, you can press CTRL_C to break.
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display current-configuration | section include bfd
+Info: It will take a long time if the content you search is too much or the string you input is too long, you can press CTRL_C to break.
+#
+bfd
+ mpls-passive
+#
+sbfd
+ reflector discriminator 172.***.***.***
+#
+mpls
+ label advertise non-null
+ mpls te
+ mpls te bfd enable
+#
+segment-routing
+ tunnel-prefer segment-routing
+ sr-te-policy backup hot-standby enable
+ sr-te-policy seamless-bfd enable
+#
+ospf 1 router-id 172.***.***.***
+ bfd all-interfaces enable
+ bfd all-interfaces frr-binding
+ import-route direct
+ import-route static
+ bgp-ls enable
+ bgp-ls identifier 2
+ opaque-capability enable
+ segment-routing mpls
+ segment-routing global-block 17000 18000
+ avoid-microloop frr-protected
+ avoid-microloop segment-routing
+ frr
+  loop-free-alternate
+  ti-lfa enable
+ area 0.0.0.0
+  mpls-te enable
+ area 0.0.1.1
+  nssa default-route-advertise no-summary translator-always
+  mpls-te enable
+ area 0.0.1.2
+  nssa default-route-advertise no-summary translator-always
+  mpls-te enable
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display bfd session all
+(w): State in WTR
+(*): State is invalid
+--------------------------------------------------------------------------------
+Local      Remote     PeerIpAddr      State     Type        InterfaceName 
+--------------------------------------------------------------------------------
+16385      16385      172.***.***.***     Up        D_IP_IF     100GE0/5/0
+16388      16385      172.***.***.***    Up        D_IP_IF     25GE0/5/34
+16389      16388      172.***.***.***    Up        D_IP_IF     100GE0/3/0
+--------------------------------------------------------------------------------
+    Total UP/DOWN Session Number : 3/0
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display current-configuration
+!Software Version V800R023C10SPC500
+!Last configuration was updated at 2025-10-06 18:25:53+03:00 DST by user
+!Last configuration was saved at 2025-10-09 03:59:34+03:00 DST by user
+!kms_feature --
+#
+clock timezone Europe/Kiev add 02:00:00
+clock daylight-saving-time defaultName repeating 03:00 last Sun Mar 04:00 last Sun Oct 01:00
+#
+sysname ta1-kie002
+#
+set neid *****
+#
+command-privilege level rearrange
+#
+undo FTP server-source all-interface
+undo FTP ipv6 server-source all-interface
+#
+ssl policy router_default
+ ssl minimum version tls1.2
+ cipher-suite exclude key-exchange rsa
+ cipher-suite exclude cipher mode cbc
+ cipher-suite exclude hmac sha1
+ diffie-hellman modulus 3072
+ binding cipher-suite-customization default_cipher_suite
+ ecdh group nist
+ signature algorithm-list rsa-pss-rsae-sha256 rsa-pss-rsae-sha384 rsa-pss-rsae-sha512
+#
+ssl cipher-suite-list default_cipher_suite
+ set cipher-suite tls12_ck_ecdhe_rsa_with_aes_128_gcm_sha256
+ set cipher-suite tls12_ck_ecdhe_rsa_with_aes_256_gcm_sha384
+ set cipher-suite tls13_aes_128_gcm_sha256
+ set cipher-suite tls13_aes_256_gcm_sha384
+ set cipher-suite tls13_aes_128_ccm_sha256
+#
+info-center source default channel 1 log level debugging
+info-center source default channel 5 trap level informational
+info-center loghost 172.***.***.*** source-ip 172.***.***.*** level warning
+info-center loghost 172.***.***.***
+#
+service-template template-default0
+#
+service-template template-default1
+#
+service-template template-default2
+#
+service-template template-default3
+#
+service-template template-default4
+#
+ntp-service server disable
+ntp-service ipv6 server disable
+ntp-service server source-interface all disable
+ntp-service ipv6 server source-interface all disable
+ntp-service unicast-server 172.***.***.*** preference
+ntp-service unicast-server 172.***.***.***
+ntp-service source-interface LoopBack0
+#
+rsa peer-public-key 172.***.***.***
+ public-key-code begin
+	***
+ public-key-code end
+ peer-public-key end
+#
+undo icmp name timestamp-reply send
+#
+router id 172.***.***.***
+#
+undo telnet server enable
+undo telnet ipv6 server enable
+undo telnet server-source all-interface
+undo telnet ipv6 server-source all-interface
+#
+diffserv domain default
+#
+diffserv domain ****
+#
+soc
+ip dcn vpn-instance ******
+ ipv4-family
+#
+undo radius local-ip all
+#
+tunnel-selector sr_mpls_selector permit node 10
+ apply tunnel-policy sr_mpls_policy
+#
+bfd
+ mpls-passive
+#
+sbfd
+ reflector discriminator 172.***.***.***
+#
+mpls lsr-id 172.***.***.***
+#
+mpls
+ label advertise non-null
+ mpls te
+ mpls te bfd enable
+#
+mpls l2vpn
+#
+pce-client
+ capability segment-routing label-stitch
+ connect-server 172.***.***.***
+  preference 7
+ connect-server 172.***.***.***
+  preference 5
+#
+dhcp server request-packet all-interface disable
+#
+dot1x-template 1
+#
+dhcp relay unnumbered database authentication-mode force-check
+#
+acl number 2000
+ description for_SSH_connection_restriction
+ rule 5 permit source 172.***.***.*** 0
+ rule 10 permit source 172.***.***.*** 0
+ rule 15 permit source 172.***.***.*** 0
+ rule 20 permit source 172.***.***.*** 0
+ rule 25 permit source 172.***.***.*** 0
+ rule 30 permit source 172.***.***.*** 0
+ rule 200 deny
+#
+acl number 2001
+ description for_SNMP_access_restriction
+ rule 5 permit source 172.***.***.*** 0
+ rule 10 permit source 172.***.***.*** 0
+ rule 15 permit source 172.***.***.*** 0
+ rule 20 permit source 172.***.***.*** 0
+ rule 25 permit source 172.***.***.*** 0
+ rule 30 permit source 172.***.***.*** 0
+ rule 100 deny
+#
+security password
+ #
+ rule admin
+  forbidden word changeme_123
+#
+aaa
+ user-password password-force-change disable
+ local-user user password irreversible-cipher **********
+ local-user user service-type ftp terminal ssh
+ local-user user level 15
+ local-user user state block fail-times 3 interval 5
+ local-user user ftp-directory cfcard:/
+ local-user user user-group manage-ug
+ #
+ authentication-scheme default0
+ #
+ authentication-scheme default1
+ #
+ authentication-scheme default
+  authentication-mode local radius
+ #
+ authorization-scheme default
+ #
+ accounting-scheme default0
+ #
+ accounting-scheme default1
+ #
+ domain default0
+ #
+ domain default1
+ #
+ domain default_admin
+#
+license
+ active port-core-aggregation slot 5 card 2 port 0
+ active port-core-aggregation slot 5 card 3 port 0
+ active port-basic slot 5 card 5 port 0
+ active port-core-aggregation slot 5 card 5 port 0,34
+#
+warranty
+#
+segment-routing
+ tunnel-prefer segment-routing
+ sr-te-policy backup hot-standby enable
+ sr-te-policy seamless-bfd enable
+#
+controller Wdm0/2/0
+#
+controller Wdm0/3/0
+#
+interface Ethernet0/0/0
+ speed auto
+ duplex auto
+ undo shutdown
+ ip binding vpn-instance ******
+ ip address 10.***.***.*** 255.255.255.0
+#
+interface Virtual-Template0
+ ppp authentication-mode auto
+#
+interface GigabitEthernet0/5/4
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/5
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/6
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/7
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/8
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/9
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/10
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/11
+ negotiation auto
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/12
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/13
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/14
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/15
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/16
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/17
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/18
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet0/5/19
+ negotiation auto
+ undo shutdown
+ ip address 172.***.***.*** 255.255.255.224
+ dcn
+ dcn ospf timer hello 5
+ statistic enable
+#
+interface GigabitEthernet0/5/19.20
+ vlan-type dot1q 20
+ ip address 172.***.***.*** 255.255.255.224
+#
+interface 25GE0/5/20
+ undo shutdown
+ dcn
+#
+interface 25GE0/5/21
+ undo shutdown
+ dcn
+#
+interface 25GE0/5/22
+ undo shutdown
+ dcn
+#
+interface 25GE0/5/23
+ undo shutdown
+ dcn
+#
+interface 25GE0/5/24
+ undo shutdown
+ dcn
+#
+interface 25GE0/5/25
+ undo shutdown
+ dcn
+#
+interface 25GE0/5/26
+ undo shutdown
+ dcn
+#
+interface 25GE0/5/27
+ undo shutdown
+ dcn
+#
+interface 25GE0/5/28
+ undo shutdown
+ dcn
+#
+interface 25GE0/5/29
+ undo shutdown
+ dcn
+#
+interface 25GE0/5/30
+ undo shutdown
+ dcn
+#
+interface 25GE0/5/31
+ undo shutdown
+ dcn
+#
+interface 25GE0/5/32
+ undo shutdown
+ dcn
+#
+interface 25GE0/5/33
+ undo shutdown
+ dcn
+#
+interface 25GE0/5/34
+ undo shutdown
+ ip address 172.***.***.*** 255.255.255.252
+ ospf cost 100
+ ospf network-type p2p
+ ospf enable 1 area 0.0.1.1
+ mpls
+ mpls te
+ dcn
+#
+interface 25GE0/5/35
+ undo shutdown
+ dcn
+#
+interface 100GE0/1/0
+ undo shutdown
+ dcn
+#
+interface 100GE0/1/1
+ undo shutdown
+ dcn
+#
+interface 100GE0/2/0
+ undo shutdown
+ mpls
+ mpls te
+ dcn
+ wavelength-channel 6
+#
+interface 100GE0/3/0
+ undo shutdown
+ ip address 172.***.***.*** 255.255.255.252
+ ospf cost 100
+ ospf network-type p2p
+ ospf enable 1 area 0.0.0.0
+ ospf enable multi-area 0.0.1.1
+ ospf cost 10000 multi-area 0.0.1.1
+ ospf enable multi-area 0.0.1.2
+ ospf cost 10000 multi-area 0.0.1.2
+ mpls
+ mpls te
+ dcn
+#
+interface 100GE0/4/0
+ undo shutdown
+ dcn
+#
+interface 100GE0/4/1
+ undo shutdown
+ dcn
+#
+interface 100GE0/5/0
+ undo shutdown
+ ip address 172.***.***.*** 255.255.255.252
+ ospf cost 100
+ ospf network-type p2p
+ ospf enable 1 area 0.0.0.0
+ ospf enable multi-area 0.0.1.1
+ ospf cost 10000 multi-area 0.0.1.1
+ ospf enable multi-area 0.0.1.2
+ ospf cost 10000 multi-area 0.0.1.2
+ mpls
+ mpls te
+ dcn
+#
+interface 100GE0/5/1
+ undo shutdown
+ dcn
+#
+interface 100GE0/5/2
+ undo shutdown
+ dcn
+#
+interface 100GE0/5/3
+ undo shutdown
+ dcn
+#
+interface LoopBack0
+ description Router_ID
+ ip address 172.***.***.*** 255.255.255.255
+ ospf enable 1 area 0.0.0.0
+ ospf prefix-sid absolute *****
+#
+interface LoopBack1023
+ description DCN loopback interface
+ ip binding vpn-instance ****
+ ip address 192.***.***.*** 255.255.0.0
+#
+interface NULL0
+#
+ospf 1 router-id 172.***.***.***
+ bfd all-interfaces enable
+ bfd all-interfaces frr-binding
+ import-route direct
+ import-route static
+ bgp-ls enable
+ bgp-ls identifier 2
+ opaque-capability enable
+ segment-routing mpls
+ segment-routing global-block 17000 18000
+ avoid-microloop frr-protected
+ avoid-microloop segment-routing
+ frr
+  loop-free-alternate
+  ti-lfa enable
+ area 0.0.0.0
+  mpls-te enable
+ area 0.0.1.1
+  nssa default-route-advertise no-summary translator-always
+  mpls-te enable
+ area 0.0.1.2
+  nssa default-route-advertise no-summary translator-always
+  mpls-te enable
+#
+ospf 65534 vpn-instance *****
+ description default
+ opaque-capability enable
+ hostname
+ vpn-instance-capability simple
+ area 0.0.0.0
+  network 0.0.0.0 255.255.255.255
+#
+!The DCN function implements the capability of plug-and-play for this device.
+!A NE IP address based on the unique NE ID is automatically generated in VPN
+!of DCN. It is recommended that the NE IP address be changed to the planned
+!one by running the ne-ip X.X.X.X <MASK> command after the device being online.
+dcn
+ auto-report
+#
+ip ip-prefix loopback0 index 10 permit 172.***.***.*** 32
+#
+route-policy loopback0 permit node 10
+ if-match ip-prefix loopback0
+#
+ip route-static 172.***.***.*** 255.255.255.255 172.***.***.*** description to_ta2-kie002
+
+#
+snmp-agent
+snmp-agent local-engineid ***************
+#
+snmp-agent sys-info version v3
+snmp-agent group v3 admin privacy read-view iso write-view iso notify-view iso
+snmp-agent target-host host-name NMS trap address udp-domain 172.***.***.*** params securityname ********** v3 privacy private-netmanager ext-vb
+#
+snmp-agent mib-view included iso iso
+snmp-agent usm-user v3 snmpuser
+snmp-agent usm-user v3 snmpuser group admin
+snmp-agent usm-user v3 snmpuser authentication-mode sha2-256 cipher **********
+snmp-agent usm-user v3 snmpuser privacy-mode aes128 cipher **********
+#
+snmp-agent trap source LoopBack0
+#
+snmp-agent protocol source-interface LoopBack0
+snmp-agent protocol source-status all-interface
+undo snmp-agent protocol source-status ipv6 all-interface
+#
+undo snmp-agent proxy protocol source-status all-interface
+undo snmp-agent proxy protocol source-status ipv6 all-interface
+#
+snmp-agent trap enable
+#
+lldp enable
+#
+undo web-auth-server source-ip all
+#
+undo web-auth-server source-ipv6 all
+#
+stelnet server enable
+sftp server enable
+snetconf server enable
+ssh server rsa-key min-length 3072
+sftp server default-directory cfcard:
+ssh user kyivstar
+ssh user kyivstar authentication-type password
+ssh user kyivstar service-type all
+ssh user kyivstar sftp-directory cfcard:
+ssh user root
+ssh user root authentication-type password
+ssh user root service-type all
+ssh user root sftp-directory cfcard:
+ssh user stelnetuser
+ssh user stelnetuser authentication-type password
+ssh user stelnetuser service-type all
+ssh user stelnetuser sftp-directory cfcard:
+ssh server-source -i Ethernet0/0/0
+ssh server-source -i LoopBack1023
+ssh server-source all-interface
+ssh ipv6 server-source all-interface
+ssh authorization-type default aaa
+#
+ssh server cipher aes256_gcm aes128_gcm aes256_ctr aes192_ctr aes128_ctr
+ssh server hmac sha2_512 sha2_256
+ssh server key-exchange dh_group_exchange_sha256 dh_group_exchange_sha1 dh_group14_sha1 ecdh_sha2_nistp256 ecdh_sha2_nistp384 ecdh_sha2_nistp521
+#
+ssh server publickey ecc rsa rsa_sha2_256 rsa_sha2_512
+#
+ssh server dh-exchange min-len 3072
+#
+ssh client first-time enable
+ssh client peer 172.***.***.*** assign rsa-key 172.***.***.***
+#
+ssh client publickey ecc rsa rsa_sha2_256 rsa_sha2_512
+#
+ssh client cipher aes256_gcm aes128_gcm aes256_ctr aes192_ctr aes128_ctr
+ssh client hmac sha2_512 sha2_256
+ssh client key-exchange dh_group_exchange_sha256 dh_group_exchange_sha1 dh_group14_sha1 ecdh_sha2_nistp256 ecdh_sha2_nistp384 ecdh_sha2_nistp521
+#
+dhcp server database multi-sessions per-mac authentication-mode force-check
+#
+tunnel-policy sr_mpls_policy
+ tunnel select-seq sr-te te lsp gre load-balance-number 1 unmix
+#
+user-interface maximum-vty 21
+#
+user-interface con 0
+ authentication-mode password
+ set authentication password cipher **********
+#
+user-interface vty 0 14
+ authentication-mode aaa
+ user privilege level 15
+ protocol inbound ssh
+#
+netconf
+ protocol inbound ssh ipv4 port 830
+ activate module huawei-ip
+#
+local-aaa-server
+#
+pki domain default
+#
+ops
+ environment ztp_exit_flag true
+#
+l2tp-group default-lac
+ tunnel name HUAWEI
+#
+l2tp-group default-lns
+ tunnel name HUAWEI
+#
+return
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display diameter configuration
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display bas-interface
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display license resource usage
+Info: Active license on master board: cfcard:/2102355FTE_LICNetEngine8000M4_V800R023.xml.
+--------------------------------------------------------------------------------
+FeatureName              ConfigureItemName                         ResourceUsage
+--------------------------------------------------------------------------------
+CRFEA5                   LCR8S00CRAGC2                                      6/28
+CRFEA5                   LCR8S00CRAGC4                                      2/20
+CRFEA5                   LCR8S00L3VPC2                                      0/28
+CRFEA5                   LCR8S00L3VPC4                                      0/20
+CRFEA5                   LCR8S0M4AE1C1                                       2/8
+CRFEA5                   LCR8S0M4AE1C2                                       0/2
+--------------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display access-user slot
+Info: No online user! 
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display interface brief
+PHY: Physical
+*down: administratively down
+^down: standby
+(l): loopback
+(s): spoofing
+(E): E-Trunk down
+(b): BFD down
+(B): Bit-error-detection down
+(e): ETHOAM down
+(d): Dampening Suppressed
+(p): port alarm down
+(ld): loop-detect trigger down
+(td): transceiver unmatch down
+(mf): mac-flapping blocked
+(c): CFM down
+(sd): STP instance discarding
+(D): DF backup down
+InUti/OutUti: input utility/output utility
+Interface                   PHY   Protocol  InUti OutUti   inErrors  outErrors
+100GE0/1/0                  down  down         0%     0%          0          0
+100GE0/1/1                  down  down         0%     0%          0          0
+100GE0/2/0                  up    down      0.01%  0.01%          0          0
+100GE0/3/0                  up    up        0.01%  0.01%          0          0
+100GE0/4/0                  down  down         0%     0%          0          0
+100GE0/4/1                  down  down         0%     0%          0          0
+100GE0/5/0                  up    up        0.01%  0.01%          0          0
+100GE0/5/1(100M)            down  down         0%     0%          0          0
+100GE0/5/2(100M)            down  down         0%     0%          0          0
+100GE0/5/3(100M)            down  down         0%     0%          0          0
+25GE0/5/20(100M)            down  down         0%     0%          0          0
+25GE0/5/21(100M)            down  down         0%     0%          0          0
+25GE0/5/22(100M)            down  down         0%     0%          0          0
+25GE0/5/23(100M)            down  down         0%     0%          0          0
+25GE0/5/24(100M)            down  down         0%     0%          0          0
+25GE0/5/25(100M)            down  down         0%     0%          0          0
+25GE0/5/26(100M)            down  down         0%     0%          0          0
+25GE0/5/27(100M)            down  down         0%     0%          0          0
+25GE0/5/28(100M)            down  down         0%     0%          0          0
+25GE0/5/29(100M)            down  down         0%     0%          0          0
+25GE0/5/30(100M)            down  down         0%     0%          0          0
+25GE0/5/31(100M)            down  down         0%     0%          0          0
+25GE0/5/32(100M)            down  down         0%     0%          0          0
+25GE0/5/33(100M)            down  down         0%     0%          0          0
+25GE0/5/34(100M)            up    up        0.28%  0.24%          0          0
+25GE0/5/35(100M)            down  down         0%     0%          0          0
+Ethernet0/0/0               down  down         0%     0%          0          0
+GigabitEthernet0/5/4        down  down         0%     0%          0          0
+GigabitEthernet0/5/5        down  down         0%     0%          0          0
+GigabitEthernet0/5/6        down  down         0%     0%          0          0
+GigabitEthernet0/5/7        down  down         0%     0%          0          0
+GigabitEthernet0/5/8        down  down         0%     0%          0          0
+GigabitEthernet0/5/9        down  down         0%     0%          0          0
+GigabitEthernet0/5/10       down  down         0%     0%          0          0
+GigabitEthernet0/5/11       down  down         0%     0%          0          0
+GigabitEthernet0/5/12       down  down         0%     0%          0          0
+GigabitEthernet0/5/13       down  down         0%     0%          0          0
+GigabitEthernet0/5/14       down  down         0%     0%          0          0
+GigabitEthernet0/5/15       down  down         0%     0%          0          0
+GigabitEthernet0/5/16       down  down         0%     0%          0          0
+GigabitEthernet0/5/17       down  down         0%     0%          0          0
+GigabitEthernet0/5/18       down  down         0%     0%          0          0
+GigabitEthernet0/5/19       up    up        0.38%  0.62%          0          0
+GigabitEthernet0/5/19.4013  up    up           0%     0%          0          0
+LoopBack0                   up    up(s)        0%     0%          0          0
+LoopBack1023                up    up(s)        0%     0%          0          0
+NULL0                       up    up(s)        0%     0%          0          0
+Virtual-Template0           up    up(s)        0%     0%          0          0
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display device
+NetEngine 8000 M4's Device status:
+-------------------------------------------------------------------------------
+Slot #   Type    Online     Register     Status     Role   LsId   Primary      
+-------------------------------------------------------------------------------
+1        PIC     Present    Registered   Normal     OTHER  0      NA           
+2        PIC     Present    Registered   Normal     OTHER  0      NA           
+3        PIC     Present    Registered   Normal     OTHER  0      NA           
+4        PIC     Present    Registered   Normal     OTHER  0      NA           
+5        IPU     Present    Registered   Normal     MMB    0      Master       
+6        PWR     Present    Registered   Normal     OTHER  0      NA           
+7        PWR     Present    Registered   Normal     OTHER  0      NA           
+8        FAN     Present    Registered   Normal     OTHER  0      NA           
+9        CLK     Present    Registered   Normal     OTHER  0      Master       
+-------------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display interface brief GigabitEthernet
+PHY: Physical
+*down: administratively down
+^down: standby
+(l): loopback
+(s): spoofing
+(E): E-Trunk down
+(b): BFD down
+(B): Bit-error-detection down
+(e): ETHOAM down
+(d): Dampening Suppressed
+(p): port alarm down
+(ld): loop-detect trigger down
+(td): transceiver unmatch down
+(mf): mac-flapping blocked
+(c): CFM down
+(sd): STP instance discarding
+(D): DF backup down
+InUti/OutUti: input utility/output utility
+Interface                   PHY   Protocol  InUti OutUti   inErrors  outErrors
+GigabitEthernet0/5/4        down  down         0%     0%          0          0
+GigabitEthernet0/5/5        down  down         0%     0%          0          0
+GigabitEthernet0/5/6        down  down         0%     0%          0          0
+GigabitEthernet0/5/7        down  down         0%     0%          0          0
+GigabitEthernet0/5/8        down  down         0%     0%          0          0
+GigabitEthernet0/5/9        down  down         0%     0%          0          0
+GigabitEthernet0/5/10       down  down         0%     0%          0          0
+GigabitEthernet0/5/11       down  down         0%     0%          0          0
+GigabitEthernet0/5/12       down  down         0%     0%          0          0
+GigabitEthernet0/5/13       down  down         0%     0%          0          0
+GigabitEthernet0/5/14       down  down         0%     0%          0          0
+GigabitEthernet0/5/15       down  down         0%     0%          0          0
+GigabitEthernet0/5/16       down  down         0%     0%          0          0
+GigabitEthernet0/5/17       down  down         0%     0%          0          0
+GigabitEthernet0/5/18       down  down         0%     0%          0          0
+GigabitEthernet0/5/19       up    up        0.38%  0.61%          0          0
+GigabitEthernet0/5/19.4013  up    up           0%     0%          0          0
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display interface brief 100GE
+PHY: Physical
+*down: administratively down
+^down: standby
+(l): loopback
+(s): spoofing
+(E): E-Trunk down
+(b): BFD down
+(B): Bit-error-detection down
+(e): ETHOAM down
+(d): Dampening Suppressed
+(p): port alarm down
+(ld): loop-detect trigger down
+(td): transceiver unmatch down
+(mf): mac-flapping blocked
+(c): CFM down
+(sd): STP instance discarding
+(D): DF backup down
+InUti/OutUti: input utility/output utility
+Interface                   PHY   Protocol  InUti OutUti   inErrors  outErrors
+100GE0/1/0                  down  down         0%     0%          0          0
+100GE0/1/1                  down  down         0%     0%          0          0
+100GE0/2/0                  up    down      0.01%  0.01%          0          0
+100GE0/3/0                  up    up        0.01%  0.01%          0          0
+100GE0/4/0                  down  down         0%     0%          0          0
+100GE0/4/1                  down  down         0%     0%          0          0
+100GE0/5/0                  up    up        0.01%  0.01%          0          0
+100GE0/5/1(100M)            down  down         0%     0%          0          0
+100GE0/5/2(100M)            down  down         0%     0%          0          0
+100GE0/5/3(100M)            down  down         0%     0%          0          0
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display interface brief 25GE
+PHY: Physical
+*down: administratively down
+^down: standby
+(l): loopback
+(s): spoofing
+(E): E-Trunk down
+(b): BFD down
+(B): Bit-error-detection down
+(e): ETHOAM down
+(d): Dampening Suppressed
+(p): port alarm down
+(ld): loop-detect trigger down
+(td): transceiver unmatch down
+(mf): mac-flapping blocked
+(c): CFM down
+(sd): STP instance discarding
+(D): DF backup down
+InUti/OutUti: input utility/output utility
+Interface                   PHY   Protocol  InUti OutUti   inErrors  outErrors
+25GE0/5/20(100M)            down  down         0%     0%          0          0
+25GE0/5/21(100M)            down  down         0%     0%          0          0
+25GE0/5/22(100M)            down  down         0%     0%          0          0
+25GE0/5/23(100M)            down  down         0%     0%          0          0
+25GE0/5/24(100M)            down  down         0%     0%          0          0
+25GE0/5/25(100M)            down  down         0%     0%          0          0
+25GE0/5/26(100M)            down  down         0%     0%          0          0
+25GE0/5/27(100M)            down  down         0%     0%          0          0
+25GE0/5/28(100M)            down  down         0%     0%          0          0
+25GE0/5/29(100M)            down  down         0%     0%          0          0
+25GE0/5/30(100M)            down  down         0%     0%          0          0
+25GE0/5/31(100M)            down  down         0%     0%          0          0
+25GE0/5/32(100M)            down  down         0%     0%          0          0
+25GE0/5/33(100M)            down  down         0%     0%          0          0
+25GE0/5/34(100M)            up    up        0.28%  0.24%          0          0
+25GE0/5/35(100M)            down  down         0%     0%          0          0
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display license verbose
+ Active license    : cfcard:/2102355FTE_LICNetEngine8000M4_V800R023.xml
+ License state     : Normal
+ Revoke ticket     : No ticket
+ License mode      : common
+
+ Product name      : NetEngine 8000 
+ Product version   : V800R023
+ License file ESN  : 2102355FTE
+ License Serial No : LIC20250902C8P78T
+ Creator           : Huawei Technologies Co., Ltd.
+ Created Time      : 2025-09-02 17:46:26 DST
+ Country           : Ukraine
+ Custom            : 
+ Office            : Kyiv
+
+ -------------------------------------------------------------
+ Feature name      : CRFEA5
+ Authorize type    : comm
+ Expired date      : PERMANENT
+ Trial days        : --
+ Sale name         : CR8S00L3VPC2
+ Item name         : LCR8S00L3VPC2 
+ Item type         : Resource
+ Control value     : 28
+ Used value        : 0 
+ Item state        : Normal
+ Item expired date : PERMANENT
+ Item trial days   : 60
+ Description       : NetEngine 8000 M Series L3VPN Port Function License(per 50GE/40GE)
+
+ Sale name         : CR8S00OAMBC0
+ Item name         : LCR8S002544C1 
+ Item type         : Function
+ Control value     : 1
+ Used value        : 1 
+ Item state        : Normal
+ Item expired date : PERMANENT
+ Item trial days   : 60
+ Description       : NetEngine 8000 M Series OAM Enhanced Function License
+
+ Sale name         : CR8S00CRAGC2
+ Item name         : LCR8S00CRAGC2 
+ Item type         : Resource
+ Control value     : 28
+ Used value        : 6 
+ Item state        : Normal
+ Item expired date : PERMANENT
+ Item trial days   : 60
+ Description       : NetEngine 8000 M Series Core&Aggregation Scenario Port Function License(per 50GE/40GE)
+
+ Sale name         : CR8S0M4AE1CA
+ Item name         : LCR8S0M4AE1C1 
+ Item type         : Resource
+ Control value     : 6
+ Used value        : 0 
+ Item state        : Normal
+ Item expired date : PERMANENT
+ Item trial days   : 60
+ Description       : M Series Fixed Port 1*50G RTU (can switch to different combo mode)
+
+ Sale name         : CR8S0M4AE1CB
+ Item name         : LCR8S0M4AE1C2 
+ Item type         : Resource
+ Control value     : 2
+ Used value        : 0 
+ Item state        : Normal
+ Item expired date : PERMANENT
+ Item trial days   : 60
+ Description       : M Series Fixed Port 10G Upgrade to 25G Enable RTU(per 25G)
+ 
+ Sale name         : CR8S00L3VPC4
+ Item name         : LCR8S00L3VPC4 
+ Item type         : Resource
+ Control value     : 20
+ Used value        : 0 
+ Item state        : Normal
+ Item expired date : PERMANENT
+ Item trial days   : 60
+ Description       : NetEngine 8000 M Series L3VPN Port Function License(per 10GE)
+
+ Sale name         : CR8S00TMSYC1
+ Item name         : LCR8S00TMSYC1 
+ Item type         : Function
+ Control value     : 1
+ Used value        : 1 
+ Item state        : Normal
+ Item expired date : PERMANENT
+ Item trial days   : 60
+ Description       : NetEngine 8000 M Series Time Synchronization Function License
+
+ Sale name         : CR8S0M4AE1CD
+ Item name         : LCR8S0M4AE1C1 
+ Item type         : Resource
+ Control value     : 2
+ Used value        : 2 
+ Item state        : Normal
+ Item expired date : PERMANENT
+ Item trial days   : 60
+ Description       : M Series Fixed Port 1*50G RTU (can switch to different combo mode)
+
+ Sale name         : CR8S00CRAGC4
+ Item name         : LCR8S00CRAGC4 
+ Item type         : Resource
+ Control value     : 20
+ Used value        : 2 
+ Item state        : Normal
+ Item expired date : PERMANENT
+ Item trial days   : 60
+ Description       : NetEngine 8000 M Series Core&Aggregation Scenario Port Function License(per 10GE)
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+return
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+system
+Enter system view, return user view with return command.
+[~ta1-kie002]
+
+=========######HUAWEI#####=========
+diagnose
+Warning: Enter diagnose view, return user view with Ctrl+Z.
+Info: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+display voltage corrosion slot 5
+                                      ^
+Error: Too many parameters found at '^' position.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+display device pic-status
+Pic-status information :
+--------------------------------------------------------------------------------
+Pic#    Status       Type                      Port_count Init_result Logic_down
+--------------------------------------------------------------------------------
+5/1     Registered   ETH_2x100GB_CARD          2          SUCCESS     SUCCESS   
+5/2     Registered   OTN_100GC_CARD            1          SUCCESS     SUCCESS   
+5/3     Registered   OTN_100GC_CARD            1          SUCCESS     SUCCESS   
+5/4     Registered   ETH_2x100GB_CARD          2          SUCCESS     SUCCESS   
+5/5     Registered   ETH_4x100G_16xGE_16x25G   36         SUCCESS     SUCCESS   
+5/78    Registered   FLEXE_VIRTUAL_CARD        0          SUCCESS     SUCCESS   
+5/79    Registered   FLEXE_VIRTUAL_CARD        0          SUCCESS     SUCCESS   
+--------------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display voltage corrosion slot 5 pic 1
+                                      ^
+Error: Too many parameters found at '^' position.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+display voltage corrosion slot 5 pic 2
+                                      ^
+Error: Too many parameters found at '^' position.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+display voltage corrosion slot 5 pic 3
+                                      ^
+Error: Too many parameters found at '^' position.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+display voltage corrosion slot 5 pic 4
+                                      ^
+Error: Too many parameters found at '^' position.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+display voltage corrosion slot 5 pic 5
+                                      ^
+Error: Too many parameters found at '^' position.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+return
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mbusnode
+                    ^
+Error: Unrecognized command found at '^' position.
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display temperature slot 5
+
+  Base-Board, Unit:C, Slot 5
+-------------------------------------------------------------------------------
+PCB             I2C Addr Chl Status   Minor Major Fatal FanTMin FanTMax Temp(C)
+-------------------------------------------------------------------------------
+CR81E4NBIYFS    5   73   0   NORMAL   75    85    90    46      56      48     
+CR81E4NBIYFS    5   75   0   NORMAL   85    95    100   56      66      41     
+CR81E4NBIYFS    5   255  0   NORMAL   105   115   120   90      100     62     
+CR81E4NBIYFS    5   255  1   NORMAL   105   115   120   90      100     63     
+CR81E4NBIYFS    5   255  2   NORMAL   105   115   120   90      100     62     
+CR81E4NBIYFS    5   255  3   NORMAL   105   115   120   90      100     63     
+CR81E4NBIYFS    5   255  4   NORMAL   105   115   120   90      100     58     
+CR81E4NBIYFS    5   255  5   NORMAL   95    105   110   80      90      58     
+CR81E4NBIYFS    5   255  6   NORMAL   95    105   110   80      90      55     
+CR81E4NBIYFS    5   255  7   NORMAL   105   115   120   90      100     46     
+CR81E4NBIYFS    5   255  8   NORMAL   105   115   120   90      100     49     
+CR81E4NBIYFS    5   255  9   NORMAL   105   115   120   90      100     54     
+CR81E4NBIYFS    5   255  10  NORMAL   105   115   120   90      100     57     
+CR81E4NBIYFS    5   255  11  NORMAL   100   110   115   75      85      46     
+CR81E4NBIYFS    5   255  12  NORMAL   105   115   120   90      100     47     
+DP21CPUA        5   255  13  NORMAL   105   115   120   90      100     69     
+DP21CPUA        5   255  14  NORMAL   105   115   120   90      100     70     
+DP21CPUA        5   255  15  NORMAL   105   115   120   90      100     70     
+DP21CPUA        5   255  16  NORMAL   105   115   120   90      100     69     
+DP21CPUA        5   255  17  NORMAL   105   115   120   90      100     70     
+CR51E2NBF1      1   76   0   NORMAL   80    90    95    55      65      43     
+CR51E2NBF1      1   255  0   NORMAL   105   115   120   83      93      49     
+CR51E2NBF1      1   255  1   NORMAL   105   115   120   83      93      52     
+CR51E2NBF1      1   255  2   NORMAL   100   110   115   78      88      43     
+CR51E1NCK0      2   76   0   NORMAL   75    80    85    60      65      45     
+CR51E1NCK0      2   255  0   NORMAL   105   110   120   85      90      54     
+CR51E1NCK0      2   255  1   NORMAL   105   110   120   85      90      53     
+CR51E1NCK0      2   255  2   NORMAL   100   105   115   75      80      54     
+CR51E1NCK0      3   76   0   NORMAL   75    80    85    60      65      41     
+CR51E1NCK0      3   255  0   NORMAL   105   110   120   85      90      46     
+CR51E1NCK0      3   255  1   NORMAL   105   110   120   85      90      46     
+CR51E1NCK0      3   255  2   NORMAL   100   105   115   75      80      45     
+CR51E2NBF1      4   76   0   NORMAL   80    90    95    55      65      47     
+CR51E2NBF1      4   255  0   NORMAL   105   115   120   83      93      56     
+CR51E2NBF1      4   255  1   NORMAL   105   115   120   83      93      58     
+CR51E2NBF1      4   255  2   NORMAL   100   110   115   78      88      47     
+-------------------------------------------------------------------------------
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+display alarm all
+--------------------------------------------------------------------------------
+Index  Level    Date       Time           Info                                  
+--------------------------------------------------------------------------------
+1      Critical 2025-04-24 11:48:35+03:00 GigabitEthernet0/5/10 is failed, the o
+                 DST                      ptical module on card is not matched[O
+                                          ID:1.3.6.1.4.1.2011.5.25.219.2.4.3,Ent
+                                          Code:136203]                          
+2      Critical 2025-04-24 11:32:23+03:00 GigabitEthernet0/5/12 is failed, the o
+                 DST                      ptical module on card is not matched[O
+                                          ID:1.3.6.1.4.1.2011.5.25.219.2.4.3,Ent
+                                          Code:136203]                          
+3      Critical 2025-04-24 11:18:45+03:00 GigabitEthernet0/5/18 is failed, the o
+                 DST                      ptical module on card is not matched[O
+                                          ID:1.3.6.1.4.1.2011.5.25.219.2.4.3,Ent
+                                          Code:136203]                          
+4      Critical 2025-04-24 11:18:45+03:00 GigabitEthernet0/5/17 is failed, the o
+                 DST                      ptical module on card is not matched[O
+                                          ID:1.3.6.1.4.1.2011.5.25.219.2.4.3,Ent
+                                          Code:136203]                          
+5      Critical 2025-04-24 11:18:45+03:00 GigabitEthernet0/5/16 is failed, the o
+                 DST                      ptical module on card is not matched[O
+                                          ID:1.3.6.1.4.1.2011.5.25.219.2.4.3,Ent
+                                          Code:136203]                          
+6      Critical 2025-04-24 11:18:45+03:00 GigabitEthernet0/5/15 is failed, the o
+                 DST                      ptical module on card is not matched[O
+                                          ID:1.3.6.1.4.1.2011.5.25.219.2.4.3,Ent
+                                          Code:136203]                          
+7      Critical 2025-04-24 11:18:45+03:00 GigabitEthernet0/5/14 is failed, the o
+                 DST                      ptical module on card is not matched[O
+                                          ID:1.3.6.1.4.1.2011.5.25.219.2.4.3,Ent
+                                          Code:136203]                          
+8      Critical 2025-04-24 11:18:45+03:00 GigabitEthernet0/5/13 is failed, the o
+                 DST                      ptical module on card is not matched[O
+                                          ID:1.3.6.1.4.1.2011.5.25.219.2.4.3,Ent
+                                          Code:136203]                          
+--------------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display fan
+Slotid    : 8
+Present   : YES
+Registered: YES
+Status    : AUTO
+FanSpeed  : [No.]Speed
+  [1]35%  [2]35%
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display temperature
+
+  Base-Board, Unit:C, Slot 5
+-------------------------------------------------------------------------------
+PCB             I2C Addr Chl Status   Minor Major Fatal FanTMin FanTMax Temp(C)
+-------------------------------------------------------------------------------
+CR81E4NBIYFS    5   73   0   NORMAL   75    85    90    46      56      48     
+CR81E4NBIYFS    5   75   0   NORMAL   85    95    100   56      66      41     
+CR81E4NBIYFS    5   255  0   NORMAL   105   115   120   90      100     62     
+CR81E4NBIYFS    5   255  1   NORMAL   105   115   120   90      100     63     
+CR81E4NBIYFS    5   255  2   NORMAL   105   115   120   90      100     62     
+CR81E4NBIYFS    5   255  3   NORMAL   105   115   120   90      100     63     
+CR81E4NBIYFS    5   255  4   NORMAL   105   115   120   90      100     58     
+CR81E4NBIYFS    5   255  5   NORMAL   95    105   110   80      90      58     
+CR81E4NBIYFS    5   255  6   NORMAL   95    105   110   80      90      55     
+CR81E4NBIYFS    5   255  7   NORMAL   105   115   120   90      100     46     
+CR81E4NBIYFS    5   255  8   NORMAL   105   115   120   90      100     49     
+CR81E4NBIYFS    5   255  9   NORMAL   105   115   120   90      100     54     
+CR81E4NBIYFS    5   255  10  NORMAL   105   115   120   90      100     57     
+CR81E4NBIYFS    5   255  11  NORMAL   100   110   115   75      85      46     
+CR81E4NBIYFS    5   255  12  NORMAL   105   115   120   90      100     47     
+DP21CPUA        5   255  13  NORMAL   105   115   120   90      100     69     
+DP21CPUA        5   255  14  NORMAL   105   115   120   90      100     70     
+DP21CPUA        5   255  15  NORMAL   105   115   120   90      100     70     
+DP21CPUA        5   255  16  NORMAL   105   115   120   90      100     69     
+DP21CPUA        5   255  17  NORMAL   105   115   120   90      100     70     
+CR51E2NBF1      1   76   0   NORMAL   80    90    95    55      65      43     
+CR51E2NBF1      1   255  0   NORMAL   105   115   120   83      93      49     
+CR51E2NBF1      1   255  1   NORMAL   105   115   120   83      93      52     
+CR51E2NBF1      1   255  2   NORMAL   100   110   115   78      88      43     
+CR51E1NCK0      2   76   0   NORMAL   75    80    85    60      65      45     
+CR51E1NCK0      2   255  0   NORMAL   105   110   120   85      90      54     
+CR51E1NCK0      2   255  1   NORMAL   105   110   120   85      90      53     
+CR51E1NCK0      2   255  2   NORMAL   100   105   115   75      80      54     
+CR51E1NCK0      3   76   0   NORMAL   75    80    85    60      65      41     
+CR51E1NCK0      3   255  0   NORMAL   105   110   120   85      90      46     
+CR51E1NCK0      3   255  1   NORMAL   105   110   120   85      90      46     
+CR51E1NCK0      3   255  2   NORMAL   100   105   115   75      80      45     
+CR51E2NBF1      4   76   0   NORMAL   80    90    95    55      65      47     
+CR51E2NBF1      4   255  0   NORMAL   105   115   120   83      93      56     
+CR51E2NBF1      4   255  1   NORMAL   105   115   120   83      93      58     
+CR51E2NBF1      4   255  2   NORMAL   100   110   115   78      88      47     
+-------------------------------------------------------------------------------
+  Base-Board, Unit:C, Slot 6
+-------------------------------------------------------------------------------
+PCB             I2C Addr Chl Status   Minor Major Fatal FanTMin FanTMax Temp(C)
+-------------------------------------------------------------------------------
+DP22PDC1K2A1    6   72   0   NORMAL   110   115   120   90      100     45     
+-------------------------------------------------------------------------------
+  Base-Board, Unit:C, Slot 7
+-------------------------------------------------------------------------------
+PCB             I2C Addr Chl Status   Minor Major Fatal FanTMin FanTMax Temp(C)
+-------------------------------------------------------------------------------
+DP22PDC1K2A1    7   72   0   NORMAL   110   115   120   90      100     45     
+-------------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display alarm active verbose
+Sequence    : 311605    
+AlarmId     : 0x1009B               AlarmName : hwIpRanDcnNeNumberOverLoad
+AlarmType   : equipment             Severity  : Major            State : active 
+RootKindFlag: Independent           
+StartTime   : 2025-10-07 13:34:34+03:00 DST           
+Description : DCN NE number overload start. (NeNumber=609)
+
+Sequence    : 64162     
+AlarmId     : 0xF1001D              AlarmName : hwNtpSynchronizationFailure
+AlarmType   : communication         Severity  : Minor            State : active 
+RootKindFlag: Independent           
+StartTime   : 2025-05-28 12:26:24+03:00 DST           
+Description : NTP synchronization state changed. (State = unsynchronized, SynchronizationSourceAddress = none)
+
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display arp statistics all
+Total: 24
+Dynamic: 24       Static: 0       Remote: 0       Redirect: 0
+Dynamic details
+  Resolved  : 24
+  Incomplete: 0
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display arp all
+IP ADDRESS         MAC ADDRESS     EXPIRE(M) TYPE        INTERFACE   VPN-INSTANCE
+                                          VLAN/CEVLAN PVC
+--------------------------------------------------------------------------------------
+172.***.***.***    ****-****-****            I -         100GE0/3/0       
+172.***.***.***    ****-****-****  1         D-5         100GE0/3/0       
+172.***.***.***    ****-****-****            I -         100GE0/5/0       
+172.***.***.***    ****-****-****  3         D-5         100GE0/5/0       
+172.***.***.***    ****-****-****            I -         GE0/5/19         
+172.***.***.***    ****-****-****  18        D-5         GE0/5/19         
+172.***.***.***    ****-****-****  20        D-5         GE0/5/19         
+172.***.***.***    ****-****-****  20        D-5         GE0/5/19         
+172.***.***.***    ****-****-****  13        D-5         GE0/5/19         
+172.***.***.***    ****-****-****  14        D-5         GE0/5/19         
+172.***.***.***    ****-****-****  19        D-5         GE0/5/19         
+172.***.***.***    ****-****-****  20        D-5         GE0/5/19         
+172.***.***.***    ****-****-****  18        D-5         GE0/5/19         
+172.***.***.***    ****-****-****  17        D-5         GE0/5/19         
+172.***.***.***    ****-****-****            I -         25GE0/5/34       
+172.***.***.***    ****-****-****  20        D-5         25GE0/5/34       
+172.***.***.***    ****-****-****            I -         GE0/5/19.20    
+172.***.***.***    ****-****-****  20        D-5         GE0/5/19.20    
+                                             20/-
+172.***.***.***    ****-****-****  20        D-5         GE0/5/19.20    
+                                             20/-
+172.***.***.***    ****-****-****  20        D-5         GE0/5/19.20    
+                                             20/-
+172.***.***.***    ****-****-****  20        D-5         GE0/5/19.20    
+                                             20/-
+172.***.***.***    ****-****-****  20        D-5         GE0/5/19.20    
+                                             20/-
+172.***.***.***    ****-****-****  20        D-5         GE0/5/19.20    
+                                             20/-
+172.***.***.***    ****-****-****  20        D-5         GE0/5/19.20    
+                                             20/-
+172.***.***.***    ****-****-****  20        D-5         GE0/5/19.20    
+                                             20/-
+172.***.***.***    ****-****-****  20        D-5         GE0/5/19.20    
+                                             20/-
+172.***.***.***    ****-****-****  20        D-5         GE0/5/19.20    
+                                             20/-
+172.***.***.***    ****-****-****  2         D-5         GE0/5/19.20    
+                                             20/-
+172.***.***.***    ****-****-****  7         D-5         GE0/5/19.20    
+                                             20/-
+192.***.***.***    ****-****-****            I -         Eth0/0/0         __LOCAL_OAM_VPN__
+----------------------------------------------------------------------------------------
+Total:30         Dynamic:24       Static:0    Interface:6    Remote:0
+Redirect:0
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+return
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+system
+Enter system view, return user view with return command.
+[~ta1-kie002]
+
+=========######HUAWEI#####=========
+diagnose
+Warning: Enter diagnose view, return user view with Ctrl+Z.
+Info: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+display assert 10 verbose all
+Info: The assert record does not exist.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+return
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display alarm active
+1:Critical  2:Major  3:Minor  4:Warning
+--------------------------------------------------------------------------------
+Sequence   AlarmId    Level Date Time  Description                              
+--------------------------------------------------------------------------------
+311605     0x1009B    2     2025-10-07 DCN NE number overload start. (NeNumber=6
+                             13:34:34+ 09)                                      
+                            03:00 DST                                           
+64162      0xF1001D   3     2025-05-28 NTP synchronization state changed. (State
+                             12:26:24+  = unsynchronized, SynchronizationSourceA
+                            03:00 DST  ddress = none)                           
+--------------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mac-address summary
+--------------------------------------------------------
+Slot        Total    Blackhole  Static  Dynamic
+--------------------------------------------------------
+5               0            0       0        0
+--------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display access-user
+  ------------------------------------------------------------------------------
+  Total users                        : 2
+  IPv4 users                         : 0
+  IPv6 users                         : 0
+  Dual-Stack users                   : 0
+  Lac users                          : 0
+  RUI local users                    : 0
+  RUI remote users                   : 0
+  Wait authen-ack                    : 0
+  Authentication success             : 2
+  Accounting ready                   : 2
+  Accounting state                   : 0
+  Wait leaving-flow-query            : 0
+  Wait accounting-start              : 0
+  Wait accounting-stop               : 0
+  Wait authorization-client          : 0
+  Wait authorization-server          : 0
+  ------------------------------------------------------------------------------
+  Domain-name                        Online-user
+  ------------------------------------------------------------------------------
+  default0                           : 0                                    
+  default1                           : 0                                    
+  default_admin                      : 2                                    
+  ------------------------------------------------------------------------------
+  The used CID table are             :
+  2094571-2094572
+  ------------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display max-onlineusers
+ Max online users since startup             : 0
+ Time of max online users                   : -
+ Max accounting-ready users since startup   : 0
+ Time of max accounting-ready users         : -
+ Max normal & RUI local users since startup : 0
+ Time of max normal & RUI local users       : -
+ Max RUI remote users since startup         : 0
+ Time of max RUI remote users               : -
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+return
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+system
+Enter system view, return user view with return command.
+[~ta1-kie002]
+
+=========######HUAWEI#####=========
+diagnose
+Warning: Enter diagnose view, return user view with Ctrl+Z.
+Info: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+display radius-attribute used
+Radius attribute received from Server:
+Attribute Name                                    Type
+----------------------------------------------------------------
+
+
+Radius attribute sended to Server:
+Attribute Name                                    Type
+----------------------------------------------------------------
+
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+display bfd configuration all
+--------------------------------------------------------------------------------
+CFG Name        CFG Type       LocalDiscr MIndex    SessNum  Commit   AdminDown 
+--------------------------------------------------------------------------------
+dyn_16385       D_IP_IF        16385      -         1        True     False 
+dyn_16388       D_IP_IF        16388      -         1        True     False 
+dyn_16389       D_IP_IF        16389      -         1        True     False 
+--------------------------------------------------------------------------------
+     Total Commit/Uncommit CFG Number : 3/0
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+return
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+system
+Enter system view, return user view with return command.
+[~ta1-kie002]
+
+=========######HUAWEI#####=========
+diagnose
+Warning: Enter diagnose view, return user view with Ctrl+Z.
+Info: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+display loopback-detect information
+Info: There is no block interface in this router.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+return
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display bfd statistics
+Current Display Board Number : Main
+Total Up/Down Session Number : 3/0
+Total Up/Down Main Session Number : 0/0
+Total Up/Down Sub Session Number  : 0/0
+Total Used/Supported Resource Number  : 4/4096
+Total Used/Supported Crc Resource Number  : 0/1024
+Current Session Number :
+      Static session           : 0                Dynamic session        : 3
+      E_Dynamic session        : 0                STATIC_AUTO session    : 0
+      LDP_LSP session          : 0                STATIC_LSP session     : 0
+      TE_TUNNEL session        : 0                TE_LSP session         : 0
+      PW session               : 0                IP session             : 3
+      VSI PW session           : 0                LDP_TUNNEL session     : 0
+      BGP_TUNNEL session       : 0                SR_BE_TUNNEL session   : 0
+      FLEX_ALGO_TUNNEL session : 0                SID_LIST session       : 0
+      S-BFD reflect session    : 1                P2MP session           : 0
+      EVPN_VPWS session        : 0               
+--------------------------------------------------------------------------------
+PAF/LCS Name                       Maxnum         Minnum         Create
+--------------------------------------------------------------------------------
+BFD_SESSION_NUM                    4096           1              4
+BFD_IO_SESSION_NUM                 4096           1              -
+--------------------------------------------------------------------------------
+IO Board Current Create Session Statistics Information :(slot/number)
+--------------------------------------------------------------------------------
+0 /0     5 /3     
+--------------------------------------------------------------------------------
+Current Total Used Discriminator Num               : 4
+--------------------------------------------------------------------------------
+BFD HA Information :
+--------------------------------------------------------------------------------
+Current HA Status                                  : Work
+--------------------------------------------------------------------------------
+BFD for LSP Information :
+--------------------------------------------------------------------------------
+Ability of auto creating BFD session on egress     : Enable 
+Period of LSP Ping                                 : 60
+--------------------------------------------------------------------------------
+BFD Global Information :
+--------------------------------------------------------------------------------
+System Session Delay Up Timer                      : OFF  
+--------------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display bgp ipv6 peer
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display bgp vpnv4 all peer
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display bgp vpnv6 all peer
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display bgp evpn peer
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+dir cfcard:
+Directory of cfcard:/
+
+  Idx  Attr     Size(Byte)  Date        Time       FileName                     
+    0  dr-x              -  Oct 09 2025 02:00:00   $_checkpoint                 
+    1  dr-x              -  Jul 17 2020 04:00:00   $_install_hpg                
+    2  dr-x              -  Jul 17 2020 04:00:00   $_install_mod                
+    3  dr-x              -  Sep 02 2025 12:51:51   $_license                    
+    4  drwx              -  Mar 26 2024 06:43:32   $_platform                   
+    5  dr-x              -  May 28 2025 12:27:56   $_security_info              
+    6  dr-x              -  Apr 24 2025 11:17:25   $_startup                    
+    7  dr-x              -  Apr 24 2025 11:17:00   $_system                     
+    8  dr-x              -  Nov 20 2024 16:40:00   $_user                       
+    9  drwx              -  Jul 07 2025 17:20:26   07_07_2025                   
+   10  drwx              -  Oct 09 2025 15:46:59   KPISTAT                      
+   11  drwx              -  Nov 20 2024 16:43:37   KPI_HEALTH                   
+   12  drwx              -  Nov 20 2024 16:43:37   KPI_SAID                     
+   13  drwx              -  Nov 20 2024 16:36:55   L3UC_dropCauseLog            
+   14  -rw-     51,989,606  May 18 2025 16:14:08   NE8000-M4M8M14V800R024SPH122-C00SPC500.PAT
+   15  -rw-  1,194,757,780  Jan 01 2022 02:05:59   NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.cc              
+   16  -rw-              0  Nov 20 2024 08:55:03   backup_bkp_elb.txt           
+   17  drwx              -  Nov 20 2024 16:40:08   bill                         
+   18  drwx              -  Nov 20 2024 08:54:58   bootlogfile                  
+   19  drwx              -  Nov 20 2024 16:40:09   business-trace               
+   20  -rw-         23,274  Oct 09 2025 03:59:35   config.cfg                   
+   21  -rw-          2,269  Nov 20 2024 08:54:06   default-custom_NetEngine_8000_M4_NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.defcfg
+   22 -rw-          15,312  Oct 09 2025 03:59:35   device.sys                   
+   23  drwx              -  Nov 20 2024 16:36:55   dropCauseLog                 
+   24  drwx              -  Nov 20 2024 16:38:06   eva                          
+   25  drwx              -  Nov 20 2024 16:38:00   hips                         
+   26  drwx              -  Nov 20 2024 16:36:55   insegdroplog                 
+   27  drwx              -  Nov 20 2024 16:36:55   insegdroplog_ldp             
+   28 drwx               -  Nov 20 2024 16:36:55   insegdroplog_te              
+   29 -rw-           4,640  Apr 24 2025 11:16:11   lcsbox                       
+   30 -rw-          10,528  Sep 02 2025 12:51:48   lcsbox_ex                    
+   31 dr-x               -  Oct 09 2025 10:53:49   logfile                      
+   32 drwx               -  Jan 01 2022 02:05:54   lost+found                   
+   33 drwx               -  Nov 20 2024 16:44:58   open-ssh                     
+   34 drwx               -  Oct 09 2025 03:00:00   pmdata                       
+   35 drwx               -  Oct 06 2025 06:17:13   said                         
+   36 drwx               -  Jul 17 2020 04:00:00   security                     
+   37 drwx               -  Apr 24 2025 11:17:25   ztp                          
+
+13,238,234 KB total (9,194,587 KB free)
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+dir cfcard2:
+Error: Device can't be found "cfcard2:".
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+dir slave#cfcard:
+Error: Device can't be found "slave#cfcard".
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+dir slave#cfcard2:
+Error: Device can't be found "slave#cfcard2".
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display nat instance
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display health
+--------------------------------------------------------------------
+Slot                           CPU Usage  Memory Usage(Used/Total)
+--------------------------------------------------------------------
+5           IPU(Master)            13%          26%   3935MB/14798MB
+--------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display health verbose
+----------------------------------------------------------------------------------------------------------------
+Slot                           CPU Usage    Memory Usage(Used/Total)     Physical Memory Usage(Free/Total/Cache)
+----------------------------------------------------------------------------------------------------------------
+5           IPU(Master)            13%          26%   3935MB/14798MB            26%   10862MB/14798MB/2573MB
+            cpu0                   14%          
+            cpu1                   16%          
+            cpu2                   11%          
+            cpu3                   12%          
+            cpu4                   13%          
+            cpu5                    8%          
+            cpu14                  21%          
+            cpu15                   9%          
+----------------------------------------------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display cpu-usage
+Cpu utilization statistics at 2025-10-09 16:27:55 927 ms DST
+System cpu use rate is : 13%
+Cpu utilization for five seconds: 12% ;  one minute: 10% ;  five minutes: 10%.
+Max CPU Usage : 28%
+Max CPU Usage Stat. Time : 2025-04-24 11:18:34 182 ms DST
+---------------------------
+ServiceName  UseRate
+---------------------------
+SYSTEM           13%
+AAA               0%
+ARP               0%
+BRAS              0%
+CMF               0%
+CSP               0%
+CSPF              0%
+DEVICE            0%
+DHCP              0%
+ETRUNK            0%
+EUM               0%
+FEA               0%
+FEC               0%
+FIBRESM           0%
+IFM               0%
+IP STACK          0%
+L2VPN             0%
+LDT               0%
+LINK              0%
+LLDP              0%
+LOCAL PKT         0%
+MFLP              0%
+MSTP              0%
+ND                0%
+NETSTREAM         0%
+OAM               0%
+OSPF              0%
+PCE               0%
+PKI               0%
+PNP               0%
+PTPA              0%
+RBS               0%
+RGM               0%
+RM                0%
+SLA               0%
+SMLK              0%
+SOC               0%
+SVRO              0%
+TEM               0%
+TNLM              0%
+TUNNEL            0%
+VLAN              0%
+---------------------------
+CPU Usage Details
+----------------------------------------------------------------
+CPU     Current  FiveSec   OneMin  FiveMin  Max MaxTime         
+----------------------------------------------------------------
+cpu0        14%      13%      10%      11%  36% 2025-06-10 01:02:02 DST
+cpu1        16%      13%      12%      11%  40% 2025-09-02 13:32:54 DST
+cpu2        11%      11%       8%       7%  71% 2025-08-05 09:10:52 DST
+cpu3        12%      10%       8%      10%  60% 2025-08-05 09:11:32 DST
+cpu4        13%      12%      12%      11%  28% 2025-08-02 00:06:32 DST
+cpu5         8%       9%      11%      13%  99% 2025-09-02 14:24:04 DST
+cpu14       21%      20%      15%       9%  26% 2025-05-21 13:32:12 DST
+cpu15        9%       8%       7%       8%  32% 2025-09-02 18:19:24 DST
+----------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display clock
+2025-10-09 16:27:56+03:00 DST
+Thursday
+Time Zone(defaultName) : UTC+02:00
+Daylight saving time    :
+         Name           :  defaultName
+         Repeat mode    :  repeat
+         Start year     :  2000
+         End year       :  2037
+         Start time     :  last Sun Mar 03:00:00
+         End time       :  last Sun Oct 04:00:00
+         Saving time    :  01:00:00
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+return
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+system
+Enter system view, return user view with return command.
+[~ta1-kie002]
+
+=========######HUAWEI#####=========
+diagnose
+Warning: Enter diagnose view, return user view with Ctrl+Z.
+Info: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+display exception 10 verbose all
+Info: The exception record does not exist.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+display fib slot 5 statistics
+Route Entry Count : 238
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display fib slot 5 statistics all
+IPv4 FIB Route Prefix Capacity : 4194304
+IPv4 FIB Total Route Prefix Count : 853
+ 
+IPv4 FIB Public Route Prefix Count : 238
+IPv4 VPN-instance ****** Route Prefix Count : 2
+IPv4 VPN-instance *** Route Prefix Count : 613
+IPv4 FIB Public Other Route Prefix Count : 0 
+IPv4 VPN-instance ****** Other Route Prefix Count : 0
+IPv4 VPN-instance *** Other Route Prefix Count : 0
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ipv6 fib slot 5 statistics all
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display isis peer
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ospf peer
+
+(M) Indicates MADJ neighbor
+
+
+          OSPF Process 1 with Router ID 172.***.***.***
+                Neighbors
+
+ Area 0.0.0.0 interface 172.***.***.*** (100GE0/3/0)'s neighbors
+ Router ID: 172.***.***.***      Address: 172.***.***.***  
+   State: Full           Mode:Nbr is Master     Priority: 1
+   DR: None              BDR: None              MTU: 0
+   Dead timer due in  40  sec
+   Retrans timer interval: 5
+   Neighbor is up for 1199h20m58s
+   Neighbor Up Time : 2025-08-20 17:06:56+03:00 DST
+   Authentication Sequence: [ 0 ]
+   Adjacency SID: 48078
+   Adjacency weight: 0
+   Adjacency flags: (-|V|L|-|-|-|-|-)
+
+ Area 0.0.1.1 interface 172.***.***.*** (100GE0/3/0)'s neighbors
+ Router ID: 172.***.***.***(M)    Address: 172.***.***.***    
+   State: Full           Mode:Nbr is Master     Priority: 1
+   DR: None              BDR: None              MTU: 0
+   Dead timer due in  40  sec
+   Retrans timer interval: 5
+   Neighbor is up for 1199h21m00s
+   Neighbor Up Time : 2025-08-20 17:06:54+03:00 DST
+   Authentication Sequence: [ 0 ]
+   Adjacency SID: 48079
+   Adjacency weight: 0
+   Adjacency flags: (-|V|L|-|-|-|-|-)
+
+ Area 0.0.1.2 interface 172.***.***.*** (100GE0/3/0)'s neighbors
+ Router ID: 172.***.***.***(M)    Address: 172.***.***.***     
+   State: Full           Mode:Nbr is Master     Priority: 1
+   DR: None              BDR: None              MTU: 0
+   Dead timer due in  39  sec
+   Retrans timer interval: 5
+   Neighbor is up for 1199h21m02s
+   Neighbor Up Time : 2025-08-20 17:06:52+03:00 DST
+   Authentication Sequence: [ 0 ]
+   Adjacency SID: 48077
+   Adjacency weight: 0
+   Adjacency flags: (-|V|L|-|-|-|-|-)
+
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ospfv3 peer
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display interface ethernet brief
+PHY: Physical
+*down: administratively down
+^down: standby
+(l): loopback
+(b): BFD down
+(d): Dampening Suppressed
+(p): port alarm down
+InUti/OutUti: input utility/output utility
+Interface                   PHY   Auto-Neg Duplex Bandwidth  InUti OutUti Trunk
+100GE0/1/0                  down  -        full        100G     0%     0%    --
+100GE0/1/1                  down  -        full        100G     0%     0%    --
+100GE0/2/0                  up    -        full        100G  0.01%  0.01%    --
+100GE0/3/0                  up    -        full        100G  0.01%  0.01%    --
+100GE0/4/0                  down  -        full        100G     0%     0%    --
+100GE0/4/1                  down  -        full        100G     0%     0%    --
+100GE0/5/0                  up    -        full        100G  0.01%  0.01%    --
+100GE0/5/1                  down  -        full        100M     0%     0%    --
+100GE0/5/2                  down  -        full        100M     0%     0%    --
+100GE0/5/3                  down  -        full        100M     0%     0%    --
+25GE0/5/20                  down  -        full        100M     0%     0%    --
+25GE0/5/21                  down  -        full        100M     0%     0%    --
+25GE0/5/22                  down  -        full        100M     0%     0%    --
+25GE0/5/23                  down  -        full        100M     0%     0%    --
+25GE0/5/24                  down  -        full        100M     0%     0%    --
+25GE0/5/25                  down  -        full        100M     0%     0%    --
+25GE0/5/26                  down  -        full        100M     0%     0%    --
+25GE0/5/27                  down  -        full        100M     0%     0%    --
+25GE0/5/28                  down  -        full        100M     0%     0%    --
+25GE0/5/29                  down  -        full        100M     0%     0%    --
+25GE0/5/30                  down  -        full        100M     0%     0%    --
+25GE0/5/31                  down  -        full        100M     0%     0%    --
+25GE0/5/32                  down  -        full        100M     0%     0%    --
+25GE0/5/33                  down  -        full        100M     0%     0%    --
+25GE0/5/34                  up    -        full        100M  0.28%  0.24%    --
+25GE0/5/35                  down  -        full        100M     0%     0%    --
+Ethernet0/0/0               down  enable   half       1000M     0%     0%    --
+GigabitEthernet0/5/4        down  disable  full       1000M     0%     0%    --
+GigabitEthernet0/5/5        down  disable  full       1000M     0%     0%    --
+GigabitEthernet0/5/6        down  disable  full       1000M     0%     0%    --
+GigabitEthernet0/5/7        down  disable  full       1000M     0%     0%    --
+GigabitEthernet0/5/8        down  disable  full       1000M     0%     0%    --
+GigabitEthernet0/5/9        down  disable  full       1000M     0%     0%    --
+GigabitEthernet0/5/10       down  disable  full       1000M     0%     0%    --
+GigabitEthernet0/5/11       down  enable   full       1000M     0%     0%    --
+GigabitEthernet0/5/12       down  disable  full       1000M     0%     0%    --
+GigabitEthernet0/5/13       down  disable  full       1000M     0%     0%    --
+GigabitEthernet0/5/14       down  disable  full       1000M     0%     0%    --
+GigabitEthernet0/5/15       down  disable  full       1000M     0%     0%    --
+GigabitEthernet0/5/16       down  disable  full       1000M     0%     0%    --
+GigabitEthernet0/5/17       down  disable  full       1000M     0%     0%    --
+GigabitEthernet0/5/18       down  disable  full       1000M     0%     0%    --
+GigabitEthernet0/5/19       up    enable   full       1000M  0.37%  0.59%    --
+GigabitEthernet0/5/19.4013  up    enable   full       1000M     0%     0%    --
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display l2vpn ccc-interface vc-type all
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display interface brief main
+PHY: Physical
+*down: administratively down
+^down: standby
+(l): loopback
+(s): spoofing
+(E): E-Trunk down
+(b): BFD down
+(B): Bit-error-detection down
+(e): ETHOAM down
+(d): Dampening Suppressed
+(p): port alarm down
+(ld): loop-detect trigger down
+(td): transceiver unmatch down
+(mf): mac-flapping blocked
+(c): CFM down
+(sd): STP instance discarding
+(D): DF backup down
+InUti/OutUti: input utility/output utility
+Interface                   PHY   Protocol  InUti OutUti   inErrors  outErrors
+100GE0/1/0                  down  down         0%     0%          0          0
+100GE0/1/1                  down  down         0%     0%          0          0
+100GE0/2/0                  up    down      0.01%  0.01%          0          0
+100GE0/3/0                  up    up        0.01%  0.01%          0          0
+100GE0/4/0                  down  down         0%     0%          0          0
+100GE0/4/1                  down  down         0%     0%          0          0
+100GE0/5/0                  up    up        0.01%  0.01%          0          0
+100GE0/5/1(100M)            down  down         0%     0%          0          0
+100GE0/5/2(100M)            down  down         0%     0%          0          0
+100GE0/5/3(100M)            down  down         0%     0%          0          0
+25GE0/5/20(100M)            down  down         0%     0%          0          0
+25GE0/5/21(100M)            down  down         0%     0%          0          0
+25GE0/5/22(100M)            down  down         0%     0%          0          0
+25GE0/5/23(100M)            down  down         0%     0%          0          0
+25GE0/5/24(100M)            down  down         0%     0%          0          0
+25GE0/5/25(100M)            down  down         0%     0%          0          0
+25GE0/5/26(100M)            down  down         0%     0%          0          0
+25GE0/5/27(100M)            down  down         0%     0%          0          0
+25GE0/5/28(100M)            down  down         0%     0%          0          0
+25GE0/5/29(100M)            down  down         0%     0%          0          0
+25GE0/5/30(100M)            down  down         0%     0%          0          0
+25GE0/5/31(100M)            down  down         0%     0%          0          0
+25GE0/5/32(100M)            down  down         0%     0%          0          0
+25GE0/5/33(100M)            down  down         0%     0%          0          0
+25GE0/5/34(100M)            up    up        0.28%  0.24%          0          0
+25GE0/5/35(100M)            down  down         0%     0%          0          0
+Ethernet0/0/0               down  down         0%     0%          0          0
+GigabitEthernet0/5/4        down  down         0%     0%          0          0
+GigabitEthernet0/5/5        down  down         0%     0%          0          0
+GigabitEthernet0/5/6        down  down         0%     0%          0          0
+GigabitEthernet0/5/7        down  down         0%     0%          0          0
+GigabitEthernet0/5/8        down  down         0%     0%          0          0
+GigabitEthernet0/5/9        down  down         0%     0%          0          0
+GigabitEthernet0/5/10       down  down         0%     0%          0          0
+GigabitEthernet0/5/11       down  down         0%     0%          0          0
+GigabitEthernet0/5/12       down  down         0%     0%          0          0
+GigabitEthernet0/5/13       down  down         0%     0%          0          0
+GigabitEthernet0/5/14       down  down         0%     0%          0          0
+GigabitEthernet0/5/15       down  down         0%     0%          0          0
+GigabitEthernet0/5/16       down  down         0%     0%          0          0
+GigabitEthernet0/5/17       down  down         0%     0%          0          0
+GigabitEthernet0/5/18       down  down         0%     0%          0          0
+GigabitEthernet0/5/19       up    up        0.37%  0.59%          0          0
+LoopBack0                   up    up(s)        0%     0%          0          0
+LoopBack1023                up    up(s)        0%     0%          0          0
+NULL0                       up    up(s)        0%     0%          0          0
+Virtual-Template0           up    up(s)        0%     0%          0          0
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display optical-module brief
+-------------------------------------------------------------------------------------------------------------------------------------------
+Port                   Status Duplex Type               Wavelength            RxPower     TxPower     Mode             VendorPN            
+-------------------------------------------------------------------------------------------------------------------------------------------
+ETH0/1/0               down   full   100G-40km-qsfp28   1295.56nm~1309.14nm   -40.00dBm   6.30dBm     SingleMode       OM9558ES100         
+                                                        1295.56nm(Lane0)      -40.00dBm   -0.02dBm                                         
+                                                        1300.05nm(Lane1)      -40.00dBm   0.31dBm                                          
+                                                        1304.58nm(Lane2)      -40.00dBm   0.41dBm                                          
+                                                        1309.14nm(Lane3)      -40.00dBm   0.41dBm                                          
+ETH0/2/0               up     full   100G-cfp2dco       1531.116nm            -6.63dBm    -0.50dBm    SingleMode       OM8569S             
+ETH0/3/0               up     full   100G-cfp2dco       1560.606nm            -6.75dBm    -0.50dBm    SingleMode       OM8569S             
+ETH0/4/0               down   full   100G-80km-qsfp28   1295.56nm~1309.14nm   -40.00dBm   10.72dBm    SingleMode       OM9558ZS100         
+                                                        1295.56nm(Lane0)      -40.00dBm   4.64dBm                                          
+                                                        1300.05nm(Lane1)      -40.00dBm   5.39dBm                                          
+                                                        1304.58nm(Lane2)      -40.00dBm   4.54dBm                                          
+                                                        1309.14nm(Lane3)      -40.00dBm   4.14dBm                                          
+ETH0/5/0               up     full   100G-10km-qsfp28   1295.56nm~1309.14nm   4.75dBm     5.76dBm     SingleMode       OM9558L             
+                                                        1295.56nm(Lane0)      -1.61dBm    -0.55dBm                                         
+                                                        1300.05nm(Lane1)      -1.17dBm    -0.31dBm                                         
+                                                        1304.58nm(Lane2)      -1.17dBm    -0.02dBm                                         
+                                                        1309.14nm(Lane3)      -1.10dBm    -0.13dBm                                         
+ETH0/5/1               down   full   100G-10km-qsfp28   1295.56nm~1309.14nm   -40.00dBm   5.63dBm     SingleMode       OM9558L             
+                                                        1295.56nm(Lane0)      -40.00dBm   -0.56dBm                                         
+                                                        1300.05nm(Lane1)      -40.00dBm   -0.46dBm                                         
+                                                        1304.58nm(Lane2)      -40.00dBm   -0.35dBm                                         
+                                                        1309.14nm(Lane3)      -40.00dBm   -0.16dBm                                         
+ETH0/5/10              down   full   10G-10km-sfp+      1310nm                -40.00dBm   -2.78dBm    SingleMode       MTRS-02X13-G        
+ETH0/5/12              down   full   10G-10km-sfp+      1310nm                -40.00dBm   -2.85dBm    SingleMode       MTRS-02X13-G        
+ETH0/5/13              down   full   10G-10km-sfp+      1310nm                -40.00dBm   -3.81dBm    SingleMode       MTRS-02X13-G        
+ETH0/5/14              down   full   10G-10km-sfp+      1310nm                -40.00dBm   -3.08dBm    SingleMode       MTRS-02X13-G        
+ETH0/5/15              down   full   10G-10km-sfp+      1310nm                -40.00dBm   -3.58dBm    SingleMode       MTRS-02X13-G        
+ETH0/5/16              down   full   10G-10km-sfp+      1310nm                -40.00dBm   -2.98dBm    SingleMode       MTRS-02X13-G        
+ETH0/5/17              down   full   10G-10km-sfp+      1310nm                -40.00dBm   -3.23dBm    SingleMode       MTRS-02X13-G        
+ETH0/5/18              down   full   10G-10km-sfp+      1310nm                -40.00dBm   -3.44dBm    SingleMode       MTRS-02X13-G        
+ETH0/5/19              up     full   1G-10km-esfp       1310nm                -6.18dBm    -7.09dBm    SingleMode       SCP6G44-A8-AWH      
+ETH0/5/34              up     full   25G-40km-sfp28     1311nm                -6.03dBm    3.19dBm     SingleMode       MTRA-3E61A          
+-------------------------------------------------------------------------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ipsec sa
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ipsec statistics
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display device 5
+
+IPU CR8PM4BASDC2 5's detail information:
+---------------------------------------------------------------------------
+  Description:                            NetEngine 8000 M4 Integrated DC Chassis Components(Including DC Power,Fan Box)
+  Board status:                           Normal
+  Register:                               Registered
+  Uptime:                                 2025/04/24   11:16:50
+  CPU Utilization(%):                     13%
+  Mem Usage(%):                           26%
+Statistic information:
+  Statistic item                          Statistic number
+  SERDES interface link lost:             0
+  MAC Address:                            bc1e-85b9-d60a
+  MAC Base Addr:                          ccbc-e31b-c6f7
+  MAC Block size:                         17
+---------------------------------------------------------------------------
+PIC1: CR5DE2NE4X14 information:
+  Description:2-Port 100GBase/50GBase-QSFP28 FlexE MACsec Interface Card(PIC)
+  Uptime:                                 2025/04/24    11:18:19 DST
+  Card type:                              ETHERNET
+  Port number:                            2
+  Converge info:                          non-converge
+PIC2: CR5D00E1NC97 information:
+  Description:1-Port 100GE/1-Port 200GE CFP2 Physical Interface Card(PIC) (Enable 1*100GE by default)
+  Uptime:                                 2025/08/05    09:11:22 DST
+  Card type:                              ETHERNET
+  Port number:                            1
+  Converge info:                          non-converge
+PIC3: CR5D00E1NC97 information:
+  Description:1-Port 100GE/1-Port 200GE CFP2 Physical Interface Card(PIC) (Enable 1*100GE by default)
+  Uptime:                                 2025/04/24    11:18:21 DST
+  Card type:                              ETHERNET
+  Port number:                            1
+  Converge info:                          non-converge
+PIC4: CR5DE2NE4X14 information:
+  Description:2-Port 100GBase/50GBase-QSFP28 FlexE MACsec Interface Card(PIC)
+  Uptime:                                 2025/04/24    11:18:23 DST
+  Card type:                              ETHERNET
+  Port number:                            2
+  Converge info:                          non-converge
+PIC5: DPE1E4NBIYFS information:
+  Description:4-Port 100GBase-QSFP28 or 16-Port 25GBase-SFP28 Combo + 16-Port 25GBase-SFP28
+  Uptime:                                 2025/04/24    11:18:21 DST
+  Card type:                              ETHERNET
+  Port number:                            36
+  Converge info:                          non-converge
+---------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display device 6
+PWR  6's detail information:
+---------------------------------------------------------------------------
+Type      :DP22PDC1K2A1
+Present   :PRESENT
+Status    :NORMAL
+Cable     :PLUG
+Mode      :DC
+PowerNum  :1
+
+Module          :0
+Present         :PRESENT
+CpuStatus       :NORMAL
+InputVoltage    :54.26
+InputCurrent    :2.83
+TotalPower      :153.63
+---------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display device 7
+PWR  7's detail information:
+---------------------------------------------------------------------------
+Type      :DP22PDC1K2A1
+Present   :PRESENT
+Status    :NORMAL
+Cable     :PLUG
+Mode      :DC
+PowerNum  :1
+
+Module          :0
+Present         :PRESENT
+CpuStatus       :NORMAL
+InputVoltage    :54.29
+InputCurrent    :4.72
+TotalPower      :256.41
+---------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display device 8
+FAN  8's detail information:
+---------------------------------------------------------------------------
+Fan :
+Present   :PRESENT
+Status    :NORMAL
+Cable     :PLUG
+Register  :REGISTERED
+Work      :WORK
+FanSpeed  : [No.]Speed
+  [1] 35%  [2] 35%
+---------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display device 9
+ Current system trace source: empty
+ Current 2M-1 trace source:   system PLL
+ Output SSM Level:       bits0:unk  
+ Current status:         normal
+ SSM control:            off 
+ Current source step out of pull-in range
+ Clock is in freerun mode
+
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display l2-multicast-channe
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display oam global configuration
+Global Configuration                                 Value
+----------------------------------------------------------
+CFM Status                                        disabled
+Ping MAC Status                                   disabled
+Trace MAC Status                                  disabled
+CFM MAC-tunnel MIP Trace Status                   disabled
+EFM Status                                        disabled
+CFM Protocol                                      standard
+CFM MP-address-model                                bridge
+Y1731 PM-mode                                      disable
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display dcn global
+DCN global information:
+  state: enable    
+  neid:  0x83E730
+  vlan:  0
+  data-priority:  3
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls ldp peer
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls ldp session all
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls lsp statistics
+Lsp Type       Total     Ingress   Transit   Egress                             
+STATIC LSP     0         0         0         0
+STATIC CRLSP   0         0         0         0
+LDP LSP        0         0         0         0
+RSVP CRLSP     0         0         0         0
+BGP LSP        0         0         0         0
+ASBR LSP       0         0         0         0
+BGP IPV6 LSP   0         0         0         0
+L3VPN IPV6 LSP 0         0         0         0
+EVPN LSP       0         0         0         0
+----------------------------------------------------------------------          
+LSP            0         0         0         0
+CRLSP          0         0         0         0
+----------------------------------------------------------------------          
+Lsp Type       IngressLspBypassState         TransitLspBypassState              
+               ExistNotUsed   InUse          ExistNotUsed   InUse               
+RSVP CRLSP     0              0              0              0
+----------------------------------------------------------------------
+Lsp Type       IngressLspDetourState         TransitLspDetourState              
+               ExistNotUsed   InUse          ExistNotUsed   InUse               
+Detour CRLSP   0              0              0              0
+----------------------------------------------------------------------
+
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls ldp lsp statistics
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls mldp lsp statistics
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls ldp session
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls mldp lsp p2mp
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+return
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+system
+Enter system view, return user view with return command.
+[~ta1-kie002]
+
+=========######HUAWEI#####=========
+diagnose
+Warning: Enter diagnose view, return user view with Ctrl+Z.
+Info: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+return
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display eth-trunk
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls te tunnel-interface
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls te tunnel-interface last-error
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display switchover state
+                    ^
+Error: Unrecognized command found at '^' position.
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display multicast routing-table
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display pim routing-table
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display patch-information
+Info: No patch exists.
+The current state is: Idle
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ip routing-table statistics
+Summary Prefixes : 238
+Proto      total      active     added      deleted    freed
+           routes     routes     routes     routes     routes
+DIRECT     20         20         35         15         15         
+STATIC     95         95         137        42         42         
+RIP        0          0          0          0          0          
+OSPF       184        180        2905       2721       2721       
+IS-IS      0          0          0          0          0          
+BGP        0          0          0          0          0          
+UNR        0          0          0          0          0          
+Total      299        295        3077       2778       2778       
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ipv6 routing-table statistics
+Summary Prefixes : 0
+Protocol   route       active      added       deleted     freed
+DIRECT     0           0           0           0           0           
+STATIC     0           0           0           0           0           
+RIPng      0           0           0           0           0           
+OSPFv3     0           0           0           0           0           
+IS-IS      0           0           0           0           0           
+BGP        0           0           0           0           0           
+UNR        0           0           0           0           0           
+Total      0           0           0           0           0           
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ip routing-table 0.0.0.0
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display bgp routing-table statistics
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display bgp ipv6 routing-table statistics
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display bgp vpnv4 all routing-table statistics
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display bgp vpnv6 all routing-table statistics
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ipv6 neighbors
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display router id
+RouterID:172.***.***.***
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display remote-backup-profile
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display remote-backup-service
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display elabel
+
+/$[System Integration Version]
+/$SystemIntegrationVersion = 3.0
+
+[Rack_1]
+[SubRack_1]
+
+[Slot_5]
+/$[Board Integration Version]
+/$BoardIntegrationVersion=3.0
+
+
+[Main_Board_1]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=CR8PM4BASDC2
+BarCode=2102355FTE10QB100069
+Item=02355FTE
+Description=Assembling Components,NetEngine 8000,CR8PM4BASDC2,NetEngine 8000 M4 Integrated DC Chassis Components(Including DC Power,Fan Box)
+Manufactured=2024-11-20
+VendorName=Huawei
+IssueNumber=00
+CLEICode=
+BOM=
+Model=CR8PM4BASDC2
+/$ElabelVersion=4.0
+
+
+[Port_0]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=OM9558L         
+BarCode=035EWA10Q5129293
+Item=34061277-007
+Description=100Gb/s-1310nm-LC-10km(SMF)
+Manufactured=2024-05-25
+VendorName=HISILICON       
+IssueNumber=
+CLEICode=
+BOM=-
+Model=100G-4*25-1310nm-10km-SM-QSFP28
+/$ElabelVersion=4.0
+
+
+[Port_1]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=OM9558L         
+BarCode=035EWA10Q5121133
+Item=34061277-007
+Description=100Gb/s-1310nm-LC-10km(SMF)
+Manufactured=2024-05-20
+VendorName=HISILICON       
+IssueNumber=
+CLEICode=
+BOM=-
+Model=100G-4*25-1310nm-10km-SM-QSFP28
+/$ElabelVersion=4.0
+
+
+[Port_2]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+ 
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_3]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_4]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_5]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_6]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_7]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+ 
+
+[Port_8]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_9]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_10]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=MTRS-02X13-G    
+BarCode=2000274140816   
+Item=34060742
+Description=10300Mb/s-1310nm-LC-10km(0.009mm)
+Manufactured=2024-05-18
+VendorName=HG GENUINE      
+IssueNumber=
+CLEICode=
+BOM=-
+
+
+[Port_11]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_12]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+ 
+[Board Properties]
+BoardType=MTRS-02X13-G    
+BarCode=2000273990780   
+Item=34060742
+Description=10300Mb/s-1310nm-LC-10km(0.009mm)
+Manufactured=2024-05-17
+VendorName=HG GENUINE      
+IssueNumber=
+CLEICode=
+BOM=-
+
+
+[Port_13]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=MTRS-02X13-G    
+BarCode=2000273991765   
+Item=34060742
+Description=10300Mb/s-1310nm-LC-10km(0.009mm)
+Manufactured=2024-05-17
+VendorName=HG GENUINE      
+IssueNumber=
+CLEICode=
+BOM=-
+
+
+[Port_14]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=MTRS-02X13-G    
+BarCode=2000273991184   
+Item=34060742
+Description=10300Mb/s-1310nm-LC-10km(0.009mm)
+Manufactured=2024-05-17
+VendorName=HG GENUINE      
+IssueNumber=
+CLEICode=
+BOM=-
+
+
+[Port_15]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=MTRS-02X13-G    
+BarCode=2000273990067   
+Item=34060742
+Description=10300Mb/s-1310nm-LC-10km(0.009mm)
+Manufactured=2024-05-17
+VendorName=HG GENUINE      
+IssueNumber=
+CLEICode=
+BOM=-
+
+
+[Port_16]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=MTRS-02X13-G    
+BarCode=2000273990682   
+Item=34060742
+Description=10300Mb/s-1310nm-LC-10km(0.009mm)
+Manufactured=2024-05-17
+VendorName=HG GENUINE      
+IssueNumber=
+CLEICode=
+BOM=-
+
+
+[Port_17]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=MTRS-02X13-G    
+BarCode=2000273990765   
+Item=34060742
+Description=10300Mb/s-1310nm-LC-10km(0.009mm)
+Manufactured=2024-05-17
+VendorName=HG GENUINE      
+IssueNumber=
+CLEICode=
+BOM=-
+
+
+[Port_18]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=MTRS-02X13-G    
+BarCode=2000274140814   
+Item=34060742
+Description=10300Mb/s-1310nm-LC-10km(0.009mm)
+Manufactured=2024-05-18
+VendorName=HG GENUINE      
+IssueNumber=
+CLEICode=
+BOM=-
+
+
+[Port_19]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=SCP6G44-A8-AWH  
+BarCode=06T414602261    
+Item=
+Description=1300Mb/s-1310nm-LC-10km(0.009mm)-550m(0.05mm)-550m(0.0625mm)
+Manufactured=2010-07-14
+VendorName=SumitomoElectric
+IssueNumber=
+CLEICode=
+BOM=-
+
+
+[Port_20]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_21]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_22]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_23]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_24]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_25]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+ 
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_26]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_27]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_28]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_29]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_30]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+ 
+
+[Port_31]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_32]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_33]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_34]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=MTRA-3E61A      
+BarCode=3000139950180   
+Item=34062932
+Description=25750Mb/s-1311nm-LC-40km(0.009mm)
+Manufactured=2024-10-16
+VendorName=HG GENUINE      
+IssueNumber=
+CLEICode=
+BOM=-
+Model=SFP28-25G-1310nm-40km-SM
+/$ElabelVersion=4.0
+
+
+[Port_35]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Slot_1]
+/$[Board Integration Version]
+/$BoardIntegrationVersion=3.0
+
+
+[Main_Board_1]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+ 
+[Board Properties]
+BoardType=CR51E2NBF1
+BarCode=1024B9659618
+Item=03033GDS-001
+Description=Finished Board,NetEngine 8000,CR51E2NBF1,2-Port 100GBase/50GBase-QSFP28 FlexE MACsec Interface Card(PIC)
+Manufactured=2024-11-20
+VendorName=Huawei
+IssueNumber=00
+CLEICode=
+BOM=
+Model=CR5DE2NE4X14
+/$ElabelVersion=4.0
+
+
+[Port_0]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=OM9558ES100     
+BarCode=035HUB10Q8128332
+Item=34061960-001
+Description=100Gb/s-1310nm-LC-40km(SMF)
+Manufactured=2024-08-28
+VendorName=HISILICON       
+IssueNumber=
+CLEICode=
+BOM=-
+Model=QSFP28-100G-1295~1310nm-40km-SM-02
+/$ElabelVersion=4.0
+
+
+[Port_1]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Slot_2]
+/$[Board Integration Version]
+/$BoardIntegrationVersion=3.0
+
+
+[Main_Board_1]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=CR51E1NCK1
+BarCode=102517010195
+Item=03033HAF-001
+Description=Finished Board,NetEngine 8000,CR51E1NCK1,1-Port 100GE/1-Port 200GE CFP2 Physical Interface Card(PIC) (Enable 1*100GE by default)
+Manufactured=2025-01-11
+VendorName=Huawei
+IssueNumber=00
+CLEICode=
+BOM=
+Model=CR5D00E1NC97
+/$ElabelVersion=4.0
+
+
+[Port_0]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=OM8569S         
+BarCode=033ETV10QC004270
+Item=34062035
+Description=111.8Gb/s-1529.163nm~1567.133nm-LC
+Manufactured=2024-12-11
+VendorName=HISILICON       
+IssueNumber=
+CLEICode=
+BOM=-
+Model=CFP2-100G-DWDM-Tunable cband-50GHz-SM
+/$ElabelVersion=4.0
+
+
+[Port_0]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+ 
+
+[Board Properties]
+BoardType=OM8569S         
+BarCode=033ETV10QC004270
+Item=34062035
+Description=111.8Gb/s-1529.163nm~1567.133nm-LC
+Manufactured=2024-12-11
+VendorName=HISILICON       
+IssueNumber=
+CLEICode=
+BOM=-
+Model=CFP2-100G-DWDM-Tunable cband-50GHz-SM
+/$ElabelVersion=4.0
+
+
+[Slot_3]
+/$[Board Integration Version]
+/$BoardIntegrationVersion=3.0
+
+
+[Main_Board_1]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+ 
+
+[Board Properties]
+BoardType=CR51E1NCK1
+BarCode=1024B9659584
+Item=03033HAF-001
+Description=Finished Board,NetEngine 8000,CR51E1NCK1,1-Port 100GE/1-Port 200GE CFP2 Physical Interface Card(PIC) (Enable 1*100GE by default)
+Manufactured=2024-11-20
+VendorName=Huawei
+IssueNumber=00
+CLEICode=
+BOM=
+Model=CR5D00E1NC97
+/$ElabelVersion=4.0
+
+
+[Port_0]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=OM8569S         
+BarCode=033ETV10P6011866
+Item=34062035
+Description=111.8Gb/s-1529.163nm~1567.133nm-LC
+Manufactured=2023-06-28
+VendorName=HISILICON       
+IssueNumber=
+CLEICode=
+BOM=-
+Model=CFP2-100G-DWDM-Tunable cband-50GHz-SM
+/$ElabelVersion=4.0
+
+
+[Port_0]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=OM8569S         
+BarCode=033ETV10P6011866
+Item=34062035
+Description=111.8Gb/s-1529.163nm~1567.133nm-LC
+Manufactured=2023-06-28
+VendorName=HISILICON       
+IssueNumber=
+CLEICode=
+BOM=-
+Model=CFP2-100G-DWDM-Tunable cband-50GHz-SM
+/$ElabelVersion=4.0
+
+
+[Slot_4]
+/$[Board Integration Version]
+/$BoardIntegrationVersion=3.0
+
+
+[Main_Board_1]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=CR51E2NBF1
+BarCode=1024B9659619
+Item=03033GDS-001
+Description=Finished Board,NetEngine 8000,CR51E2NBF1,2-Port 100GBase/50GBase-QSFP28 FlexE MACsec Interface Card(PIC)
+Manufactured=2024-11-20
+VendorName=Huawei
+IssueNumber=00
+CLEICode=
+BOM=
+Model=CR5DE2NE4X14
+/$ElabelVersion=4.0
+
+
+[Port_0]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=OM9558ZS100     
+BarCode=035LLM10Q5131216
+Item=34062017
+Description=100Gb/s-1310nm-LC-80km(SMF)
+Manufactured=2024-06-07
+VendorName=HISILICON       
+IssueNumber=
+CLEICode=
+BOM=-
+Model=QSFP28-100G-1310nm-80km-SM-01
+/$ElabelVersion=4.0
+
+
+[Port_1]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[FanSlot_8]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+FanFrame 
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=CR81FAN01M4
+BarCode=034UQC10QB100089
+Item=03034UQC
+Description=Finished Board,NetEngine 8000,CR81FAN01M4,NetEngine 8000 M4 Fan Box
+Manufactured=2024-11-20
+VendorName=Huawei
+IssueNumber=00
+CLEICode=
+BOM=
+Model=CR8M004FBXC0
+/$ElabelVersion=4.0
+
+
+
+[PowerSlot_6]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+PowerFrame 
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=DP22PDC1K2A1
+BarCode=025LULW0Q9001572
+Item=03025LUL
+Description=Manufactured Board,Dipper 2U,DP22PDC1K2A1,-48V Power Interface Board
+Manufactured=2024-09-30
+VendorName=Huawei
+IssueNumber=00
+CLEICode=
+BOM=
+Model=DP22PDC1K2A1
+/$ElabelVersion=4.0
+
+
+
+[PowerSlot_7]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+PowerFrame 
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=DP22PDC1K2A1
+BarCode=025LULW0Q9001571
+Item=03025LUL
+Description=Manufactured Board,Dipper 2U,DP22PDC1K2A1,-48V Power Interface Board
+Manufactured=2024-09-30
+VendorName=Huawei
+IssueNumber=00
+CLEICode=
+BOM=
+Model=DP22PDC1K2A1
+/$ElabelVersion=4.0
+
+
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display current-configuration | include sysname
+Info: It will take a long time if the content you search is too much or the string you input is too long, you can press CTRL_C to break.
+sysname ta1-kie002
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display current-configuration configuration isis
+#
+return
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display startup
+MainBoard:
+  Configured startup system software:        cfcard:/NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.cc
+  Startup system software:                   cfcard:/NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.cc
+  Next startup system software:              cfcard:/NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.cc
+  Startup saved-configuration file:          cfcard:/config.cfg
+  Next startup saved-configuration file:     cfcard:/config.cfg
+  Startup paf file:                          default
+  Next startup paf file:                     default
+  Startup patch package:                     NULL
+  Next startup patch package:                NULL
+  Startup feature software:                  NULL
+  Next startup feature software:             NULL
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display paf all
+                        ^
+Error: Too many parameters found at '^' position.
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display power
+No   Present Mode State                                   Num                   
+-------------------------------------------------------------------------------
+6    Yes     DC   Normal                                  Abnormal(0)/Normal(1)
+7    Yes     DC   Normal                                  Abnormal(0)/Normal(1)
+Power monitor cable state:
+   Plug
+
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display license
+ Active License    : cfcard:/2102355FTE_LICNetEngine8000M4_V800R023.xml
+ License state     : Normal
+ Revoke ticket     : No ticket
+ **********
+ Product name      : NetEngine 8000
+ Product version   : V800R023
+ License Serial No : LIC20250902C8P78T
+ Creator           : Huawei Technologies Co., Ltd.
+ Created Time      : 2025-09-02 17:46:26 DST
+
+ -------------------------------------------------------------
+ Feature name      : CRFEA5
+ Authorize type    : comm
+ Expired date      : PERMANENT
+ Trial days        : --
+
+ Item name               Item type      Value      Description
+ -------------------------------------------------------------
+
+ CR8S00L3VPC2              --             28         NetEngine 8000 M Series L3VPN Port Function License(per 50GE/40GE)
+    LCR8S00L3VPC2          Resource       28         NetEngine 8000 M Series L3VPN Port Function License(per 50GE/40GE)
+ CR8S00OAMBC0              --             1          NetEngine 8000 M Series OAM Essential Function License
+    LCR8S002544C1          Function       YES        NetEngine 8000 M Series OAM Enhanced Function License
+ CR8S00CRAGC2              --             28         NetEngine 8000 M Series Core&Aggregation Scenario Port Function License(per 50GE/40GE)
+    LCR8S00CRAGC2          Resource       28         NetEngine 8000 M Series Core&Aggregation Scenario Port Function License(per 50GE/40GE)
+ CR8S0M4AE1CA              --             6          NetEngine 8000 M Series Fixed Port 1*50G RTU (can switch to different combo mode)
+    LCR8S0M4AE1C1          Resource       6          M Series Fixed Port 1*50G RTU (can switch to different combo mode)
+ CR8S0M4AE1CB              --             1          NetEngine 8000 M Series 2*Fixed Port 10G Upgrade to 25G Enable RTU(per 25G)
+    LCR8S0M4AE1C2          Resource       2          M Series Fixed Port 10G Upgrade to 25G Enable RTU(per 25G)
+ CR8S00L3VPC4              --             20         NetEngine 8000 M Series L3VPN Port Function License(per 10GE)
+    LCR8S00L3VPC4          Resource       20         NetEngine 8000 M Series L3VPN Port Function License(per 10GE)
+ CR8S00TMSYC1              --             1          NetEngine 8000 M Series Time Synchronization Function License
+    LCR8S00TMSYC1          Function       YES        NetEngine 8000 M Series Time Synchronization Function License
+ CR8S0M4AE1CD              --             1          NetEngine 8000 M Series Fixed Port 2*50G Startup RTU (can switch to different combo mode)
+    LCR8S0M4AE1C1          Resource       2          M Series Fixed Port 1*50G RTU (can switch to different combo mode)
+ CR8S00CRAGC4              --             20         NetEngine 8000 M Series Core&Aggregation Scenario Port Function License(per 10GE)
+    LCR8S00CRAGC4          Resource       20         NetEngine 8000 M Series Core&Aggregation Scenario Port Function License(per 10GE)
+
+ Item name               (View)Resource License Command-line
+ -------------------------------------------------------------
+ LCR8S00CRAGC4           (License)active port-core-aggregation slot <slot-id> card <card-id> port <port-list>
+ LCR8S0M4AE1C2           (License)active port-basic slot <slot-id> card <card-id> port <port-list>
+ LCR8S00L3VPC4           (License)active port-l3vpn slot <slot-id> card <card-id> port <port-list>
+ LCR8S0M4AE1C1           (License)active port-basic slot <slot-id> card <card-id> port <port-list>
+ LCR8S00L3VPC2           (License)active port-l3vpn slot <slot-id> card <card-id> port <port-list>
+ LCR8S00CRAGC2           (License)active port-core-aggregation slot <slot-id> card <card-id> port <port-list>
+
+ Master board license state: Normal.
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display stp brief
+ Protocol Status       :Disabled 
+ Protocol Standard     :IEEE 802.1s
+ Version               :3
+ CIST Bridge Priority  :32768
+ MAC address           :****-****-****
+ Max age(s)            :20
+ Forward delay(s)      :15
+ Hello time(s)         :2
+ Max hops              :20
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display temperature slot 1
+                                     ^
+Error: Wrong parameter found at '^' position.
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display temperature slot 2
+                                     ^
+Error: Wrong parameter found at '^' position.
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display temperature slot 3
+                                     ^
+Error: Wrong parameter found at '^' position.
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display temperature slot 4
+                                     ^
+Error: Wrong parameter found at '^' position.
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display temperature slot 8
+                                     ^
+Error: Wrong parameter found at '^' position.
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display tunnel-info statistics
+TunnelType                               Number
+-----------------------------------------------------------
+srbe-lsp                                 35        
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+check version all startup
+Info: Prepare to check system software cfcard:/NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.cc, please wait ...................................................
+Info: System software signature check passed!
+Info: Software version match Ok!
+[~ta1-kie002-diagnose]
+
+=========######HUAWEI#####=========
+check version startup
+Info: Prepare to check system software cfcard:/NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.cc, please wait ...................................................
+Info: System software signature check passed!
+Info: Software version match Ok!
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls l2vc brief
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls static-l2vc brief
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls switch-l2vc brief
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display vsi
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display vrrp brief
+Info: The VRRP does not exist.
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display vrrp admin-vrrp
+Info: The administrator VRRP does not exist.
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ip interface brief
+*down: administratively down
+!down: FIB overload down
+^down: standby
+(l): loopback
+(s): spoofing
+(d): Dampening Suppressed
+(E): E-Trunk down
+(td): transceiver unmatch down
+(D): DF backup down
+The number of interface that is UP in Physical is 10
+The number of interface that is DOWN in Physical is 38
+The number of interface that is UP in Protocol is 9
+The number of interface that is DOWN in Protocol is 39
+
+Interface                         IP Address/Mask      Physical   Protocol VPN 
+100GE0/1/0                        unassigned           down       down     --  
+100GE0/1/1                        unassigned           down       down     --  
+100GE0/2/0                        unassigned           up         down     --  
+100GE0/3/0                        172.***.***.***/30   up         up       --  
+100GE0/4/0                        unassigned           down       down     --  
+100GE0/4/1                        unassigned           down       down     --  
+100GE0/5/0                        172.***.***.***/30   up         up       --  
+100GE0/5/1(100M)                  unassigned           down       down     --  
+100GE0/5/2(100M)                  unassigned           down       down     --  
+100GE0/5/3(100M)                  unassigned           down       down     --  
+25GE0/5/20(100M)                  unassigned           down       down     --  
+25GE0/5/21(100M)                  unassigned           down       down     --  
+25GE0/5/22(100M)                  unassigned           down       down     --  
+25GE0/5/23(100M)                  unassigned           down       down     --  
+25GE0/5/24(100M)                  unassigned           down       down     --  
+25GE0/5/25(100M)                  unassigned           down       down     --  
+25GE0/5/26(100M)                  unassigned           down       down     --  
+25GE0/5/27(100M)                  unassigned           down       down     --  
+25GE0/5/28(100M)                  unassigned           down       down     --  
+25GE0/5/29(100M)                  unassigned           down       down     --  
+25GE0/5/30(100M)                  unassigned           down       down     --  
+25GE0/5/31(100M)                  unassigned           down       down     --  
+25GE0/5/32(100M)                  unassigned           down       down     --  
+25GE0/5/33(100M)                  unassigned           down       down     --  
+25GE0/5/34(100M)                  172.***.***.***/30   up         up       --  
+25GE0/5/35(100M)                  unassigned           down       down     --  
+Ethernet0/0/0                     192.***.***.***/24   down       down     l3vpn
+GigabitEthernet0/5/4              unassigned           down       down     --  
+GigabitEthernet0/5/5              unassigned           down       down     --  
+GigabitEthernet0/5/6              unassigned           down       down     --  
+GigabitEthernet0/5/7              unassigned           down       down     --  
+GigabitEthernet0/5/8              unassigned           down       down     --  
+GigabitEthernet0/5/9              unassigned           down       down     --  
+GigabitEthernet0/5/10             unassigned           down       down     --  
+GigabitEthernet0/5/11             unassigned           down       down     --  
+GigabitEthernet0/5/12             unassigned           down       down     --  
+GigabitEthernet0/5/13             unassigned           down       down     --  
+GigabitEthernet0/5/14             unassigned           down       down     --  
+GigabitEthernet0/5/15             unassigned           down       down     --  
+GigabitEthernet0/5/16             unassigned           down       down     --  
+GigabitEthernet0/5/17             unassigned           down       down     --  
+GigabitEthernet0/5/18             unassigned           down       down     --  
+GigabitEthernet0/5/19             172.***.***.***/27   up         up       --  
+GigabitEthernet0/5/19.4013        172.***.***.***/27   up         up       --  
+LoopBack0                         172.***.***.***/32   up         up(s)    --  
+LoopBack1023                      128.***.***.***/16   up         up(s)    l3vpn
+NULL0                             unassigned           up         up(s)    --  
+Virtual-Template0                 unassigned           up         up(s)    --  
+
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display clock source
+  System trace source State:   freerun mode         
+                               out of pull-in range 
+  Current system trace source: empty                
+  Current 2M-1 trace source:   system PLL           
+  Frequency lock success:      no                   
+
+  Master board
+  Source               Pri(sys/2m-1)   In-SSM   Out-SSM   State          Ref
+  -------------------------------------------------------------------------- 
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display clock source freq-deviation
+  Frequency deviation detect:     enable
+  Source                               Freq-deviation-value 
+  ----------------------------------------------------------
+                                                                    
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ptp all
+  Device config info
+  ------------------------------------------------------------------------------
+  PTP state         :disable              Domain  value      :0
+  Slave only        :no                   Device type        :no mode
+  Set port state    :no                   Local clock ID     :ccbce3fffe1bc6f7
+  Acl               :no                   Virtual clock ID   :no
+  Acr               :no                   Time lock success  :no
+  Asymmetry measure :disable              Passive measure    :enabled
+  Send GM WTR       :no
+
+  BMC run info
+  ------------------------------------------------------------------------------
+  Source port       :local
+
+  Clock source info
+  Clock       Pri1 Pri2 Accuracy Class TimeSrc Signal Switch Direction In-Status
+  ------------------------------------------------------------------------------
+  local       128  128  0x31     187   0xa0    -      -      -         -
+  bits1       128  128  0x20     6     0x20    1pps   off    in/-      abnormal
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ptp-adaptive all
+  Device config info
+  ------------------------------------------------------------------------------
+  Ptp adaptive state      :disable          Device type        :none            
+  Sync mode               :none             Current state      :none            
+  Packet dscp             :56               Domain value       :0               
+  Local ip                :no local ip      
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display debugging
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display vpls connection
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls l2vc
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display vsi verbose
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display vpls connection verbose
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls switch-l2vc
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls ldp peer all
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ospf peer brief
+
+(M) Indicates MADJ neighbor
+
+
+          OSPF Process 1 with Router ID 172.16.253.129
+                   Peer Statistic Information
+Total number of peer(s): 7       
+ Peer(s) in full state: 7       
+-----------------------------------------------------------------------------
+ Area Id         Interface                  Neighbor id          State       
+ 0.0.0.0         100GE0/3/0                 172.***.***.***       Full        
+ 0.0.0.0         100GE0/5/0                 172.***.***.***       Full        
+ 0.0.1.1         100GE0/3/0                 172.***.***.***(M)    Full       
+ 0.0.1.2         100GE0/3/0                 172.***.***.***(M)    Full       
+-----------------------------------------------------------------------------
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ntp-service status
+ clock status: unsynchronized
+ clock stratum: 16
+ reference clock ID: none 
+ nominal frequency: 100.0000 Hz
+ actual frequency: 100.0000 Hz
+ clock precision: 2^17
+ clock offset: 0.0000 ms
+ root delay: 0.00 ms
+ root dispersion: 0.00 ms
+ peer dispersion: 0.00 ms
+ reference time: 00:00:00.000 UTC Jan 1 1900(00000000.00000000)
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ospf interface verbose
+
+          OSPF Process 1 with Router ID 172.***.***.***
+                  Interfaces
+
+ Area: 0.0.0.0          (MPLS TE enabled)
+
+ Interface: 172.***.***.*** (100GE0/3/0) --> 172.***.***.***
+ Cost: 100       State: P-2-P         Type: P2P            MTU: 1500
+ Timers: Hello 10 , Dead 40 , Wait 40 , Poll 120 , Retransmit 5 , Transmit Delay 1
+ MPLS Traffic-Engineering Link
+ BFD Timers: Tx-Interval 10 , Rx-Interval 10 , Multiplier 3
+ ALLSPF GROUP
+ OpaqueId: 0   PrevState: Down   Bandwidth: 100000 Mbps   Remain-Bandwidth: 100000 Mbps
+ Effective cost : 100, enabled by OSPF Protocol
+ Bfd Incr-Cost Wtr RemainTime : 0s
+ Link quality adjust cost: NO, link quality: 0x0(GOOD)
+ Suppress flapping peer: enable(flapping-count: 0, threshold: 10)
+ Multi-area Interface Count is 2  
+ Label Stack Depth: 10
+ Packet Statistics
+              Type        Input     Output
+             Hello      1125318    1124531
+    DB Description           18         18
+    Link-State Req            2          2
+ Link-State Update      1796347    2076676
+    Link-State Ack      1408509    1142827
+
+ Area: 0.0.1.1           (MPLS TE enabled)
+
+ Interface: 172.***.***.*** (100GE0/3/0) --> 172.***.***.***
+ Cost: 10000       State: P-2-P         Type: P2P            MTU: 1500
+ Timers: Hello 10 , Dead 40 , Wait 40 , Poll 120 , Retransmit 5 , Transmit Delay 1
+ MPLS Traffic-Engineering Link
+ BFD Timers: Tx-Interval 10 , Rx-Interval 10 , Multiplier 3
+ ALLSPF GROUP
+ OpaqueId: 0   PrevState: Down   Bandwidth: 100000 Mbps   Remain-Bandwidth: 100000 Mbps
+ Effective cost : 10000, enabled by OSPF Protocol
+ Bfd Incr-Cost Wtr RemainTime : 0s
+ Link quality adjust cost: NO, link quality: 0x0(GOOD)
+ Suppress flapping peer: enable(flapping-count: 0, threshold: 10)
+ Multi-area interface
+ Label Stack Depth: 10
+ Packet Statistics
+              Type        Input     Output
+             Hello      1126706    1124523
+    DB Description           14         14
+    Link-State Req            1          1
+ Link-State Update      1117501    1583616
+    Link-State Ack       916292     479598
+	
+ Area: 0.0.1.2            (MPLS TE enabled)
+
+ Interface: 172.***.***.*** (100GE0/3/0) --> 172.***.***.***
+ Cost: 10000       State: P-2-P         Type: P2P            MTU: 1500
+ Timers: Hello 10 , Dead 40 , Wait 40 , Poll 120 , Retransmit 5 , Transmit Delay 1
+ MPLS Traffic-Engineering Link
+ BFD Timers: Tx-Interval 10 , Rx-Interval 10 , Multiplier 3
+ ALLSPF GROUP
+ OpaqueId: 0   PrevState: Down   Bandwidth: 100000 Mbps   Remain-Bandwidth: 100000 Mbps
+ Effective cost : 10000, enabled by OSPF Protocol
+ Bfd Incr-Cost Wtr RemainTime : 0s
+ Link quality adjust cost: NO, link quality: 0x0(GOOD)
+ Suppress flapping peer: enable(flapping-count: 0, threshold: 10)
+ Multi-area interface
+ Label Stack Depth: 10
+ Packet Statistics
+              Type        Input     Output
+             Hello      1126575    1124541
+    DB Description           10         10
+    Link-State Req            1          0
+ Link-State Update       124160     429915
+    Link-State Ack       387406      83251
+
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ip vpn-instance
+ Total VPN-Instances configured      : 2
+ Total IPv4 VPN-Instances configured : 2
+ Total IPv6 VPN-Instances configured : 1
+
+  VPN-Instance Name               RD                    Address-family
+  ******                                     IPv4          
+  ******                                     IPv6          
+  ***                                        IPv4          
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display router id vpn-instance ******
+RouterID:10.***.***.***
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display router id vpn-instance ***
+RouterID:192.***.***.***
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls ldp peer statistics
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls te protection tunnel all
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls l2vpn pw-aps
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display mpls l2vc oam-mapping
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display aps group
+<ta1-kie002>
+
+=========######HUAWEI#####=========
+display ip routing-table all-vpn-instance statistics
+Summary Prefixes : 615
+Proto      total      active     added      deleted    freed
+           routes     routes     routes     routes     routes
+DIRECT     53         53         1335       1282       1282       
+STATIC     0          0          0          0          0          
+RIP        0          0          0          0          0          
+OSPF       734        687        136003     135269     135269     
+IS-IS      0          0          0          0          0          
+BGP        0          0          0          0          0          
+UNR        0          0          0          0          0          
+Total      787        740        137338     136551     136551     
+<ta1-kie002>
+
+=========######HUAWEI#####=========
