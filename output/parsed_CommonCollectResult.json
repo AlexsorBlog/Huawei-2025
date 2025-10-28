@@ -1,1 +1,2125 @@
-{"identity":{"hostname":"ta1-kie002","sysname":"ta1-kie002","model":"NetEngine 8000","version":"8.231","serial":"2102355FTE","router_id_public":"172.","router_ids":{"******":"10.","***":"192."},"timezone":"defaultName","current_time":null,"patch_status":"Info: No patch exists.","config_saved":"cfcard:/config.cfg","ssh_users":["kyivstar","root","stelnetuser"],"mac_addrs":{"chassis":null,"base":null}},"software":{"version":"8.231","uptime":"168 days, 5 hours, 11 minutes"},"ntp":{"state":"unsynchronized","stratum":16,"servers":[]},"resources":{"cpu":[{"avg":13,"max":28,"ts":"2025-04-24 11:18:34 182","per_service":[{"name":"AAA","pct":0},{"name":"ARP","pct":0},{"name":"BRAS","pct":0},{"name":"CMF","pct":0},{"name":"CSP","pct":0},{"name":"CSPF","pct":0},{"name":"DEVICE","pct":0},{"name":"DHCP","pct":0},{"name":"ETRUNK","pct":0},{"name":"EUM","pct":0},{"name":"FEA","pct":0},{"name":"FEC","pct":0},{"name":"FIBRESM","pct":0},{"name":"IFM","pct":0},{"name":"L2VPN","pct":0},{"name":"LDT","pct":0},{"name":"LINK","pct":0},{"name":"LLDP","pct":0},{"name":"MFLP","pct":0},{"name":"MSTP","pct":0},{"name":"ND","pct":0},{"name":"NETSTREAM","pct":0},{"name":"OAM","pct":0},{"name":"OSPF","pct":0},{"name":"PCE","pct":0},{"name":"PKI","pct":0},{"name":"PNP","pct":0},{"name":"PTPA","pct":0},{"name":"RBS","pct":0},{"name":"RGM","pct":0},{"name":"RM","pct":0},{"name":"SLA","pct":0},{"name":"SMLK","pct":0},{"name":"SOC","pct":0},{"name":"SVRO","pct":0},{"name":"TEM","pct":0},{"name":"TNLM","pct":0},{"name":"TUNNEL","pct":0},{"name":"VLAN","pct":0}]}],"memory":[],"disk":[],"power":[{"slot":"5","input_voltage_v":null,"input_current_a":null,"total_power_w":null},{"slot":"6","input_voltage_v":54.26,"input_current_a":2.83,"total_power_w":153.63},{"slot":"7","input_voltage_v":54.29,"input_current_a":4.72,"total_power_w":256.41},{"slot":"8","input_voltage_v":null,"input_current_a":null,"total_power_w":null},{"slot":"9","input_voltage_v":null,"input_current_a":null,"total_power_w":null}],"temperature":[{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":48},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":41},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":62},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":63},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":62},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":63},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":58},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":58},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":55},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":46},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":49},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":54},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":57},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":46},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":47},{"pcb":"DP21CPUA","slot":"5","status":"NORMAL","temp_c":69},{"pcb":"DP21CPUA","slot":"5","status":"NORMAL","temp_c":70},{"pcb":"DP21CPUA","slot":"5","status":"NORMAL","temp_c":70},{"pcb":"DP21CPUA","slot":"5","status":"NORMAL","temp_c":69},{"pcb":"DP21CPUA","slot":"5","status":"NORMAL","temp_c":70},{"pcb":"CR51E2NBF1","slot":"1","status":"NORMAL","temp_c":43},{"pcb":"CR51E2NBF1","slot":"1","status":"NORMAL","temp_c":49},{"pcb":"CR51E2NBF1","slot":"1","status":"NORMAL","temp_c":52},{"pcb":"CR51E2NBF1","slot":"1","status":"NORMAL","temp_c":43},{"pcb":"CR51E1NCK0","slot":"2","status":"NORMAL","temp_c":45},{"pcb":"CR51E1NCK0","slot":"2","status":"NORMAL","temp_c":54},{"pcb":"CR51E1NCK0","slot":"2","status":"NORMAL","temp_c":53},{"pcb":"CR51E1NCK0","slot":"2","status":"NORMAL","temp_c":54},{"pcb":"CR51E1NCK0","slot":"3","status":"NORMAL","temp_c":41},{"pcb":"CR51E1NCK0","slot":"3","status":"NORMAL","temp_c":46},{"pcb":"CR51E1NCK0","slot":"3","status":"NORMAL","temp_c":46},{"pcb":"CR51E1NCK0","slot":"3","status":"NORMAL","temp_c":45},{"pcb":"CR51E2NBF1","slot":"4","status":"NORMAL","temp_c":47},{"pcb":"CR51E2NBF1","slot":"4","status":"NORMAL","temp_c":56},{"pcb":"CR51E2NBF1","slot":"4","status":"NORMAL","temp_c":58},{"pcb":"CR51E2NBF1","slot":"4","status":"NORMAL","temp_c":47},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":48},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":41},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":62},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":63},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":62},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":63},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":58},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":58},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":55},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":46},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":49},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":54},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":57},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":46},{"pcb":"CR81E4NBIYFS","slot":"5","status":"NORMAL","temp_c":47},{"pcb":"DP21CPUA","slot":"5","status":"NORMAL","temp_c":69},{"pcb":"DP21CPUA","slot":"5","status":"NORMAL","temp_c":70},{"pcb":"DP21CPUA","slot":"5","status":"NORMAL","temp_c":70},{"pcb":"DP21CPUA","slot":"5","status":"NORMAL","temp_c":69},{"pcb":"DP21CPUA","slot":"5","status":"NORMAL","temp_c":70},{"pcb":"CR51E2NBF1","slot":"1","status":"NORMAL","temp_c":43},{"pcb":"CR51E2NBF1","slot":"1","status":"NORMAL","temp_c":49},{"pcb":"CR51E2NBF1","slot":"1","status":"NORMAL","temp_c":52},{"pcb":"CR51E2NBF1","slot":"1","status":"NORMAL","temp_c":43},{"pcb":"CR51E1NCK0","slot":"2","status":"NORMAL","temp_c":45},{"pcb":"CR51E1NCK0","slot":"2","status":"NORMAL","temp_c":54},{"pcb":"CR51E1NCK0","slot":"2","status":"NORMAL","temp_c":53},{"pcb":"CR51E1NCK0","slot":"2","status":"NORMAL","temp_c":54},{"pcb":"CR51E1NCK0","slot":"3","status":"NORMAL","temp_c":41},{"pcb":"CR51E1NCK0","slot":"3","status":"NORMAL","temp_c":46},{"pcb":"CR51E1NCK0","slot":"3","status":"NORMAL","temp_c":46},{"pcb":"CR51E1NCK0","slot":"3","status":"NORMAL","temp_c":45},{"pcb":"CR51E2NBF1","slot":"4","status":"NORMAL","temp_c":47},{"pcb":"CR51E2NBF1","slot":"4","status":"NORMAL","temp_c":56},{"pcb":"CR51E2NBF1","slot":"4","status":"NORMAL","temp_c":58},{"pcb":"CR51E2NBF1","slot":"4","status":"NORMAL","temp_c":47},{"pcb":"DP22PDC1K2A1","slot":"6","status":"NORMAL","temp_c":45},{"pcb":"DP22PDC1K2A1","slot":"7","status":"NORMAL","temp_c":45}],"fan":[{"status":"AUTO","speeds":[{"id":1,"speed_percent":35},{"id":2,"speed_percent":35}]}]},"hardware":{"cards":[{"slot":"1","type":"PIC","online":"Present","register":"Registered","status":"Normal","role":"OTHER"},{"slot":"2","type":"PIC","online":"Present","register":"Registered","status":"Normal","role":"OTHER"},{"slot":"3","type":"PIC","online":"Present","register":"Registered","status":"Normal","role":"OTHER"},{"slot":"4","type":"PIC","online":"Present","register":"Registered","status":"Normal","role":"OTHER"},{"slot":"5","type":"IPU","online":"Present","register":"Registered","status":"Normal","role":"MMB"},{"slot":"6","type":"PWR","online":"Present","register":"Registered","status":"Normal","role":"OTHER"},{"slot":"7","type":"PWR","online":"Present","register":"Registered","status":"Normal","role":"OTHER"},{"slot":"8","type":"FAN","online":"Present","register":"Registered","status":"Normal","role":"OTHER"},{"slot":"9","type":"CLK","online":"Present","register":"Registered","status":"Normal","role":"OTHER"}],"pics":[{"pic":"5/1","status":"Registered","type":"ETH_2x100GB_CARD","port_count":"2","init_result":"SUCCESS","logic_down":"SUCCESS"},{"pic":"5/2","status":"Registered","type":"OTN_100GC_CARD","port_count":"1","init_result":"SUCCESS","logic_down":"SUCCESS"},{"pic":"5/3","status":"Registered","type":"OTN_100GC_CARD","port_count":"1","init_result":"SUCCESS","logic_down":"SUCCESS"},{"pic":"5/4","status":"Registered","type":"ETH_2x100GB_CARD","port_count":"2","init_result":"SUCCESS","logic_down":"SUCCESS"},{"pic":"5/5","status":"Registered","type":"ETH_4x100G_16xGE_16x25G","port_count":"36","init_result":"SUCCESS","logic_down":"SUCCESS"},{"pic":"5/78","status":"Registered","type":"FLEXE_VIRTUAL_CARD","port_count":"0","init_result":"SUCCESS","logic_down":"SUCCESS"},{"pic":"5/79","status":"Registered","type":"FLEXE_VIRTUAL_CARD","port_count":"0","init_result":"SUCCESS","logic_down":"SUCCESS"}],"elabels":[{"scope":"unknown","slot":null,"manufacturer":null,"part_number":null,"barcode":null,"item":null,"description":null,"model":null}],"sfp":[{"port":"ETH0/5/10","wavelength_nm":1310},{"port":"ETH0/5/12","wavelength_nm":1310},{"port":"ETH0/5/13","wavelength_nm":1310},{"port":"ETH0/5/14","wavelength_nm":1310},{"port":"ETH0/5/15","wavelength_nm":1310},{"port":"ETH0/5/16","wavelength_nm":1310},{"port":"ETH0/5/17","wavelength_nm":1310},{"port":"ETH0/5/18","wavelength_nm":1310},{"port":"ETH0/5/19","wavelength_nm":1310},{"port":"ETH0/5/34","wavelength_nm":1311}]},"interfaces":[{"name":"Ethernet0/0/0","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"HALF","bandwidth_mbps":1000},{"name":"Virtual-Template0"},{"name":"GigabitEthernet0/5/4","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/5","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/6","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/7","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/8","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/9","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/10","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/11","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/12","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/13","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/14","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/15","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/16","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/17","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/18","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/19","status":"up","protocol":"up","in_util":"0.37%","out_util":"0.59%","duplex":"FULL","bandwidth_mbps":1000},{"name":"GigabitEthernet0/5/19.20"},{"name":"25GE0/5/20","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/21","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/22","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/23","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/24","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/25","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/26","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/27","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/28","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/29","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/30","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/31","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/32","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/33","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/34","duplex":"FULL","bandwidth_mbps":100},{"name":"25GE0/5/35","duplex":"FULL","bandwidth_mbps":100},{"name":"100GE0/1/0","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":100000},{"name":"100GE0/1/1","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":100000},{"name":"100GE0/2/0","status":"up","protocol":"down","in_util":"0.01%","out_util":"0.01%","duplex":"FULL","bandwidth_mbps":100000},{"name":"100GE0/3/0","status":"up","protocol":"up","in_util":"0.01%","out_util":"0.01%","duplex":"FULL","bandwidth_mbps":100000},{"name":"100GE0/4/0","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":100000},{"name":"100GE0/4/1","status":"down","protocol":"down","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":100000},{"name":"100GE0/5/0","status":"up","protocol":"up","in_util":"0.01%","out_util":"0.01%","duplex":"FULL","bandwidth_mbps":100000},{"name":"100GE0/5/1","duplex":"FULL","bandwidth_mbps":100},{"name":"100GE0/5/2","duplex":"FULL","bandwidth_mbps":100},{"name":"100GE0/5/3","duplex":"FULL","bandwidth_mbps":100},{"name":"LoopBack0","description":"Router_ID","status":"up","protocol":"up(s)","in_util":"0%","out_util":"0%"},{"name":"LoopBack1023","description":"DCN loopback interface","status":"up","protocol":"up(s)","in_util":"0%","out_util":"0%"},{"name":"NULL0","description":"default","status":"up","protocol":"up(s)","in_util":"0%","out_util":"0%"},{"name":"100GE0/5/1(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"100GE0/5/2(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"100GE0/5/3(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/20(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/21(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/22(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/23(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/24(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/25(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/26(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/27(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/28(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/29(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/30(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/31(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/32(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/33(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"25GE0/5/34(100M)","status":"up","protocol":"up","in_util":"0.28%","out_util":"0.24%"},{"name":"25GE0/5/35(100M)","status":"down","protocol":"down","in_util":"0%","out_util":"0%"},{"name":"GigabitEthernet0/5/19.4013","status":"up","protocol":"up","in_util":"0%","out_util":"0%","duplex":"FULL","bandwidth_mbps":1000}],"protocols":{"mac":[],"arp":[{"stats":{"total":24,"dynamic":24}}],"vlans":[],"trunks":[],"lldp":{"enabled":true,"neighbors":[]},"vrrp":{"enabled":false,"groups":[]},"bfd":{"sessions":[{"local":"16385","remote":"16385","peer_ip":"172.***.***.***","state":"Up","type":"D_IP_IF","interface":"100GE0/5/0"},{"local":"16388","remote":"16385","peer_ip":"172.***.***.***","state":"Up","type":"D_IP_IF","interface":"25GE0/5/34"},{"local":"16389","remote":"16388","peer_ip":"172.***.***.***","state":"Up","type":"D_IP_IF","interface":"100GE0/3/0"}],"config":{},"reflector":{}},"ospf":{"neighbors":[{"area":"display","interface":"ospf","neighbor_id":"peer","state":"brief"},{"area":"(M)","interface":"Indicates","neighbor_id":"MADJ","state":"neighbor"},{"area":"OSPF","interface":"Process","neighbor_id":"1","state":"with"},{"area":"Total","interface":"number","neighbor_id":"of","state":"peer(s):"},{"area":"Peer(s)","interface":"in","neighbor_id":"full","state":"state:"},{"area":"0.0.0.0","interface":"100GE0/3/0","neighbor_id":"172.***.***.***","state":"Full"},{"area":"0.0.0.0","interface":"100GE0/5/0","neighbor_id":"172.***.***.***","state":"Full"},{"area":"0.0.1.1","interface":"100GE0/3/0","neighbor_id":"172.***.***.***","state":"Full"},{"area":"0.0.1.2","interface":"100GE0/3/0","neighbor_id":"172.***.***.***","state":"Full"}],"areas":[],"router_ids":{}},"isis":{"neighbors":[],"areas":[]},"bgp":{"neighbors":[],"vpnv4":[],"vpnv6":[]},"vrfs":[{"name":"******","af":null,"router_id":"10."},{"name":"***","af":null,"router_id":"192."}],"mpls":{"ldp":{},"te":{},"sr":{"srgb":{"start":17000,"end":18000},"srlb":null,"lsp_stats":{"srbe":35}}},"evpn":[]},"routing":{"table_summary":[{"vrf":null,"total_routes":299,"summary_prefixes":238}],"static":[]},"licenses":[{"sale_name":"CR8S00L3VPC2","item_name":"LCR8S00L3VPC2","control_value":"28","used_value":"0","description":"NetEngine 8000 M Series L3VPN Port Function License(per 50GE/40GE)"}],"alarms":[{"sequence":1,"level":"Critical","date":"2025-04-24","time":"11:48:35+03:00","description":"GigabitEthernet0/5/10 is failed, the o"},{"sequence":2,"level":"Critical","date":"2025-04-24","time":"11:32:23+03:00","description":"GigabitEthernet0/5/12 is failed, the o"},{"sequence":3,"level":"Critical","date":"2025-04-24","time":"11:18:45+03:00","description":"GigabitEthernet0/5/18 is failed, the o"},{"sequence":4,"level":"Critical","date":"2025-04-24","time":"11:18:45+03:00","description":"GigabitEthernet0/5/17 is failed, the o"},{"sequence":5,"level":"Critical","date":"2025-04-24","time":"11:18:45+03:00","description":"GigabitEthernet0/5/16 is failed, the o"},{"sequence":6,"level":"Critical","date":"2025-04-24","time":"11:18:45+03:00","description":"GigabitEthernet0/5/15 is failed, the o"},{"sequence":7,"level":"Critical","date":"2025-04-24","time":"11:18:45+03:00","description":"GigabitEthernet0/5/14 is failed, the o"},{"sequence":8,"level":"Critical","date":"2025-04-24","time":"11:18:45+03:00","description":"GigabitEthernet0/5/13 is failed, the o"},{"sequence":311605,"alarm_id":"0x1009B","name":"hwIpRanDcnNeNumberOverLoad","severity":"Major","state":"active","start_time":"2025-10-07 13:34:34+03:00 DST           ","description":"DCN NE number overload start. (NeNumber=609)"},{"sequence":64162,"alarm_id":"0xF1001D","name":"hwNtpSynchronizationFailure","severity":"Minor","state":"active","start_time":"2025-05-28 12:26:24+03:00 DST           ","description":"NTP synchronization state changed. (State = unsynchronized, SynchronizationSourceAddress = none)"}],"raw_sections":{"return":[{"raw":"return"},{"raw":"return"},{"raw":"return"},{"raw":"return"},{"raw":"return"},{"raw":"return"},{"raw":"return"},{"raw":"return"},{"raw":"return"},{"raw":"return"},{"raw":"return"}],"display_diameter_configuration":[{"raw":"display diameter configuration"}],"display_bas_interface":[{"raw":"display bas-interface"}],"display_license_resource_usage":[{"raw":"display license resource usage\nInfo: Active license on master board: cfcard:/2102355FTE_LICNetEngine8000M4_V800R023.xml.\n--------------------------------------------------------------------------------\nFeatureName              ConfigureItemName                         ResourceUsage\n--------------------------------------------------------------------------------\nCRFEA5                   LCR8S00CRAGC2                                      6/28\nCRFEA5                   LCR8S00CRAGC4                                      2/20\nCRFEA5                   LCR8S00L3VPC2                                      0/28\nCRFEA5                   LCR8S00L3VPC4                                      0/20\nCRFEA5                   LCR8S0M4AE1C1                                       2/8\nCRFEA5                   LCR8S0M4AE1C2                                       0/2\n--------------------------------------------------------------------------------"}],"display_access_user_slot":[{"raw":"display access-user slot\nInfo: No online user!"}],"system":[{"raw":"system\nEnter system view, return user view with return command.\n[~ta1-kie002]"},{"raw":"system\nEnter system view, return user view with return command.\n[~ta1-kie002]"},{"raw":"system\nEnter system view, return user view with return command.\n[~ta1-kie002]"},{"raw":"system\nEnter system view, return user view with return command.\n[~ta1-kie002]"},{"raw":"system\nEnter system view, return user view with return command.\n[~ta1-kie002]"},{"raw":"system\nEnter system view, return user view with return command.\n[~ta1-kie002]"}],"diagnose":[{"raw":"diagnose\nWarning: Enter diagnose view, return user view with Ctrl+Z.\nInfo: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.\n[~ta1-kie002-diagnose]"},{"raw":"diagnose\nWarning: Enter diagnose view, return user view with Ctrl+Z.\nInfo: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.\n[~ta1-kie002-diagnose]"},{"raw":"diagnose\nWarning: Enter diagnose view, return user view with Ctrl+Z.\nInfo: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.\n[~ta1-kie002-diagnose]"},{"raw":"diagnose\nWarning: Enter diagnose view, return user view with Ctrl+Z.\nInfo: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.\n[~ta1-kie002-diagnose]"},{"raw":"diagnose\nWarning: Enter diagnose view, return user view with Ctrl+Z.\nInfo: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.\n[~ta1-kie002-diagnose]"},{"raw":"diagnose\nWarning: Enter diagnose view, return user view with Ctrl+Z.\nInfo: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.\n[~ta1-kie002-diagnose]"}],"display_voltage_corrosion_slot_5":[{"raw":"display voltage corrosion slot 5\n                                      ^\nError: Too many parameters found at '^' position.\n[~ta1-kie002-diagnose]"}],"display_voltage_corrosion_slot_5_pic_1":[{"raw":"display voltage corrosion slot 5 pic 1\n                                      ^\nError: Too many parameters found at '^' position.\n[~ta1-kie002-diagnose]"}],"display_voltage_corrosion_slot_5_pic_2":[{"raw":"display voltage corrosion slot 5 pic 2\n                                      ^\nError: Too many parameters found at '^' position.\n[~ta1-kie002-diagnose]"}],"display_voltage_corrosion_slot_5_pic_3":[{"raw":"display voltage corrosion slot 5 pic 3\n                                      ^\nError: Too many parameters found at '^' position.\n[~ta1-kie002-diagnose]"}],"display_voltage_corrosion_slot_5_pic_4":[{"raw":"display voltage corrosion slot 5 pic 4\n                                      ^\nError: Too many parameters found at '^' position.\n[~ta1-kie002-diagnose]"}],"display_voltage_corrosion_slot_5_pic_5":[{"raw":"display voltage corrosion slot 5 pic 5\n                                      ^\nError: Too many parameters found at '^' position.\n[~ta1-kie002-diagnose]"}],"display_mbusnode":[{"raw":"display mbusnode\n                    ^\nError: Unrecognized command found at '^' position."}],"display_assert_10_verbose_all":[{"raw":"display assert 10 verbose all\nInfo: The assert record does not exist.\n[~ta1-kie002-diagnose]"}],"display_access_user":[{"raw":"display access-user\n  ------------------------------------------------------------------------------\n  Total users                        : 2\n  IPv4 users                         : 0\n  IPv6 users                         : 0\n  Dual-Stack users                   : 0\n  Lac users                          : 0\n  RUI local users                    : 0\n  RUI remote users                   : 0\n  Wait authen-ack                    : 0\n  Authentication success             : 2\n  Accounting ready                   : 2\n  Accounting state                   : 0\n  Wait leaving-flow-query            : 0\n  Wait accounting-start              : 0\n  Wait accounting-stop               : 0\n  Wait authorization-client          : 0\n  Wait authorization-server          : 0\n  ------------------------------------------------------------------------------\n  Domain-name                        Online-user\n  ------------------------------------------------------------------------------\n  default0                           : 0                                    \n  default1                           : 0                                    \n  default_admin                      : 2                                    \n  ------------------------------------------------------------------------------\n  The used CID table are             :\n  2094571-2094572\n  ------------------------------------------------------------------------------"}],"display_max_onlineusers":[{"raw":"display max-onlineusers\n Max online users since startup             : 0\n Time of max online users                   : -\n Max accounting-ready users since startup   : 0\n Time of max accounting-ready users         : -\n Max normal & RUI local users since startup : 0\n Time of max normal & RUI local users       : -\n Max RUI remote users since startup         : 0\n Time of max RUI remote users               : -"}],"display_radius_attribute_used":[{"raw":"display radius-attribute used\nRadius attribute received from Server:\nAttribute Name                                    Type\n----------------------------------------------------------------\n\n\nRadius attribute sended to Server:\nAttribute Name                                    Type\n----------------------------------------------------------------\n\n[~ta1-kie002-diagnose]"}],"display_loopback_detect_information":[{"raw":"display loopback-detect information\nInfo: There is no block interface in this router.\n[~ta1-kie002-diagnose]"}],"display_bfd_statistics":[{"raw":"display bfd statistics\nCurrent Display Board Number : Main\nTotal Up/Down Session Number : 3/0\nTotal Up/Down Main Session Number : 0/0\nTotal Up/Down Sub Session Number  : 0/0\nTotal Used/Supported Resource Number  : 4/4096\nTotal Used/Supported Crc Resource Number  : 0/1024\nCurrent Session Number :\n      Static session           : 0                Dynamic session        : 3\n      E_Dynamic session        : 0                STATIC_AUTO session    : 0\n      LDP_LSP session          : 0                STATIC_LSP session     : 0\n      TE_TUNNEL session        : 0                TE_LSP session         : 0\n      PW session               : 0                IP session             : 3\n      VSI PW session           : 0                LDP_TUNNEL session     : 0\n      BGP_TUNNEL session       : 0                SR_BE_TUNNEL session   : 0\n      FLEX_ALGO_TUNNEL session : 0                SID_LIST session       : 0\n      S-BFD reflect session    : 1                P2MP session           : 0\n      EVPN_VPWS session        : 0               \n--------------------------------------------------------------------------------\nPAF/LCS Name                       Maxnum         Minnum         Create\n--------------------------------------------------------------------------------\nBFD_SESSION_NUM                    4096           1              4\nBFD_IO_SESSION_NUM                 4096           1              -\n--------------------------------------------------------------------------------\nIO Board Current Create Session Statistics Information :(slot/number)\n--------------------------------------------------------------------------------\n0 /0     5 /3     \n--------------------------------------------------------------------------------\nCurrent Total Used Discriminator Num               : 4\n--------------------------------------------------------------------------------\nBFD HA Information :\n--------------------------------------------------------------------------------\nCurrent HA Status                                  : Work\n--------------------------------------------------------------------------------\nBFD for LSP Information :\n--------------------------------------------------------------------------------\nAbility of auto creating BFD session on egress     : Enable \nPeriod of LSP Ping                                 : 60\n--------------------------------------------------------------------------------\nBFD Global Information :\n--------------------------------------------------------------------------------\nSystem Session Delay Up Timer                      : OFF  \n--------------------------------------------------------------------------------"}],"display_bgp_ipv6_peer":[{"raw":"display bgp ipv6 peer"}],"display_bgp_vpnv6_all_peer":[{"raw":"display bgp vpnv6 all peer"}],"display_bgp_evpn_peer":[{"raw":"display bgp evpn peer"}],"dir_cfcard_":[{"raw":"dir cfcard:\nDirectory of cfcard:/\n\n  Idx  Attr     Size(Byte)  Date        Time       FileName                     \n    0  dr-x              -  Oct 09 2025 02:00:00   $_checkpoint                 \n    1  dr-x              -  Jul 17 2020 04:00:00   $_install_hpg                \n    2  dr-x              -  Jul 17 2020 04:00:00   $_install_mod                \n    3  dr-x              -  Sep 02 2025 12:51:51   $_license                    \n    4  drwx              -  Mar 26 2024 06:43:32   $_platform                   \n    5  dr-x              -  May 28 2025 12:27:56   $_security_info              \n    6  dr-x              -  Apr 24 2025 11:17:25   $_startup                    \n    7  dr-x              -  Apr 24 2025 11:17:00   $_system                     \n    8  dr-x              -  Nov 20 2024 16:40:00   $_user                       \n    9  drwx              -  Jul 07 2025 17:20:26   07_07_2025                   \n   10  drwx              -  Oct 09 2025 15:46:59   KPISTAT                      \n   11  drwx              -  Nov 20 2024 16:43:37   KPI_HEALTH                   \n   12  drwx              -  Nov 20 2024 16:43:37   KPI_SAID                     \n   13  drwx              -  Nov 20 2024 16:36:55   L3UC_dropCauseLog            \n   14  -rw-     51,989,606  May 18 2025 16:14:08   NE8000-M4M8M14V800R024SPH122-C00SPC500.PAT\n   15  -rw-  1,194,757,780  Jan 01 2022 02:05:59   NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.cc              \n   16  -rw-              0  Nov 20 2024 08:55:03   backup_bkp_elb.txt           \n   17  drwx              -  Nov 20 2024 16:40:08   bill                         \n   18  drwx              -  Nov 20 2024 08:54:58   bootlogfile                  \n   19  drwx              -  Nov 20 2024 16:40:09   business-trace               \n   20  -rw-         23,274  Oct 09 2025 03:59:35   config.cfg                   \n   21  -rw-          2,269  Nov 20 2024 08:54:06   default-custom_NetEngine_8000_M4_NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.defcfg\n   22 -rw-          15,312  Oct 09 2025 03:59:35   device.sys                   \n   23  drwx              -  Nov 20 2024 16:36:55   dropCauseLog                 \n   24  drwx              -  Nov 20 2024 16:38:06   eva                          \n   25  drwx              -  Nov 20 2024 16:38:00   hips                         \n   26  drwx              -  Nov 20 2024 16:36:55   insegdroplog                 \n   27  drwx              -  Nov 20 2024 16:36:55   insegdroplog_ldp             \n   28 drwx               -  Nov 20 2024 16:36:55   insegdroplog_te              \n   29 -rw-           4,640  Apr 24 2025 11:16:11   lcsbox                       \n   30 -rw-          10,528  Sep 02 2025 12:51:48   lcsbox_ex                    \n   31 dr-x               -  Oct 09 2025 10:53:49   logfile                      \n   32 drwx               -  Jan 01 2022 02:05:54   lost+found                   \n   33 drwx               -  Nov 20 2024 16:44:58   open-ssh                     \n   34 drwx               -  Oct 09 2025 03:00:00   pmdata                       \n   35 drwx               -  Oct 06 2025 06:17:13   said                         \n   36 drwx               -  Jul 17 2020 04:00:00   security                     \n   37 drwx               -  Apr 24 2025 11:17:25   ztp                          \n\n13,238,234 KB total (9,194,587 KB free)"}],"dir_cfcard2_":[{"raw":"dir cfcard2:\nError: Device can't be found \"cfcard2:\"."}],"dir_slave_cfcard_":[{"raw":"dir slave#cfcard:\nError: Device can't be found \"slave#cfcard\"."}],"dir_slave_cfcard2_":[{"raw":"dir slave#cfcard2:\nError: Device can't be found \"slave#cfcard2\"."}],"display_nat_instance":[{"raw":"display nat instance"}],"display_health":[{"raw":"display health\n--------------------------------------------------------------------\nSlot                           CPU Usage  Memory Usage(Used/Total)\n--------------------------------------------------------------------\n5           IPU(Master)            13%          26%   3935MB/14798MB\n--------------------------------------------------------------------"}],"display_exception_10_verbose_all":[{"raw":"display exception 10 verbose all\nInfo: The exception record does not exist.\n[~ta1-kie002-diagnose]"}],"display_fib_slot_5_statistics":[{"raw":"display fib slot 5 statistics\nRoute Entry Count : 238"}],"display_fib_slot_5_statistics_all":[{"raw":"display fib slot 5 statistics all\nIPv4 FIB Route Prefix Capacity : 4194304\nIPv4 FIB Total Route Prefix Count : 853\n \nIPv4 FIB Public Route Prefix Count : 238\nIPv4 VPN-instance ****** Route Prefix Count : 2\nIPv4 VPN-instance *** Route Prefix Count : 613\nIPv4 FIB Public Other Route Prefix Count : 0 \nIPv4 VPN-instance ****** Other Route Prefix Count : 0\nIPv4 VPN-instance *** Other Route Prefix Count : 0"}],"display_ipv6_fib_slot_5_statistics_all":[{"raw":"display ipv6 fib slot 5 statistics all"}],"display_isis_peer":[{"raw":"display isis peer"}],"display_ospf_peer":[{"raw":"display ospf peer\n\n(M) Indicates MADJ neighbor\n\n\n          OSPF Process 1 with Router ID 172.***.***.***\n                Neighbors\n\n Area 0.0.0.0 interface 172.***.***.*** (100GE0/3/0)'s neighbors\n Router ID: 172.***.***.***      Address: 172.***.***.***  \n   State: Full           Mode:Nbr is Master     Priority: 1\n   DR: None              BDR: None              MTU: 0\n   Dead timer due in  40  sec\n   Retrans timer interval: 5\n   Neighbor is up for 1199h20m58s\n   Neighbor Up Time : 2025-08-20 17:06:56+03:00 DST\n   Authentication Sequence: [ 0 ]\n   Adjacency SID: 48078\n   Adjacency weight: 0\n   Adjacency flags: (-|V|L|-|-|-|-|-)\n\n Area 0.0.1.1 interface 172.***.***.*** (100GE0/3/0)'s neighbors\n Router ID: 172.***.***.***(M)    Address: 172.***.***.***    \n   State: Full           Mode:Nbr is Master     Priority: 1\n   DR: None              BDR: None              MTU: 0\n   Dead timer due in  40  sec\n   Retrans timer interval: 5\n   Neighbor is up for 1199h21m00s\n   Neighbor Up Time : 2025-08-20 17:06:54+03:00 DST\n   Authentication Sequence: [ 0 ]\n   Adjacency SID: 48079\n   Adjacency weight: 0\n   Adjacency flags: (-|V|L|-|-|-|-|-)\n\n Area 0.0.1.2 interface 172.***.***.*** (100GE0/3/0)'s neighbors\n Router ID: 172.***.***.***(M)    Address: 172.***.***.***     \n   State: Full           Mode:Nbr is Master     Priority: 1\n   DR: None              BDR: None              MTU: 0\n   Dead timer due in  39  sec\n   Retrans timer interval: 5\n   Neighbor is up for 1199h21m02s\n   Neighbor Up Time : 2025-08-20 17:06:52+03:00 DST\n   Authentication Sequence: [ 0 ]\n   Adjacency SID: 48077\n   Adjacency weight: 0\n   Adjacency flags: (-|V|L|-|-|-|-|-)"}],"display_ospfv3_peer":[{"raw":"display ospfv3 peer"}],"display_l2vpn_ccc_interface_vc_type_all":[{"raw":"display l2vpn ccc-interface vc-type all"}],"display_ipsec_sa":[{"raw":"display ipsec sa"}],"display_ipsec_statistics":[{"raw":"display ipsec statistics"}],"display_l2_multicast_channe":[{"raw":"display l2-multicast-channe"}],"display_oam_global_configuration":[{"raw":"display oam global configuration\nGlobal Configuration                                 Value\n----------------------------------------------------------\nCFM Status                                        disabled\nPing MAC Status                                   disabled\nTrace MAC Status                                  disabled\nCFM MAC-tunnel MIP Trace Status                   disabled\nEFM Status                                        disabled\nCFM Protocol                                      standard\nCFM MP-address-model                                bridge\nY1731 PM-mode                                      disable"}],"display_dcn_global":[{"raw":"display dcn global\nDCN global information:\n  state: enable    \n  neid:  0x83E730\n  vlan:  0\n  data-priority:  3"}],"display_mpls_ldp_peer":[{"raw":"display mpls ldp peer"}],"display_mpls_ldp_session_all":[{"raw":"display mpls ldp session all"}],"display_mpls_ldp_lsp_statistics":[{"raw":"display mpls ldp lsp statistics"}],"display_mpls_mldp_lsp_statistics":[{"raw":"display mpls mldp lsp statistics"}],"display_mpls_ldp_session":[{"raw":"display mpls ldp session"}],"display_mpls_mldp_lsp_p2mp":[{"raw":"display mpls mldp lsp p2mp"}],"display_mpls_te_tunnel_interface":[{"raw":"display mpls te tunnel-interface"}],"display_mpls_te_tunnel_interface_last_error":[{"raw":"display mpls te tunnel-interface last-error"}],"display_switchover_state":[{"raw":"display switchover state\n                    ^\nError: Unrecognized command found at '^' position."}],"display_multicast_routing_table":[{"raw":"display multicast routing-table"}],"display_pim_routing_table":[{"raw":"display pim routing-table"}],"display_ipv6_routing_table_statistics":[{"raw":"display ipv6 routing-table statistics\nSummary Prefixes : 0\nProtocol   route       active      added       deleted     freed\nDIRECT     0           0           0           0           0           \nSTATIC     0           0           0           0           0           \nRIPng      0           0           0           0           0           \nOSPFv3     0           0           0           0           0           \nIS-IS      0           0           0           0           0           \nBGP        0           0           0           0           0           \nUNR        0           0           0           0           0           \nTotal      0           0           0           0           0"}],"display_ip_routing_table_0_0_0_0":[{"raw":"display ip routing-table 0.0.0.0"}],"display_bgp_routing_table_statistics":[{"raw":"display bgp routing-table statistics"}],"display_bgp_ipv6_routing_table_statistics":[{"raw":"display bgp ipv6 routing-table statistics"}],"display_bgp_vpnv4_all_routing_table_statistics":[{"raw":"display bgp vpnv4 all routing-table statistics"}],"display_bgp_vpnv6_all_routing_table_statistics":[{"raw":"display bgp vpnv6 all routing-table statistics"}],"display_ipv6_neighbors":[{"raw":"display ipv6 neighbors"}],"display_remote_backup_profile":[{"raw":"display remote-backup-profile"}],"display_remote_backup_service":[{"raw":"display remote-backup-service"}],"display_paf_all":[{"raw":"display paf all\n                        ^\nError: Too many parameters found at '^' position."}],"display_license":[{"raw":"display license\n Active License    : cfcard:/2102355FTE_LICNetEngine8000M4_V800R023.xml\n License state     : Normal\n Revoke ticket     : No ticket\n **********\n Product name      : NetEngine 8000\n Product version   : V800R023\n License Serial No : LIC20250902C8P78T\n Creator           : Huawei Technologies Co., Ltd.\n Created Time      : 2025-09-02 17:46:26 DST\n\n -------------------------------------------------------------\n Feature name      : CRFEA5\n Authorize type    : comm\n Expired date      : PERMANENT\n Trial days        : --\n\n Item name               Item type      Value      Description\n -------------------------------------------------------------\n\n CR8S00L3VPC2              --             28         NetEngine 8000 M Series L3VPN Port Function License(per 50GE/40GE)\n    LCR8S00L3VPC2          Resource       28         NetEngine 8000 M Series L3VPN Port Function License(per 50GE/40GE)\n CR8S00OAMBC0              --             1          NetEngine 8000 M Series OAM Essential Function License\n    LCR8S002544C1          Function       YES        NetEngine 8000 M Series OAM Enhanced Function License\n CR8S00CRAGC2              --             28         NetEngine 8000 M Series Core&Aggregation Scenario Port Function License(per 50GE/40GE)\n    LCR8S00CRAGC2          Resource       28         NetEngine 8000 M Series Core&Aggregation Scenario Port Function License(per 50GE/40GE)\n CR8S0M4AE1CA              --             6          NetEngine 8000 M Series Fixed Port 1*50G RTU (can switch to different combo mode)\n    LCR8S0M4AE1C1          Resource       6          M Series Fixed Port 1*50G RTU (can switch to different combo mode)\n CR8S0M4AE1CB              --             1          NetEngine 8000 M Series 2*Fixed Port 10G Upgrade to 25G Enable RTU(per 25G)\n    LCR8S0M4AE1C2          Resource       2          M Series Fixed Port 10G Upgrade to 25G Enable RTU(per 25G)\n CR8S00L3VPC4              --             20         NetEngine 8000 M Series L3VPN Port Function License(per 10GE)\n    LCR8S00L3VPC4          Resource       20         NetEngine 8000 M Series L3VPN Port Function License(per 10GE)\n CR8S00TMSYC1              --             1          NetEngine 8000 M Series Time Synchronization Function License\n    LCR8S00TMSYC1          Function       YES        NetEngine 8000 M Series Time Synchronization Function License\n CR8S0M4AE1CD              --             1          NetEngine 8000 M Series Fixed Port 2*50G Startup RTU (can switch to different combo mode)\n    LCR8S0M4AE1C1          Resource       2          M Series Fixed Port 1*50G RTU (can switch to different combo mode)\n CR8S00CRAGC4              --             20         NetEngine 8000 M Series Core&Aggregation Scenario Port Function License(per 10GE)\n    LCR8S00CRAGC4          Resource       20         NetEngine 8000 M Series Core&Aggregation Scenario Port Function License(per 10GE)\n\n Item name               (View)Resource License Command-line\n -------------------------------------------------------------\n LCR8S00CRAGC4           (License)active port-core-aggregation slot <slot-id> card <card-id> port <port-list>\n LCR8S0M4AE1C2           (License)active port-basic slot <slot-id> card <card-id> port <port-list>\n LCR8S00L3VPC4           (License)active port-l3vpn slot <slot-id> card <card-id> port <port-list>\n LCR8S0M4AE1C1           (License)active port-basic slot <slot-id> card <card-id> port <port-list>\n LCR8S00L3VPC2           (License)active port-l3vpn slot <slot-id> card <card-id> port <port-list>\n LCR8S00CRAGC2           (License)active port-core-aggregation slot <slot-id> card <card-id> port <port-list>\n\n Master board license state: Normal."}],"display_stp_brief":[{"raw":"display stp brief\n Protocol Status       :Disabled \n Protocol Standard     :IEEE 802.1s\n Version               :3\n CIST Bridge Priority  :32768\n MAC address           :****-****-****\n Max age(s)            :20\n Forward delay(s)      :15\n Hello time(s)         :2\n Max hops              :20"}],"check_version_all_startup":[{"raw":"check version all startup\nInfo: Prepare to check system software cfcard:/NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.cc, please wait ...................................................\nInfo: System software signature check passed!\nInfo: Software version match Ok!\n[~ta1-kie002-diagnose]"}],"check_version_startup":[{"raw":"check version startup\nInfo: Prepare to check system software cfcard:/NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.cc, please wait ...................................................\nInfo: System software signature check passed!\nInfo: Software version match Ok!"}],"display_mpls_l2vc_brief":[{"raw":"display mpls l2vc brief"}],"display_mpls_static_l2vc_brief":[{"raw":"display mpls static-l2vc brief"}],"display_mpls_switch_l2vc_brief":[{"raw":"display mpls switch-l2vc brief"}],"display_vsi":[{"raw":"display vsi"}],"display_vrrp_brief":[{"raw":"display vrrp brief\nInfo: The VRRP does not exist."}],"display_vrrp_admin_vrrp":[{"raw":"display vrrp admin-vrrp\nInfo: The administrator VRRP does not exist."}],"display_ptp_all":[{"raw":"display ptp all\n  Device config info\n  ------------------------------------------------------------------------------\n  PTP state         :disable              Domain  value      :0\n  Slave only        :no                   Device type        :no mode\n  Set port state    :no                   Local clock ID     :ccbce3fffe1bc6f7\n  Acl               :no                   Virtual clock ID   :no\n  Acr               :no                   Time lock success  :no\n  Asymmetry measure :disable              Passive measure    :enabled\n  Send GM WTR       :no\n\n  BMC run info\n  ------------------------------------------------------------------------------\n  Source port       :local\n\n  Clock source info\n  Clock       Pri1 Pri2 Accuracy Class TimeSrc Signal Switch Direction In-Status\n  ------------------------------------------------------------------------------\n  local       128  128  0x31     187   0xa0    -      -      -         -\n  bits1       128  128  0x20     6     0x20    1pps   off    in/-      abnormal"}],"display_ptp_adaptive_all":[{"raw":"display ptp-adaptive all\n  Device config info\n  ------------------------------------------------------------------------------\n  Ptp adaptive state      :disable          Device type        :none            \n  Sync mode               :none             Current state      :none            \n  Packet dscp             :56               Domain value       :0               \n  Local ip                :no local ip"}],"display_debugging":[{"raw":"display debugging"}],"display_vpls_connection":[{"raw":"display vpls connection"}],"display_mpls_l2vc":[{"raw":"display mpls l2vc"}],"display_vsi_verbose":[{"raw":"display vsi verbose"}],"display_vpls_connection_verbose":[{"raw":"display vpls connection verbose"}],"display_mpls_switch_l2vc":[{"raw":"display mpls switch-l2vc"}],"display_mpls_ldp_peer_all":[{"raw":"display mpls ldp peer all"}],"display_ospf_interface_verbose":[{"raw":"display ospf interface verbose\n\n          OSPF Process 1 with Router ID 172.***.***.***\n                  Interfaces\n\n Area: 0.0.0.0          (MPLS TE enabled)\n\n Interface: 172.***.***.*** (100GE0/3/0) --> 172.***.***.***\n Cost: 100       State: P-2-P         Type: P2P            MTU: 1500\n Timers: Hello 10 , Dead 40 , Wait 40 , Poll 120 , Retransmit 5 , Transmit Delay 1\n MPLS Traffic-Engineering Link\n BFD Timers: Tx-Interval 10 , Rx-Interval 10 , Multiplier 3\n ALLSPF GROUP\n OpaqueId: 0   PrevState: Down   Bandwidth: 100000 Mbps   Remain-Bandwidth: 100000 Mbps\n Effective cost : 100, enabled by OSPF Protocol\n Bfd Incr-Cost Wtr RemainTime : 0s\n Link quality adjust cost: NO, link quality: 0x0(GOOD)\n Suppress flapping peer: enable(flapping-count: 0, threshold: 10)\n Multi-area Interface Count is 2  \n Label Stack Depth: 10\n Packet Statistics\n              Type        Input     Output\n             Hello      1125318    1124531\n    DB Description           18         18\n    Link-State Req            2          2\n Link-State Update      1796347    2076676\n    Link-State Ack      1408509    1142827\n\n Area: 0.0.1.1           (MPLS TE enabled)\n\n Interface: 172.***.***.*** (100GE0/3/0) --> 172.***.***.***\n Cost: 10000       State: P-2-P         Type: P2P            MTU: 1500\n Timers: Hello 10 , Dead 40 , Wait 40 , Poll 120 , Retransmit 5 , Transmit Delay 1\n MPLS Traffic-Engineering Link\n BFD Timers: Tx-Interval 10 , Rx-Interval 10 , Multiplier 3\n ALLSPF GROUP\n OpaqueId: 0   PrevState: Down   Bandwidth: 100000 Mbps   Remain-Bandwidth: 100000 Mbps\n Effective cost : 10000, enabled by OSPF Protocol\n Bfd Incr-Cost Wtr RemainTime : 0s\n Link quality adjust cost: NO, link quality: 0x0(GOOD)\n Suppress flapping peer: enable(flapping-count: 0, threshold: 10)\n Multi-area interface\n Label Stack Depth: 10\n Packet Statistics\n              Type        Input     Output\n             Hello      1126706    1124523\n    DB Description           14         14\n    Link-State Req            1          1\n Link-State Update      1117501    1583616\n    Link-State Ack       916292     479598\n\t\n Area: 0.0.1.2            (MPLS TE enabled)\n\n Interface: 172.***.***.*** (100GE0/3/0) --> 172.***.***.***\n Cost: 10000       State: P-2-P         Type: P2P            MTU: 1500\n Timers: Hello 10 , Dead 40 , Wait 40 , Poll 120 , Retransmit 5 , Transmit Delay 1\n MPLS Traffic-Engineering Link\n BFD Timers: Tx-Interval 10 , Rx-Interval 10 , Multiplier 3\n ALLSPF GROUP\n OpaqueId: 0   PrevState: Down   Bandwidth: 100000 Mbps   Remain-Bandwidth: 100000 Mbps\n Effective cost : 10000, enabled by OSPF Protocol\n Bfd Incr-Cost Wtr RemainTime : 0s\n Link quality adjust cost: NO, link quality: 0x0(GOOD)\n Suppress flapping peer: enable(flapping-count: 0, threshold: 10)\n Multi-area interface\n Label Stack Depth: 10\n Packet Statistics\n              Type        Input     Output\n             Hello      1126575    1124541\n    DB Description           10         10\n    Link-State Req            1          0\n Link-State Update       124160     429915\n    Link-State Ack       387406      83251"}],"display_ip_vpn_instance":[{"raw":"display ip vpn-instance\n Total VPN-Instances configured      : 2\n Total IPv4 VPN-Instances configured : 2\n Total IPv6 VPN-Instances configured : 1\n\n  VPN-Instance Name               RD                    Address-family\n  ******                                     IPv4          \n  ******                                     IPv6          \n  ***                                        IPv4"}],"display_mpls_ldp_peer_statistics":[{"raw":"display mpls ldp peer statistics"}],"display_mpls_te_protection_tunnel_all":[{"raw":"display mpls te protection tunnel all"}],"display_mpls_l2vpn_pw_aps":[{"raw":"display mpls l2vpn pw-aps"}],"display_mpls_l2vc_oam_mapping":[{"raw":"display mpls l2vc oam-mapping"}],"display_aps_group":[{"raw":"display aps group"}],"display_ip_routing_table_all_vpn_instance_statistics":[{"raw":"display ip routing-table all-vpn-instance statistics\nSummary Prefixes : 615\nProto      total      active     added      deleted    freed\n           routes     routes     routes     routes     routes\nDIRECT     53         53         1335       1282       1282       \nSTATIC     0          0          0          0          0          \nRIP        0          0          0          0          0          \nOSPF       734        687        136003     135269     135269     \nIS-IS      0          0          0          0          0          \nBGP        0          0          0          0          0          \nUNR        0          0          0          0          0          \nTotal      787        740        137338     136551     136551"}]}}
+{
+  "identity": {
+    "hostname": "ta1-kie002",
+    "sysname": "ta1-kie002",
+    "model": "NetEngine 8000",
+    "version": "8.231",
+    "serial": "2102355FTE",
+    "router_id_public": "172.",
+    "router_ids": {
+      "******": "10.",
+      "***": "192."
+    },
+    "timezone": "defaultName",
+    "current_time": null,
+    "patch_status": "Info: No patch exists.",
+    "config_saved": "cfcard:/config.cfg",
+    "ssh_users": [
+      "kyivstar",
+      "root",
+      "stelnetuser"
+    ],
+    "mac_addrs": {
+      "chassis": null,
+      "base": null
+    }
+  },
+  "software": {
+    "version": "8.231",
+    "uptime": "168 days, 5 hours, 11 minutes"
+  },
+  "ntp": {
+    "state": "unsynchronized",
+    "stratum": 16,
+    "servers": []
+  },
+  "resources": {
+    "cpu": [
+      {
+        "avg": 13,
+        "max": 28,
+        "ts": "2025-04-24 11:18:34 182",
+        "per_service": [
+          {
+            "name": "AAA",
+            "pct": 0
+          },
+          {
+            "name": "ARP",
+            "pct": 0
+          },
+          {
+            "name": "BRAS",
+            "pct": 0
+          },
+          {
+            "name": "CMF",
+            "pct": 0
+          },
+          {
+            "name": "CSP",
+            "pct": 0
+          },
+          {
+            "name": "CSPF",
+            "pct": 0
+          },
+          {
+            "name": "DEVICE",
+            "pct": 0
+          },
+          {
+            "name": "DHCP",
+            "pct": 0
+          },
+          {
+            "name": "ETRUNK",
+            "pct": 0
+          },
+          {
+            "name": "EUM",
+            "pct": 0
+          },
+          {
+            "name": "FEA",
+            "pct": 0
+          },
+          {
+            "name": "FEC",
+            "pct": 0
+          },
+          {
+            "name": "FIBRESM",
+            "pct": 0
+          },
+          {
+            "name": "IFM",
+            "pct": 0
+          },
+          {
+            "name": "L2VPN",
+            "pct": 0
+          },
+          {
+            "name": "LDT",
+            "pct": 0
+          },
+          {
+            "name": "LINK",
+            "pct": 0
+          },
+          {
+            "name": "LLDP",
+            "pct": 0
+          },
+          {
+            "name": "MFLP",
+            "pct": 0
+          },
+          {
+            "name": "MSTP",
+            "pct": 0
+          },
+          {
+            "name": "ND",
+            "pct": 0
+          },
+          {
+            "name": "NETSTREAM",
+            "pct": 0
+          },
+          {
+            "name": "OAM",
+            "pct": 0
+          },
+          {
+            "name": "OSPF",
+            "pct": 0
+          },
+          {
+            "name": "PCE",
+            "pct": 0
+          },
+          {
+            "name": "PKI",
+            "pct": 0
+          },
+          {
+            "name": "PNP",
+            "pct": 0
+          },
+          {
+            "name": "PTPA",
+            "pct": 0
+          },
+          {
+            "name": "RBS",
+            "pct": 0
+          },
+          {
+            "name": "RGM",
+            "pct": 0
+          },
+          {
+            "name": "RM",
+            "pct": 0
+          },
+          {
+            "name": "SLA",
+            "pct": 0
+          },
+          {
+            "name": "SMLK",
+            "pct": 0
+          },
+          {
+            "name": "SOC",
+            "pct": 0
+          },
+          {
+            "name": "SVRO",
+            "pct": 0
+          },
+          {
+            "name": "TEM",
+            "pct": 0
+          },
+          {
+            "name": "TNLM",
+            "pct": 0
+          },
+          {
+            "name": "TUNNEL",
+            "pct": 0
+          },
+          {
+            "name": "VLAN",
+            "pct": 0
+          }
+        ]
+      }
+    ],
+    "memory": [],
+    "disk": [],
+    "power": [
+      {
+        "slot": "5",
+        "input_voltage_v": null,
+        "input_current_a": null,
+        "total_power_w": null
+      },
+      {
+        "slot": "6",
+        "input_voltage_v": 54.26,
+        "input_current_a": 2.83,
+        "total_power_w": 153.63
+      },
+      {
+        "slot": "7",
+        "input_voltage_v": 54.29,
+        "input_current_a": 4.72,
+        "total_power_w": 256.41
+      },
+      {
+        "slot": "8",
+        "input_voltage_v": null,
+        "input_current_a": null,
+        "total_power_w": null
+      },
+      {
+        "slot": "9",
+        "input_voltage_v": null,
+        "input_current_a": null,
+        "total_power_w": null
+      }
+    ],
+    "temperature": [
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 48
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 41
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 62
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 63
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 62
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 63
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 58
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 58
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 55
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 46
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 49
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 54
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 57
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 46
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 47
+      },
+      {
+        "pcb": "DP21CPUA",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 69
+      },
+      {
+        "pcb": "DP21CPUA",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 70
+      },
+      {
+        "pcb": "DP21CPUA",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 70
+      },
+      {
+        "pcb": "DP21CPUA",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 69
+      },
+      {
+        "pcb": "DP21CPUA",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 70
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "1",
+        "status": "NORMAL",
+        "temp_c": 43
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "1",
+        "status": "NORMAL",
+        "temp_c": 49
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "1",
+        "status": "NORMAL",
+        "temp_c": 52
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "1",
+        "status": "NORMAL",
+        "temp_c": 43
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "2",
+        "status": "NORMAL",
+        "temp_c": 45
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "2",
+        "status": "NORMAL",
+        "temp_c": 54
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "2",
+        "status": "NORMAL",
+        "temp_c": 53
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "2",
+        "status": "NORMAL",
+        "temp_c": 54
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "3",
+        "status": "NORMAL",
+        "temp_c": 41
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "3",
+        "status": "NORMAL",
+        "temp_c": 46
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "3",
+        "status": "NORMAL",
+        "temp_c": 46
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "3",
+        "status": "NORMAL",
+        "temp_c": 45
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "4",
+        "status": "NORMAL",
+        "temp_c": 47
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "4",
+        "status": "NORMAL",
+        "temp_c": 56
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "4",
+        "status": "NORMAL",
+        "temp_c": 58
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "4",
+        "status": "NORMAL",
+        "temp_c": 47
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 48
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 41
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 62
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 63
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 62
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 63
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 58
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 58
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 55
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 46
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 49
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 54
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 57
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 46
+      },
+      {
+        "pcb": "CR81E4NBIYFS",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 47
+      },
+      {
+        "pcb": "DP21CPUA",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 69
+      },
+      {
+        "pcb": "DP21CPUA",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 70
+      },
+      {
+        "pcb": "DP21CPUA",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 70
+      },
+      {
+        "pcb": "DP21CPUA",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 69
+      },
+      {
+        "pcb": "DP21CPUA",
+        "slot": "5",
+        "status": "NORMAL",
+        "temp_c": 70
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "1",
+        "status": "NORMAL",
+        "temp_c": 43
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "1",
+        "status": "NORMAL",
+        "temp_c": 49
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "1",
+        "status": "NORMAL",
+        "temp_c": 52
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "1",
+        "status": "NORMAL",
+        "temp_c": 43
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "2",
+        "status": "NORMAL",
+        "temp_c": 45
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "2",
+        "status": "NORMAL",
+        "temp_c": 54
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "2",
+        "status": "NORMAL",
+        "temp_c": 53
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "2",
+        "status": "NORMAL",
+        "temp_c": 54
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "3",
+        "status": "NORMAL",
+        "temp_c": 41
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "3",
+        "status": "NORMAL",
+        "temp_c": 46
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "3",
+        "status": "NORMAL",
+        "temp_c": 46
+      },
+      {
+        "pcb": "CR51E1NCK0",
+        "slot": "3",
+        "status": "NORMAL",
+        "temp_c": 45
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "4",
+        "status": "NORMAL",
+        "temp_c": 47
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "4",
+        "status": "NORMAL",
+        "temp_c": 56
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "4",
+        "status": "NORMAL",
+        "temp_c": 58
+      },
+      {
+        "pcb": "CR51E2NBF1",
+        "slot": "4",
+        "status": "NORMAL",
+        "temp_c": 47
+      },
+      {
+        "pcb": "DP22PDC1K2A1",
+        "slot": "6",
+        "status": "NORMAL",
+        "temp_c": 45
+      },
+      {
+        "pcb": "DP22PDC1K2A1",
+        "slot": "7",
+        "status": "NORMAL",
+        "temp_c": 45
+      }
+    ],
+    "fan": [
+      {
+        "status": "AUTO",
+        "speeds": [
+          {
+            "id": 1,
+            "speed_percent": 35
+          },
+          {
+            "id": 2,
+            "speed_percent": 35
+          }
+        ]
+      }
+    ]
+  },
+  "hardware": {
+    "cards": [
+      {
+        "slot": "1",
+        "type": "PIC",
+        "online": "Present",
+        "register": "Registered",
+        "status": "Normal",
+        "role": "OTHER"
+      },
+      {
+        "slot": "2",
+        "type": "PIC",
+        "online": "Present",
+        "register": "Registered",
+        "status": "Normal",
+        "role": "OTHER"
+      },
+      {
+        "slot": "3",
+        "type": "PIC",
+        "online": "Present",
+        "register": "Registered",
+        "status": "Normal",
+        "role": "OTHER"
+      },
+      {
+        "slot": "4",
+        "type": "PIC",
+        "online": "Present",
+        "register": "Registered",
+        "status": "Normal",
+        "role": "OTHER"
+      },
+      {
+        "slot": "5",
+        "type": "IPU",
+        "online": "Present",
+        "register": "Registered",
+        "status": "Normal",
+        "role": "MMB"
+      },
+      {
+        "slot": "6",
+        "type": "PWR",
+        "online": "Present",
+        "register": "Registered",
+        "status": "Normal",
+        "role": "OTHER"
+      },
+      {
+        "slot": "7",
+        "type": "PWR",
+        "online": "Present",
+        "register": "Registered",
+        "status": "Normal",
+        "role": "OTHER"
+      },
+      {
+        "slot": "8",
+        "type": "FAN",
+        "online": "Present",
+        "register": "Registered",
+        "status": "Normal",
+        "role": "OTHER"
+      },
+      {
+        "slot": "9",
+        "type": "CLK",
+        "online": "Present",
+        "register": "Registered",
+        "status": "Normal",
+        "role": "OTHER"
+      }
+    ],
+    "pics": [
+      {
+        "pic": "5/1",
+        "status": "Registered",
+        "type": "ETH_2x100GB_CARD",
+        "port_count": "2",
+        "init_result": "SUCCESS",
+        "logic_down": "SUCCESS"
+      },
+      {
+        "pic": "5/2",
+        "status": "Registered",
+        "type": "OTN_100GC_CARD",
+        "port_count": "1",
+        "init_result": "SUCCESS",
+        "logic_down": "SUCCESS"
+      },
+      {
+        "pic": "5/3",
+        "status": "Registered",
+        "type": "OTN_100GC_CARD",
+        "port_count": "1",
+        "init_result": "SUCCESS",
+        "logic_down": "SUCCESS"
+      },
+      {
+        "pic": "5/4",
+        "status": "Registered",
+        "type": "ETH_2x100GB_CARD",
+        "port_count": "2",
+        "init_result": "SUCCESS",
+        "logic_down": "SUCCESS"
+      },
+      {
+        "pic": "5/5",
+        "status": "Registered",
+        "type": "ETH_4x100G_16xGE_16x25G",
+        "port_count": "36",
+        "init_result": "SUCCESS",
+        "logic_down": "SUCCESS"
+      },
+      {
+        "pic": "5/78",
+        "status": "Registered",
+        "type": "FLEXE_VIRTUAL_CARD",
+        "port_count": "0",
+        "init_result": "SUCCESS",
+        "logic_down": "SUCCESS"
+      },
+      {
+        "pic": "5/79",
+        "status": "Registered",
+        "type": "FLEXE_VIRTUAL_CARD",
+        "port_count": "0",
+        "init_result": "SUCCESS",
+        "logic_down": "SUCCESS"
+      }
+    ],
+    "elabels": [
+      {
+        "scope": "unknown",
+        "slot": null,
+        "manufacturer": null,
+        "part_number": null,
+        "barcode": null,
+        "item": null,
+        "description": null,
+        "model": null
+      }
+    ],
+    "sfp": [
+      {
+        "port": "ETH0/5/10",
+        "wavelength_nm": 1310
+      },
+      {
+        "port": "ETH0/5/12",
+        "wavelength_nm": 1310
+      },
+      {
+        "port": "ETH0/5/13",
+        "wavelength_nm": 1310
+      },
+      {
+        "port": "ETH0/5/14",
+        "wavelength_nm": 1310
+      },
+      {
+        "port": "ETH0/5/15",
+        "wavelength_nm": 1310
+      },
+      {
+        "port": "ETH0/5/16",
+        "wavelength_nm": 1310
+      },
+      {
+        "port": "ETH0/5/17",
+        "wavelength_nm": 1310
+      },
+      {
+        "port": "ETH0/5/18",
+        "wavelength_nm": 1310
+      },
+      {
+        "port": "ETH0/5/19",
+        "wavelength_nm": 1310
+      },
+      {
+        "port": "ETH0/5/34",
+        "wavelength_nm": 1311
+      }
+    ]
+  },
+  "interfaces": [
+    {
+      "name": "Ethernet0/0/0",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "HALF",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "Virtual-Template0"
+    },
+    {
+      "name": "GigabitEthernet0/5/4",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/5",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/6",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/7",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/8",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/9",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/10",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/11",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/12",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/13",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/14",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/15",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/16",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/17",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/18",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/19",
+      "status": "up",
+      "protocol": "up",
+      "in_util": "0.37%",
+      "out_util": "0.59%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    },
+    {
+      "name": "GigabitEthernet0/5/19.20"
+    },
+    {
+      "name": "25GE0/5/20",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/21",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/22",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/23",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/24",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/25",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/26",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/27",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/28",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/29",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/30",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/31",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/32",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/33",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/34",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "25GE0/5/35",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "100GE0/1/0",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100000
+    },
+    {
+      "name": "100GE0/1/1",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100000
+    },
+    {
+      "name": "100GE0/2/0",
+      "status": "up",
+      "protocol": "down",
+      "in_util": "0.01%",
+      "out_util": "0.01%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100000
+    },
+    {
+      "name": "100GE0/3/0",
+      "status": "up",
+      "protocol": "up",
+      "in_util": "0.01%",
+      "out_util": "0.01%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100000
+    },
+    {
+      "name": "100GE0/4/0",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100000
+    },
+    {
+      "name": "100GE0/4/1",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100000
+    },
+    {
+      "name": "100GE0/5/0",
+      "status": "up",
+      "protocol": "up",
+      "in_util": "0.01%",
+      "out_util": "0.01%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100000
+    },
+    {
+      "name": "100GE0/5/1",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "100GE0/5/2",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "100GE0/5/3",
+      "duplex": "FULL",
+      "bandwidth_mbps": 100
+    },
+    {
+      "name": "LoopBack0",
+      "description": "Router_ID",
+      "status": "up",
+      "protocol": "up(s)",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "LoopBack1023",
+      "description": "DCN loopback interface",
+      "status": "up",
+      "protocol": "up(s)",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "NULL0",
+      "description": "default",
+      "status": "up",
+      "protocol": "up(s)",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "100GE0/5/1(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "100GE0/5/2(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "100GE0/5/3(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/20(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/21(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/22(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/23(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/24(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/25(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/26(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/27(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/28(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/29(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/30(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/31(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/32(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/33(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "25GE0/5/34(100M)",
+      "status": "up",
+      "protocol": "up",
+      "in_util": "0.28%",
+      "out_util": "0.24%"
+    },
+    {
+      "name": "25GE0/5/35(100M)",
+      "status": "down",
+      "protocol": "down",
+      "in_util": "0%",
+      "out_util": "0%"
+    },
+    {
+      "name": "GigabitEthernet0/5/19.4013",
+      "status": "up",
+      "protocol": "up",
+      "in_util": "0%",
+      "out_util": "0%",
+      "duplex": "FULL",
+      "bandwidth_mbps": 1000
+    }
+  ],
+  "protocols": {
+    "mac": [],
+    "arp": [
+      {
+        "stats": {
+          "total": 24,
+          "dynamic": 24
+        }
+      }
+    ],
+    "vlans": [],
+    "trunks": [],
+    "lldp": {
+      "enabled": true,
+      "neighbors": []
+    },
+    "vrrp": {
+      "enabled": false,
+      "groups": []
+    },
+    "bfd": {
+      "sessions": [
+        {
+          "local": "16385",
+          "remote": "16385",
+          "peer_ip": "172.***.***.***",
+          "state": "Up",
+          "type": "D_IP_IF",
+          "interface": "100GE0/5/0"
+        },
+        {
+          "local": "16388",
+          "remote": "16385",
+          "peer_ip": "172.***.***.***",
+          "state": "Up",
+          "type": "D_IP_IF",
+          "interface": "25GE0/5/34"
+        },
+        {
+          "local": "16389",
+          "remote": "16388",
+          "peer_ip": "172.***.***.***",
+          "state": "Up",
+          "type": "D_IP_IF",
+          "interface": "100GE0/3/0"
+        }
+      ],
+      "config": {},
+      "reflector": {}
+    },
+    "ospf": {
+      "neighbors": [
+        {
+          "area": "display",
+          "interface": "ospf",
+          "neighbor_id": "peer",
+          "state": "brief"
+        },
+        {
+          "area": "(M)",
+          "interface": "Indicates",
+          "neighbor_id": "MADJ",
+          "state": "neighbor"
+        },
+        {
+          "area": "OSPF",
+          "interface": "Process",
+          "neighbor_id": "1",
+          "state": "with"
+        },
+        {
+          "area": "Total",
+          "interface": "number",
+          "neighbor_id": "of",
+          "state": "peer(s):"
+        },
+        {
+          "area": "Peer(s)",
+          "interface": "in",
+          "neighbor_id": "full",
+          "state": "state:"
+        },
+        {
+          "area": "0.0.0.0",
+          "interface": "100GE0/3/0",
+          "neighbor_id": "172.***.***.***",
+          "state": "Full"
+        },
+        {
+          "area": "0.0.0.0",
+          "interface": "100GE0/5/0",
+          "neighbor_id": "172.***.***.***",
+          "state": "Full"
+        },
+        {
+          "area": "0.0.1.1",
+          "interface": "100GE0/3/0",
+          "neighbor_id": "172.***.***.***",
+          "state": "Full"
+        },
+        {
+          "area": "0.0.1.2",
+          "interface": "100GE0/3/0",
+          "neighbor_id": "172.***.***.***",
+          "state": "Full"
+        }
+      ],
+      "areas": [],
+      "router_ids": {}
+    },
+    "isis": {
+      "neighbors": [],
+      "areas": []
+    },
+    "bgp": {
+      "neighbors": [],
+      "vpnv4": [],
+      "vpnv6": []
+    },
+    "vrfs": [
+      {
+        "name": "******",
+        "af": null,
+        "router_id": "10."
+      },
+      {
+        "name": "***",
+        "af": null,
+        "router_id": "192."
+      }
+    ],
+    "mpls": {
+      "ldp": {},
+      "te": {},
+      "sr": {
+        "srgb": {
+          "start": 17000,
+          "end": 18000
+        },
+        "srlb": null,
+        "lsp_stats": {
+          "srbe": 35
+        }
+      }
+    },
+    "evpn": []
+  },
+  "routing": {
+    "table_summary": [
+      {
+        "vrf": null,
+        "total_routes": 299,
+        "summary_prefixes": 238
+      }
+    ],
+    "static": []
+  },
+  "licenses": [
+    {
+      "sale_name": "CR8S00L3VPC2",
+      "item_name": "LCR8S00L3VPC2",
+      "control_value": "28",
+      "used_value": "0",
+      "description": "NetEngine 8000 M Series L3VPN Port Function License(per 50GE/40GE)"
+    }
+  ],
+  "alarms": [
+    {
+      "sequence": 1,
+      "level": "Critical",
+      "date": "2025-04-24",
+      "time": "11:48:35+03:00",
+      "description": "GigabitEthernet0/5/10 is failed, the o"
+    },
+    {
+      "sequence": 2,
+      "level": "Critical",
+      "date": "2025-04-24",
+      "time": "11:32:23+03:00",
+      "description": "GigabitEthernet0/5/12 is failed, the o"
+    },
+    {
+      "sequence": 3,
+      "level": "Critical",
+      "date": "2025-04-24",
+      "time": "11:18:45+03:00",
+      "description": "GigabitEthernet0/5/18 is failed, the o"
+    },
+    {
+      "sequence": 4,
+      "level": "Critical",
+      "date": "2025-04-24",
+      "time": "11:18:45+03:00",
+      "description": "GigabitEthernet0/5/17 is failed, the o"
+    },
+    {
+      "sequence": 5,
+      "level": "Critical",
+      "date": "2025-04-24",
+      "time": "11:18:45+03:00",
+      "description": "GigabitEthernet0/5/16 is failed, the o"
+    },
+    {
+      "sequence": 6,
+      "level": "Critical",
+      "date": "2025-04-24",
+      "time": "11:18:45+03:00",
+      "description": "GigabitEthernet0/5/15 is failed, the o"
+    },
+    {
+      "sequence": 7,
+      "level": "Critical",
+      "date": "2025-04-24",
+      "time": "11:18:45+03:00",
+      "description": "GigabitEthernet0/5/14 is failed, the o"
+    },
+    {
+      "sequence": 8,
+      "level": "Critical",
+      "date": "2025-04-24",
+      "time": "11:18:45+03:00",
+      "description": "GigabitEthernet0/5/13 is failed, the o"
+    },
+    {
+      "sequence": 311605,
+      "alarm_id": "0x1009B",
+      "name": "hwIpRanDcnNeNumberOverLoad",
+      "severity": "Major",
+      "state": "active",
+      "start_time": "2025-10-07 13:34:34+03:00 DST           ",
+      "description": "DCN NE number overload start. (NeNumber=609)"
+    },
+    {
+      "sequence": 64162,
+      "alarm_id": "0xF1001D",
+      "name": "hwNtpSynchronizationFailure",
+      "severity": "Minor",
+      "state": "active",
+      "start_time": "2025-05-28 12:26:24+03:00 DST           ",
+      "description": "NTP synchronization state changed. (State = unsynchronized, SynchronizationSourceAddress = none)"
+    }
+  ],
+  "raw_sections": {
+    "return": [
+      {
+        "raw": "return"
+      },
+      {
+        "raw": "return"
+      },
+      {
+        "raw": "return"
+      },
+      {
+        "raw": "return"
+      },
+      {
+        "raw": "return"
+      },
+      {
+        "raw": "return"
+      },
+      {
+        "raw": "return"
+      },
+      {
+        "raw": "return"
+      },
+      {
+        "raw": "return"
+      },
+      {
+        "raw": "return"
+      },
+      {
+        "raw": "return"
+      }
+    ],
+    "display_diameter_configuration": [
+      {
+        "raw": "display diameter configuration"
+      }
+    ],
+    "display_bas_interface": [
+      {
+        "raw": "display bas-interface"
+      }
+    ],
+    "display_license_resource_usage": [
+      {
+        "raw": "display license resource usage\nInfo: Active license on master board: cfcard:/2102355FTE_LICNetEngine8000M4_V800R023.xml.\n--------------------------------------------------------------------------------\nFeatureName              ConfigureItemName                         ResourceUsage\n--------------------------------------------------------------------------------\nCRFEA5                   LCR8S00CRAGC2                                      6/28\nCRFEA5                   LCR8S00CRAGC4                                      2/20\nCRFEA5                   LCR8S00L3VPC2                                      0/28\nCRFEA5                   LCR8S00L3VPC4                                      0/20\nCRFEA5                   LCR8S0M4AE1C1                                       2/8\nCRFEA5                   LCR8S0M4AE1C2                                       0/2\n--------------------------------------------------------------------------------"
+      }
+    ],
+    "display_access_user_slot": [
+      {
+        "raw": "display access-user slot\nInfo: No online user!"
+      }
+    ],
+    "system": [
+      {
+        "raw": "system\nEnter system view, return user view with return command.\n[~ta1-kie002]"
+      },
+      {
+        "raw": "system\nEnter system view, return user view with return command.\n[~ta1-kie002]"
+      },
+      {
+        "raw": "system\nEnter system view, return user view with return command.\n[~ta1-kie002]"
+      },
+      {
+        "raw": "system\nEnter system view, return user view with return command.\n[~ta1-kie002]"
+      },
+      {
+        "raw": "system\nEnter system view, return user view with return command.\n[~ta1-kie002]"
+      },
+      {
+        "raw": "system\nEnter system view, return user view with return command.\n[~ta1-kie002]"
+      }
+    ],
+    "diagnose": [
+      {
+        "raw": "diagnose\nWarning: Enter diagnose view, return user view with Ctrl+Z.\nInfo: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.\n[~ta1-kie002-diagnose]"
+      },
+      {
+        "raw": "diagnose\nWarning: Enter diagnose view, return user view with Ctrl+Z.\nInfo: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.\n[~ta1-kie002-diagnose]"
+      },
+      {
+        "raw": "diagnose\nWarning: Enter diagnose view, return user view with Ctrl+Z.\nInfo: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.\n[~ta1-kie002-diagnose]"
+      },
+      {
+        "raw": "diagnose\nWarning: Enter diagnose view, return user view with Ctrl+Z.\nInfo: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.\n[~ta1-kie002-diagnose]"
+      },
+      {
+        "raw": "diagnose\nWarning: Enter diagnose view, return user view with Ctrl+Z.\nInfo: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.\n[~ta1-kie002-diagnose]"
+      },
+      {
+        "raw": "diagnose\nWarning: Enter diagnose view, return user view with Ctrl+Z.\nInfo: The diagnose view is used to debug system hardware and software. Misuse of certain commands in this view may affect system performance. Therefore, use these commands with the guidance of Huawei engineers.\n[~ta1-kie002-diagnose]"
+      }
+    ],
+    "display_voltage_corrosion_slot_5": [
+      {
+        "raw": "display voltage corrosion slot 5\n                                      ^\nError: Too many parameters found at '^' position.\n[~ta1-kie002-diagnose]"
+      }
+    ],
+    "display_voltage_corrosion_slot_5_pic_1": [
+      {
+        "raw": "display voltage corrosion slot 5 pic 1\n                                      ^\nError: Too many parameters found at '^' position.\n[~ta1-kie002-diagnose]"
+      }
+    ],
+    "display_voltage_corrosion_slot_5_pic_2": [
+      {
+        "raw": "display voltage corrosion slot 5 pic 2\n                                      ^\nError: Too many parameters found at '^' position.\n[~ta1-kie002-diagnose]"
+      }
+    ],
+    "display_voltage_corrosion_slot_5_pic_3": [
+      {
+        "raw": "display voltage corrosion slot 5 pic 3\n                                      ^\nError: Too many parameters found at '^' position.\n[~ta1-kie002-diagnose]"
+      }
+    ],
+    "display_voltage_corrosion_slot_5_pic_4": [
+      {
+        "raw": "display voltage corrosion slot 5 pic 4\n                                      ^\nError: Too many parameters found at '^' position.\n[~ta1-kie002-diagnose]"
+      }
+    ],
+    "display_voltage_corrosion_slot_5_pic_5": [
+      {
+        "raw": "display voltage corrosion slot 5 pic 5\n                                      ^\nError: Too many parameters found at '^' position.\n[~ta1-kie002-diagnose]"
+      }
+    ],
+    "display_mbusnode": [
+      {
+        "raw": "display mbusnode\n                    ^\nError: Unrecognized command found at '^' position."
+      }
+    ],
+    "display_assert_10_verbose_all": [
+      {
+        "raw": "display assert 10 verbose all\nInfo: The assert record does not exist.\n[~ta1-kie002-diagnose]"
+      }
+    ],
+    "display_access_user": [
+      {
+        "raw": "display access-user\n  ------------------------------------------------------------------------------\n  Total users                        : 2\n  IPv4 users                         : 0\n  IPv6 users                         : 0\n  Dual-Stack users                   : 0\n  Lac users                          : 0\n  RUI local users                    : 0\n  RUI remote users                   : 0\n  Wait authen-ack                    : 0\n  Authentication success             : 2\n  Accounting ready                   : 2\n  Accounting state                   : 0\n  Wait leaving-flow-query            : 0\n  Wait accounting-start              : 0\n  Wait accounting-stop               : 0\n  Wait authorization-client          : 0\n  Wait authorization-server          : 0\n  ------------------------------------------------------------------------------\n  Domain-name                        Online-user\n  ------------------------------------------------------------------------------\n  default0                           : 0                                    \n  default1                           : 0                                    \n  default_admin                      : 2                                    \n  ------------------------------------------------------------------------------\n  The used CID table are             :\n  2094571-2094572\n  ------------------------------------------------------------------------------"
+      }
+    ],
+    "display_max_onlineusers": [
+      {
+        "raw": "display max-onlineusers\n Max online users since startup             : 0\n Time of max online users                   : -\n Max accounting-ready users since startup   : 0\n Time of max accounting-ready users         : -\n Max normal & RUI local users since startup : 0\n Time of max normal & RUI local users       : -\n Max RUI remote users since startup         : 0\n Time of max RUI remote users               : -"
+      }
+    ],
+    "display_radius_attribute_used": [
+      {
+        "raw": "display radius-attribute used\nRadius attribute received from Server:\nAttribute Name                                    Type\n----------------------------------------------------------------\n\n\nRadius attribute sended to Server:\nAttribute Name                                    Type\n----------------------------------------------------------------\n\n[~ta1-kie002-diagnose]"
+      }
+    ],
+    "display_loopback_detect_information": [
+      {
+        "raw": "display loopback-detect information\nInfo: There is no block interface in this router.\n[~ta1-kie002-diagnose]"
+      }
+    ],
+    "display_bfd_statistics": [
+      {
+        "raw": "display bfd statistics\nCurrent Display Board Number : Main\nTotal Up/Down Session Number : 3/0\nTotal Up/Down Main Session Number : 0/0\nTotal Up/Down Sub Session Number  : 0/0\nTotal Used/Supported Resource Number  : 4/4096\nTotal Used/Supported Crc Resource Number  : 0/1024\nCurrent Session Number :\n      Static session           : 0                Dynamic session        : 3\n      E_Dynamic session        : 0                STATIC_AUTO session    : 0\n      LDP_LSP session          : 0                STATIC_LSP session     : 0\n      TE_TUNNEL session        : 0                TE_LSP session         : 0\n      PW session               : 0                IP session             : 3\n      VSI PW session           : 0                LDP_TUNNEL session     : 0\n      BGP_TUNNEL session       : 0                SR_BE_TUNNEL session   : 0\n      FLEX_ALGO_TUNNEL session : 0                SID_LIST session       : 0\n      S-BFD reflect session    : 1                P2MP session           : 0\n      EVPN_VPWS session        : 0               \n--------------------------------------------------------------------------------\nPAF/LCS Name                       Maxnum         Minnum         Create\n--------------------------------------------------------------------------------\nBFD_SESSION_NUM                    4096           1              4\nBFD_IO_SESSION_NUM                 4096           1              -\n--------------------------------------------------------------------------------\nIO Board Current Create Session Statistics Information :(slot/number)\n--------------------------------------------------------------------------------\n0 /0     5 /3     \n--------------------------------------------------------------------------------\nCurrent Total Used Discriminator Num               : 4\n--------------------------------------------------------------------------------\nBFD HA Information :\n--------------------------------------------------------------------------------\nCurrent HA Status                                  : Work\n--------------------------------------------------------------------------------\nBFD for LSP Information :\n--------------------------------------------------------------------------------\nAbility of auto creating BFD session on egress     : Enable \nPeriod of LSP Ping                                 : 60\n--------------------------------------------------------------------------------\nBFD Global Information :\n--------------------------------------------------------------------------------\nSystem Session Delay Up Timer                      : OFF  \n--------------------------------------------------------------------------------"
+      }
+    ],
+    "display_bgp_ipv6_peer": [
+      {
+        "raw": "display bgp ipv6 peer"
+      }
+    ],
+    "display_bgp_vpnv6_all_peer": [
+      {
+        "raw": "display bgp vpnv6 all peer"
+      }
+    ],
+    "display_bgp_evpn_peer": [
+      {
+        "raw": "display bgp evpn peer"
+      }
+    ],
+    "dir_cfcard_": [
+      {
+        "raw": "dir cfcard:\nDirectory of cfcard:/\n\n  Idx  Attr     Size(Byte)  Date        Time       FileName                     \n    0  dr-x              -  Oct 09 2025 02:00:00   $_checkpoint                 \n    1  dr-x              -  Jul 17 2020 04:00:00   $_install_hpg                \n    2  dr-x              -  Jul 17 2020 04:00:00   $_install_mod                \n    3  dr-x              -  Sep 02 2025 12:51:51   $_license                    \n    4  drwx              -  Mar 26 2024 06:43:32   $_platform                   \n    5  dr-x              -  May 28 2025 12:27:56   $_security_info              \n    6  dr-x              -  Apr 24 2025 11:17:25   $_startup                    \n    7  dr-x              -  Apr 24 2025 11:17:00   $_system                     \n    8  dr-x              -  Nov 20 2024 16:40:00   $_user                       \n    9  drwx              -  Jul 07 2025 17:20:26   07_07_2025                   \n   10  drwx              -  Oct 09 2025 15:46:59   KPISTAT                      \n   11  drwx              -  Nov 20 2024 16:43:37   KPI_HEALTH                   \n   12  drwx              -  Nov 20 2024 16:43:37   KPI_SAID                     \n   13  drwx              -  Nov 20 2024 16:36:55   L3UC_dropCauseLog            \n   14  -rw-     51,989,606  May 18 2025 16:14:08   NE8000-M4M8M14V800R024SPH122-C00SPC500.PAT\n   15  -rw-  1,194,757,780  Jan 01 2022 02:05:59   NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.cc              \n   16  -rw-              0  Nov 20 2024 08:55:03   backup_bkp_elb.txt           \n   17  drwx              -  Nov 20 2024 16:40:08   bill                         \n   18  drwx              -  Nov 20 2024 08:54:58   bootlogfile                  \n   19  drwx              -  Nov 20 2024 16:40:09   business-trace               \n   20  -rw-         23,274  Oct 09 2025 03:59:35   config.cfg                   \n   21  -rw-          2,269  Nov 20 2024 08:54:06   default-custom_NetEngine_8000_M4_NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.defcfg\n   22 -rw-          15,312  Oct 09 2025 03:59:35   device.sys                   \n   23  drwx              -  Nov 20 2024 16:36:55   dropCauseLog                 \n   24  drwx              -  Nov 20 2024 16:38:06   eva                          \n   25  drwx              -  Nov 20 2024 16:38:00   hips                         \n   26  drwx              -  Nov 20 2024 16:36:55   insegdroplog                 \n   27  drwx              -  Nov 20 2024 16:36:55   insegdroplog_ldp             \n   28 drwx               -  Nov 20 2024 16:36:55   insegdroplog_te              \n   29 -rw-           4,640  Apr 24 2025 11:16:11   lcsbox                       \n   30 -rw-          10,528  Sep 02 2025 12:51:48   lcsbox_ex                    \n   31 dr-x               -  Oct 09 2025 10:53:49   logfile                      \n   32 drwx               -  Jan 01 2022 02:05:54   lost+found                   \n   33 drwx               -  Nov 20 2024 16:44:58   open-ssh                     \n   34 drwx               -  Oct 09 2025 03:00:00   pmdata                       \n   35 drwx               -  Oct 06 2025 06:17:13   said                         \n   36 drwx               -  Jul 17 2020 04:00:00   security                     \n   37 drwx               -  Apr 24 2025 11:17:25   ztp                          \n\n13,238,234 KB total (9,194,587 KB free)"
+      }
+    ],
+    "dir_cfcard2_": [
+      {
+        "raw": "dir cfcard2:\nError: Device can't be found \"cfcard2:\"."
+      }
+    ],
+    "dir_slave_cfcard_": [
+      {
+        "raw": "dir slave#cfcard:\nError: Device can't be found \"slave#cfcard\"."
+      }
+    ],
+    "dir_slave_cfcard2_": [
+      {
+        "raw": "dir slave#cfcard2:\nError: Device can't be found \"slave#cfcard2\"."
+      }
+    ],
+    "display_nat_instance": [
+      {
+        "raw": "display nat instance"
+      }
+    ],
+    "display_health": [
+      {
+        "raw": "display health\n--------------------------------------------------------------------\nSlot                           CPU Usage  Memory Usage(Used/Total)\n--------------------------------------------------------------------\n5           IPU(Master)            13%          26%   3935MB/14798MB\n--------------------------------------------------------------------"
+      }
+    ],
+    "display_exception_10_verbose_all": [
+      {
+        "raw": "display exception 10 verbose all\nInfo: The exception record does not exist.\n[~ta1-kie002-diagnose]"
+      }
+    ],
+    "display_fib_slot_5_statistics": [
+      {
+        "raw": "display fib slot 5 statistics\nRoute Entry Count : 238"
+      }
+    ],
+    "display_fib_slot_5_statistics_all": [
+      {
+        "raw": "display fib slot 5 statistics all\nIPv4 FIB Route Prefix Capacity : 4194304\nIPv4 FIB Total Route Prefix Count : 853\n \nIPv4 FIB Public Route Prefix Count : 238\nIPv4 VPN-instance ****** Route Prefix Count : 2\nIPv4 VPN-instance *** Route Prefix Count : 613\nIPv4 FIB Public Other Route Prefix Count : 0 \nIPv4 VPN-instance ****** Other Route Prefix Count : 0\nIPv4 VPN-instance *** Other Route Prefix Count : 0"
+      }
+    ],
+    "display_ipv6_fib_slot_5_statistics_all": [
+      {
+        "raw": "display ipv6 fib slot 5 statistics all"
+      }
+    ],
+    "display_isis_peer": [
+      {
+        "raw": "display isis peer"
+      }
+    ],
+    "display_ospf_peer": [
+      {
+        "raw": "display ospf peer\n\n(M) Indicates MADJ neighbor\n\n\n          OSPF Process 1 with Router ID 172.***.***.***\n                Neighbors\n\n Area 0.0.0.0 interface 172.***.***.*** (100GE0/3/0)'s neighbors\n Router ID: 172.***.***.***      Address: 172.***.***.***  \n   State: Full           Mode:Nbr is Master     Priority: 1\n   DR: None              BDR: None              MTU: 0\n   Dead timer due in  40  sec\n   Retrans timer interval: 5\n   Neighbor is up for 1199h20m58s\n   Neighbor Up Time : 2025-08-20 17:06:56+03:00 DST\n   Authentication Sequence: [ 0 ]\n   Adjacency SID: 48078\n   Adjacency weight: 0\n   Adjacency flags: (-|V|L|-|-|-|-|-)\n\n Area 0.0.1.1 interface 172.***.***.*** (100GE0/3/0)'s neighbors\n Router ID: 172.***.***.***(M)    Address: 172.***.***.***    \n   State: Full           Mode:Nbr is Master     Priority: 1\n   DR: None              BDR: None              MTU: 0\n   Dead timer due in  40  sec\n   Retrans timer interval: 5\n   Neighbor is up for 1199h21m00s\n   Neighbor Up Time : 2025-08-20 17:06:54+03:00 DST\n   Authentication Sequence: [ 0 ]\n   Adjacency SID: 48079\n   Adjacency weight: 0\n   Adjacency flags: (-|V|L|-|-|-|-|-)\n\n Area 0.0.1.2 interface 172.***.***.*** (100GE0/3/0)'s neighbors\n Router ID: 172.***.***.***(M)    Address: 172.***.***.***     \n   State: Full           Mode:Nbr is Master     Priority: 1\n   DR: None              BDR: None              MTU: 0\n   Dead timer due in  39  sec\n   Retrans timer interval: 5\n   Neighbor is up for 1199h21m02s\n   Neighbor Up Time : 2025-08-20 17:06:52+03:00 DST\n   Authentication Sequence: [ 0 ]\n   Adjacency SID: 48077\n   Adjacency weight: 0\n   Adjacency flags: (-|V|L|-|-|-|-|-)"
+      }
+    ],
+    "display_ospfv3_peer": [
+      {
+        "raw": "display ospfv3 peer"
+      }
+    ],
+    "display_l2vpn_ccc_interface_vc_type_all": [
+      {
+        "raw": "display l2vpn ccc-interface vc-type all"
+      }
+    ],
+    "display_ipsec_sa": [
+      {
+        "raw": "display ipsec sa"
+      }
+    ],
+    "display_ipsec_statistics": [
+      {
+        "raw": "display ipsec statistics"
+      }
+    ],
+    "display_l2_multicast_channe": [
+      {
+        "raw": "display l2-multicast-channe"
+      }
+    ],
+    "display_oam_global_configuration": [
+      {
+        "raw": "display oam global configuration\nGlobal Configuration                                 Value\n----------------------------------------------------------\nCFM Status                                        disabled\nPing MAC Status                                   disabled\nTrace MAC Status                                  disabled\nCFM MAC-tunnel MIP Trace Status                   disabled\nEFM Status                                        disabled\nCFM Protocol                                      standard\nCFM MP-address-model                                bridge\nY1731 PM-mode                                      disable"
+      }
+    ],
+    "display_dcn_global": [
+      {
+        "raw": "display dcn global\nDCN global information:\n  state: enable    \n  neid:  0x83E730\n  vlan:  0\n  data-priority:  3"
+      }
+    ],
+    "display_mpls_ldp_peer": [
+      {
+        "raw": "display mpls ldp peer"
+      }
+    ],
+    "display_mpls_ldp_session_all": [
+      {
+        "raw": "display mpls ldp session all"
+      }
+    ],
+    "display_mpls_ldp_lsp_statistics": [
+      {
+        "raw": "display mpls ldp lsp statistics"
+      }
+    ],
+    "display_mpls_mldp_lsp_statistics": [
+      {
+        "raw": "display mpls mldp lsp statistics"
+      }
+    ],
+    "display_mpls_ldp_session": [
+      {
+        "raw": "display mpls ldp session"
+      }
+    ],
+    "display_mpls_mldp_lsp_p2mp": [
+      {
+        "raw": "display mpls mldp lsp p2mp"
+      }
+    ],
+    "display_mpls_te_tunnel_interface": [
+      {
+        "raw": "display mpls te tunnel-interface"
+      }
+    ],
+    "display_mpls_te_tunnel_interface_last_error": [
+      {
+        "raw": "display mpls te tunnel-interface last-error"
+      }
+    ],
+    "display_switchover_state": [
+      {
+        "raw": "display switchover state\n                    ^\nError: Unrecognized command found at '^' position."
+      }
+    ],
+    "display_multicast_routing_table": [
+      {
+        "raw": "display multicast routing-table"
+      }
+    ],
+    "display_pim_routing_table": [
+      {
+        "raw": "display pim routing-table"
+      }
+    ],
+    "display_ipv6_routing_table_statistics": [
+      {
+        "raw": "display ipv6 routing-table statistics\nSummary Prefixes : 0\nProtocol   route       active      added       deleted     freed\nDIRECT     0           0           0           0           0           \nSTATIC     0           0           0           0           0           \nRIPng      0           0           0           0           0           \nOSPFv3     0           0           0           0           0           \nIS-IS      0           0           0           0           0           \nBGP        0           0           0           0           0           \nUNR        0           0           0           0           0           \nTotal      0           0           0           0           0"
+      }
+    ],
+    "display_ip_routing_table_0_0_0_0": [
+      {
+        "raw": "display ip routing-table 0.0.0.0"
+      }
+    ],
+    "display_bgp_routing_table_statistics": [
+      {
+        "raw": "display bgp routing-table statistics"
+      }
+    ],
+    "display_bgp_ipv6_routing_table_statistics": [
+      {
+        "raw": "display bgp ipv6 routing-table statistics"
+      }
+    ],
+    "display_bgp_vpnv4_all_routing_table_statistics": [
+      {
+        "raw": "display bgp vpnv4 all routing-table statistics"
+      }
+    ],
+    "display_bgp_vpnv6_all_routing_table_statistics": [
+      {
+        "raw": "display bgp vpnv6 all routing-table statistics"
+      }
+    ],
+    "display_ipv6_neighbors": [
+      {
+        "raw": "display ipv6 neighbors"
+      }
+    ],
+    "display_remote_backup_profile": [
+      {
+        "raw": "display remote-backup-profile"
+      }
+    ],
+    "display_remote_backup_service": [
+      {
+        "raw": "display remote-backup-service"
+      }
+    ],
+    "display_paf_all": [
+      {
+        "raw": "display paf all\n                        ^\nError: Too many parameters found at '^' position."
+      }
+    ],
+    "display_license": [
+      {
+        "raw": "display license\n Active License    : cfcard:/2102355FTE_LICNetEngine8000M4_V800R023.xml\n License state     : Normal\n Revoke ticket     : No ticket\n **********\n Product name      : NetEngine 8000\n Product version   : V800R023\n License Serial No : LIC20250902C8P78T\n Creator           : Huawei Technologies Co., Ltd.\n Created Time      : 2025-09-02 17:46:26 DST\n\n -------------------------------------------------------------\n Feature name      : CRFEA5\n Authorize type    : comm\n Expired date      : PERMANENT\n Trial days        : --\n\n Item name               Item type      Value      Description\n -------------------------------------------------------------\n\n CR8S00L3VPC2              --             28         NetEngine 8000 M Series L3VPN Port Function License(per 50GE/40GE)\n    LCR8S00L3VPC2          Resource       28         NetEngine 8000 M Series L3VPN Port Function License(per 50GE/40GE)\n CR8S00OAMBC0              --             1          NetEngine 8000 M Series OAM Essential Function License\n    LCR8S002544C1          Function       YES        NetEngine 8000 M Series OAM Enhanced Function License\n CR8S00CRAGC2              --             28         NetEngine 8000 M Series Core&Aggregation Scenario Port Function License(per 50GE/40GE)\n    LCR8S00CRAGC2          Resource       28         NetEngine 8000 M Series Core&Aggregation Scenario Port Function License(per 50GE/40GE)\n CR8S0M4AE1CA              --             6          NetEngine 8000 M Series Fixed Port 1*50G RTU (can switch to different combo mode)\n    LCR8S0M4AE1C1          Resource       6          M Series Fixed Port 1*50G RTU (can switch to different combo mode)\n CR8S0M4AE1CB              --             1          NetEngine 8000 M Series 2*Fixed Port 10G Upgrade to 25G Enable RTU(per 25G)\n    LCR8S0M4AE1C2          Resource       2          M Series Fixed Port 10G Upgrade to 25G Enable RTU(per 25G)\n CR8S00L3VPC4              --             20         NetEngine 8000 M Series L3VPN Port Function License(per 10GE)\n    LCR8S00L3VPC4          Resource       20         NetEngine 8000 M Series L3VPN Port Function License(per 10GE)\n CR8S00TMSYC1              --             1          NetEngine 8000 M Series Time Synchronization Function License\n    LCR8S00TMSYC1          Function       YES        NetEngine 8000 M Series Time Synchronization Function License\n CR8S0M4AE1CD              --             1          NetEngine 8000 M Series Fixed Port 2*50G Startup RTU (can switch to different combo mode)\n    LCR8S0M4AE1C1          Resource       2          M Series Fixed Port 1*50G RTU (can switch to different combo mode)\n CR8S00CRAGC4              --             20         NetEngine 8000 M Series Core&Aggregation Scenario Port Function License(per 10GE)\n    LCR8S00CRAGC4          Resource       20         NetEngine 8000 M Series Core&Aggregation Scenario Port Function License(per 10GE)\n\n Item name               (View)Resource License Command-line\n -------------------------------------------------------------\n LCR8S00CRAGC4           (License)active port-core-aggregation slot <slot-id> card <card-id> port <port-list>\n LCR8S0M4AE1C2           (License)active port-basic slot <slot-id> card <card-id> port <port-list>\n LCR8S00L3VPC4           (License)active port-l3vpn slot <slot-id> card <card-id> port <port-list>\n LCR8S0M4AE1C1           (License)active port-basic slot <slot-id> card <card-id> port <port-list>\n LCR8S00L3VPC2           (License)active port-l3vpn slot <slot-id> card <card-id> port <port-list>\n LCR8S00CRAGC2           (License)active port-core-aggregation slot <slot-id> card <card-id> port <port-list>\n\n Master board license state: Normal."
+      }
+    ],
+    "display_stp_brief": [
+      {
+        "raw": "display stp brief\n Protocol Status       :Disabled \n Protocol Standard     :IEEE 802.1s\n Version               :3\n CIST Bridge Priority  :32768\n MAC address           :****-****-****\n Max age(s)            :20\n Forward delay(s)      :15\n Hello time(s)         :2\n Max hops              :20"
+      }
+    ],
+    "check_version_all_startup": [
+      {
+        "raw": "check version all startup\nInfo: Prepare to check system software cfcard:/NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.cc, please wait ...................................................\nInfo: System software signature check passed!\nInfo: Software version match Ok!\n[~ta1-kie002-diagnose]"
+      }
+    ],
+    "check_version_startup": [
+      {
+        "raw": "check version startup\nInfo: Prepare to check system software cfcard:/NetEngine8000-Series-M4-M8-M14_V800R023C10SPC500.cc, please wait ...................................................\nInfo: System software signature check passed!\nInfo: Software version match Ok!"
+      }
+    ],
+    "display_mpls_l2vc_brief": [
+      {
+        "raw": "display mpls l2vc brief"
+      }
+    ],
+    "display_mpls_static_l2vc_brief": [
+      {
+        "raw": "display mpls static-l2vc brief"
+      }
+    ],
+    "display_mpls_switch_l2vc_brief": [
+      {
+        "raw": "display mpls switch-l2vc brief"
+      }
+    ],
+    "display_vsi": [
+      {
+        "raw": "display vsi"
+      }
+    ],
+    "display_vrrp_brief": [
+      {
+        "raw": "display vrrp brief\nInfo: The VRRP does not exist."
+      }
+    ],
+    "display_vrrp_admin_vrrp": [
+      {
+        "raw": "display vrrp admin-vrrp\nInfo: The administrator VRRP does not exist."
+      }
+    ],
+    "display_ptp_all": [
+      {
+        "raw": "display ptp all\n  Device config info\n  ------------------------------------------------------------------------------\n  PTP state         :disable              Domain  value      :0\n  Slave only        :no                   Device type        :no mode\n  Set port state    :no                   Local clock ID     :ccbce3fffe1bc6f7\n  Acl               :no                   Virtual clock ID   :no\n  Acr               :no                   Time lock success  :no\n  Asymmetry measure :disable              Passive measure    :enabled\n  Send GM WTR       :no\n\n  BMC run info\n  ------------------------------------------------------------------------------\n  Source port       :local\n\n  Clock source info\n  Clock       Pri1 Pri2 Accuracy Class TimeSrc Signal Switch Direction In-Status\n  ------------------------------------------------------------------------------\n  local       128  128  0x31     187   0xa0    -      -      -         -\n  bits1       128  128  0x20     6     0x20    1pps   off    in/-      abnormal"
+      }
+    ],
+    "display_ptp_adaptive_all": [
+      {
+        "raw": "display ptp-adaptive all\n  Device config info\n  ------------------------------------------------------------------------------\n  Ptp adaptive state      :disable          Device type        :none            \n  Sync mode               :none             Current state      :none            \n  Packet dscp             :56               Domain value       :0               \n  Local ip                :no local ip"
+      }
+    ],
+    "display_debugging": [
+      {
+        "raw": "display debugging"
+      }
+    ],
+    "display_vpls_connection": [
+      {
+        "raw": "display vpls connection"
+      }
+    ],
+    "display_mpls_l2vc": [
+      {
+        "raw": "display mpls l2vc"
+      }
+    ],
+    "display_vsi_verbose": [
+      {
+        "raw": "display vsi verbose"
+      }
+    ],
+    "display_vpls_connection_verbose": [
+      {
+        "raw": "display vpls connection verbose"
+      }
+    ],
+    "display_mpls_switch_l2vc": [
+      {
+        "raw": "display mpls switch-l2vc"
+      }
+    ],
+    "display_mpls_ldp_peer_all": [
+      {
+        "raw": "display mpls ldp peer all"
+      }
+    ],
+    "display_ospf_interface_verbose": [
+      {
+        "raw": "display ospf interface verbose\n\n          OSPF Process 1 with Router ID 172.***.***.***\n                  Interfaces\n\n Area: 0.0.0.0          (MPLS TE enabled)\n\n Interface: 172.***.***.*** (100GE0/3/0) --> 172.***.***.***\n Cost: 100       State: P-2-P         Type: P2P            MTU: 1500\n Timers: Hello 10 , Dead 40 , Wait 40 , Poll 120 , Retransmit 5 , Transmit Delay 1\n MPLS Traffic-Engineering Link\n BFD Timers: Tx-Interval 10 , Rx-Interval 10 , Multiplier 3\n ALLSPF GROUP\n OpaqueId: 0   PrevState: Down   Bandwidth: 100000 Mbps   Remain-Bandwidth: 100000 Mbps\n Effective cost : 100, enabled by OSPF Protocol\n Bfd Incr-Cost Wtr RemainTime : 0s\n Link quality adjust cost: NO, link quality: 0x0(GOOD)\n Suppress flapping peer: enable(flapping-count: 0, threshold: 10)\n Multi-area Interface Count is 2  \n Label Stack Depth: 10\n Packet Statistics\n              Type        Input     Output\n             Hello      1125318    1124531\n    DB Description           18         18\n    Link-State Req            2          2\n Link-State Update      1796347    2076676\n    Link-State Ack      1408509    1142827\n\n Area: 0.0.1.1           (MPLS TE enabled)\n\n Interface: 172.***.***.*** (100GE0/3/0) --> 172.***.***.***\n Cost: 10000       State: P-2-P         Type: P2P            MTU: 1500\n Timers: Hello 10 , Dead 40 , Wait 40 , Poll 120 , Retransmit 5 , Transmit Delay 1\n MPLS Traffic-Engineering Link\n BFD Timers: Tx-Interval 10 , Rx-Interval 10 , Multiplier 3\n ALLSPF GROUP\n OpaqueId: 0   PrevState: Down   Bandwidth: 100000 Mbps   Remain-Bandwidth: 100000 Mbps\n Effective cost : 10000, enabled by OSPF Protocol\n Bfd Incr-Cost Wtr RemainTime : 0s\n Link quality adjust cost: NO, link quality: 0x0(GOOD)\n Suppress flapping peer: enable(flapping-count: 0, threshold: 10)\n Multi-area interface\n Label Stack Depth: 10\n Packet Statistics\n              Type        Input     Output\n             Hello      1126706    1124523\n    DB Description           14         14\n    Link-State Req            1          1\n Link-State Update      1117501    1583616\n    Link-State Ack       916292     479598\n\t\n Area: 0.0.1.2            (MPLS TE enabled)\n\n Interface: 172.***.***.*** (100GE0/3/0) --> 172.***.***.***\n Cost: 10000       State: P-2-P         Type: P2P            MTU: 1500\n Timers: Hello 10 , Dead 40 , Wait 40 , Poll 120 , Retransmit 5 , Transmit Delay 1\n MPLS Traffic-Engineering Link\n BFD Timers: Tx-Interval 10 , Rx-Interval 10 , Multiplier 3\n ALLSPF GROUP\n OpaqueId: 0   PrevState: Down   Bandwidth: 100000 Mbps   Remain-Bandwidth: 100000 Mbps\n Effective cost : 10000, enabled by OSPF Protocol\n Bfd Incr-Cost Wtr RemainTime : 0s\n Link quality adjust cost: NO, link quality: 0x0(GOOD)\n Suppress flapping peer: enable(flapping-count: 0, threshold: 10)\n Multi-area interface\n Label Stack Depth: 10\n Packet Statistics\n              Type        Input     Output\n             Hello      1126575    1124541\n    DB Description           10         10\n    Link-State Req            1          0\n Link-State Update       124160     429915\n    Link-State Ack       387406      83251"
+      }
+    ],
+    "display_ip_vpn_instance": [
+      {
+        "raw": "display ip vpn-instance\n Total VPN-Instances configured      : 2\n Total IPv4 VPN-Instances configured : 2\n Total IPv6 VPN-Instances configured : 1\n\n  VPN-Instance Name               RD                    Address-family\n  ******                                     IPv4          \n  ******                                     IPv6          \n  ***                                        IPv4"
+      }
+    ],
+    "display_mpls_ldp_peer_statistics": [
+      {
+        "raw": "display mpls ldp peer statistics"
+      }
+    ],
+    "display_mpls_te_protection_tunnel_all": [
+      {
+        "raw": "display mpls te protection tunnel all"
+      }
+    ],
+    "display_mpls_l2vpn_pw_aps": [
+      {
+        "raw": "display mpls l2vpn pw-aps"
+      }
+    ],
+    "display_mpls_l2vc_oam_mapping": [
+      {
+        "raw": "display mpls l2vc oam-mapping"
+      }
+    ],
+    "display_aps_group": [
+      {
+        "raw": "display aps group"
+      }
+    ],
+    "display_ip_routing_table_all_vpn_instance_statistics": [
+      {
+        "raw": "display ip routing-table all-vpn-instance statistics\nSummary Prefixes : 615\nProto      total      active     added      deleted    freed\n           routes     routes     routes     routes     routes\nDIRECT     53         53         1335       1282       1282       \nSTATIC     0          0          0          0          0          \nRIP        0          0          0          0          0          \nOSPF       734        687        136003     135269     135269     \nIS-IS      0          0          0          0          0          \nBGP        0          0          0          0          0          \nUNR        0          0          0          0          0          \nTotal      787        740        137338     136551     136551"
+      }
+    ]
+  }
+}

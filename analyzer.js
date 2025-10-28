@@ -886,7 +886,6 @@ function parseFile(inFile) {
   // write output
   ensureOutDir();
   const outFile = outPathFor(inFile);
-  fs.writeFileSync(outFile, JSON.stringify(model), "utf8");
 
   // console summary
   console.log("\n✅ Parsed:", path.basename(inFile));
@@ -915,11 +914,18 @@ function parseFile(inFile) {
   console.log("— Static routes :", model.routing.static.length);
   console.log("— Alarms        :", model.alarms.length);
 
-  return outFile;
+  fs.writeFileSync(outFile, JSON.stringify(model, null, 2), "utf8");
+
+  // Return the parsed model for programmatic use
+  return model;
 }
 
-// ---------- Main ----------
-(function main() {
+// Export parseFile so the analyzer can be required programmatically
+module.exports = parseFile;
+module.exports.parseFile = parseFile;
+
+// Run as CLI only when invoked directly
+if (require.main === module) {
   if (DIR_MODE) {
     const dir = path.resolve(DIR_PATH);
     if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) {
@@ -944,4 +950,4 @@ function parseFile(inFile) {
     ensureOutDir();
     parseFile(file);
   }
-})();
+}

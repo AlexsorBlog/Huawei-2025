@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Огляд даних пристрою</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Кастомний скролбар */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2f3136;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #202225;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #18191c;
+        }
+
+        /* * СТИЛІ ДЛЯ ДИНАМІЧНОГО КОНТЕНТУ (з renderer.js)
+         */
+
+        /* Заголовки секцій (акордеон) */
+        #json-output h2 {
+            font-size: 1.5rem; /* 24px */
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 1.5rem; /* 24px */
+            margin-bottom: 0; /* Прибираємо відступ знизу */
+            padding: 0.75rem 0.75rem 0.75rem 2rem; /* 12px 12px 12px 32px */
+            border-bottom-width: 1px;
+            border-color: #40444B;
+            cursor: pointer;
+            position: relative;
+            background-color: #2f3136;
+            border-radius: 0.5rem 0.5rem 0 0; /* Закруглення тільки зверху */
+            transition: background-color 0.2s ease;
+        }
+        
+        #json-output h2:hover {
+            background-color: #3a3d44;
+        }
+
+        /* Іконка-стрілка для акордеону */
+        #json-output h2::before {
+            content: '▼';
+            position: absolute;
+            left: 0.75rem; /* 12px */
+            top: 50%;
+            transform: translateY(-50%) rotate(0deg);
+            font-size: 0.8em;
+            transition: transform 0.2s ease-in-out;
+            color: #b9bbbe;
+        }
+
+        /* Стиль для згорнутого заголовка */
+        #json-output h2.collapsed {
+             border-radius: 0.5rem; /* Закруглення з усіх боків */
+             margin-bottom: 1rem; /* Відступ знизу, коли згорнуто */
+        }
+
+        #json-output h2.collapsed::before {
+            transform: translateY(-50%) rotate(-90deg);
+        }
+
+        /* Контент, що згортається (таблиці) */
+        .collapsible-content {
+            /* Таблиці вже мають свої стилі, ми просто керуємо відображенням */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, visibility 0.3s ease-out;
+            max-height: 5000px; /* Достатньо велике значення */
+            visibility: visible;
+             border-bottom-left-radius: 0.5rem;
+             border-bottom-right-radius: 0.5rem;
+             margin-bottom: 1rem; /* Відступ знизу, коли розгорнуто */
+        }
+        
+        .collapsible-content.collapsed {
+            max-height: 0;
+            visibility: hidden;
+            margin-bottom: 0;
+        }
+
+        /* Обгортка для таблиць (для тіні і закруглення знизу) */
+        .table-wrapper {
+             background-color: #2f3136;
+             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+             border-bottom-left-radius: 0.5rem;
+             border-bottom-right-radius: 0.5rem;
+             overflow: hidden; /* Обрізає таблицю по кутах */
+        }
+
+        /* Загальні стилі для таблиць */
+        .data-table {
+            width: 100%;
+            /* Прибираємо фон і тінь звідси, переносимо на .table-wrapper */
+            margin-bottom: 0; 
+            border-radius: 0;
+        }
+
+        /* Заголовки структурованих таблиць (wide-cols) */
+        .data-table.wide-cols thead th {
+            background-color: #202225;
+            color: #b9bbbe;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            padding: 0.75rem 1.5rem;
+            text-align: left;
+        }
+        
+        /* Заголовки (ключі) для Key-Value таблиць */
+        .data-table:not(.wide-cols) th {
+            background-color: #202225;
+            color: #ffffff;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            text-align: left;
+            width: 30%;
+            text-transform: capitalize;
+            border-bottom: 1px solid #40444B;
+        }
+
+        /* Ячейки даних */
+        .data-table td {
+            padding: 0.75rem 1.5rem;
+            border-top: 1px solid #40444B;
+            color: #dcddde;
+            word-break: break-word;
+        }
+        
+        /* Чередування рядків для Key-Value таблиць */
+        .data-table:not(.wide-cols) tr:nth-child(even) th,
+        .data-table:not(.wide-cols) tr:nth-child(even) td {
+             background-color: #32353B;
+        }
+        
+        /* Перший рядок не має верхнього бордера */
+        .data-table tr:first-child td,
+        .data-table:not(.wide-cols) tr:first-child th {
+            border-top: none;
+        }
+        
+        /* Останній рядок Key-Value */
+        .data-table:not(.wide-cols) tr:last-child th,
+        .data-table:not(.wide-cols) tr:last-child td {
+             border-bottom: none;
+        }
+
+        /* Чередування рядків для структурованих таблиць */
+        .data-table.wide-cols tbody tr:hover {
+            background-color: #3a3d44;
+        }
+
+        /* СТИЛІ ДЛЯ ВИДІЛЕННЯ */
+        .critical {
+            color: #f04747; /* 'text-red-400' */
+            font-weight: 700;
+        }
+        tr.critical {
+             background-color: #4f3136;
+             border-color: #f04747;
+        }
+        tr.critical:hover {
+            background-color: #5a3a41;
+        }
+        .up {
+            color: #43b581; /* 'text-green-400' */
+            font-weight: 500;
+        }
+        .down {
+            color: #f04747; /* 'text-red-400' */
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="bg-[#36393f] text-[#dcddde]">
+
+    <div class="flex h-screen">
+        <!-- Бічна панель для кнопок -->
+        <aside class="w-72 bg-[#2f3136] p-6 flex flex-col flex-shrink-0">
+            <h1 class="text-2xl font-bold text-white mb-8">Парсер JSON/Log</h1>
+            
+            <div class="flex-grow">
+                <button id="json-file-input" class="flex items-center justify-center w-full bg-[#5865F2] hover:bg-[#4752C4] text-white font-semibold py-3 px-4 rounded-md transition-colors duration-200 mb-4 cursor-pointer">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l-4 4-4-4M6 16l-4-4 4-4"></path></svg>
+                    Переглянути JSON
+                </button>
+
+                <button id="log-file-input" class="flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-md transition-colors duration-200 mb-4 cursor-pointer">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    Парсити TXT/LOG
+                </button>
+
+                <button id="xlsx-file-input" class="flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-md transition-colors duration-200 mb-4 cursor-pointer">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    Експортувати в XLSX
+                </button>
+            </div>
+
+            <div class="bg-[#292b2f] p-4 rounded-lg text-center">
+                 <p class="text-sm text-gray-400">@ Huawey 2025 Challenge (c)</p>
+            </div>
+        </aside>
+
+        <!-- Основний контент -->
+        <main class="flex-1 p-8 overflow-y-auto">
+            <div class="header">
+                <h1 id="device-title" class="text-3xl font-bold text-white mb-6">Огляд Даних Пристрою</h1>
+            </div>
+
+            <div id="json-output">
+                <div class="bg-[#2f3136] p-6 rounded-lg shadow-lg">
+                    <p class="text-lg">Будь ласка, завантажте JSON або лог-файл для візуалізації, використовуючи кнопки на панелі зліва.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Load renderer script -->
+    <script src="renderer-new.js"></script>
+</body>
+</html>
+
