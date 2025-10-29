@@ -260,7 +260,7 @@ function buildAlarmsSheet(wb, d) {
 }
 
 // ────────────── Export Logic ──────────────
-async function exportOne(jsonPath) {
+async function exportFile(jsonPath) {
   const data = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
   const deviceName = data.identity?.sysname || path.basename(jsonPath, ".json");
 
@@ -278,7 +278,7 @@ async function exportOne(jsonPath) {
   await wb.toFileAsync(outPath);
   console.log("✅ Excel created:", outPath);
 }
-
+module.exports = exportFile;
 // ────────────── Main ──────────────
 (async () => {
   if (!fs.existsSync(INPUT_DIR)) {
