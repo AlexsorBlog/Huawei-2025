@@ -259,36 +259,56 @@ function buildAlarmsSheet(wb, d) {
   autoFitColumns(sheet);
 }
 
-// ────────────── Export Logic ──────────────
-async function exportFile(jsonPath) {
-  const data = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
-  const deviceName = data.identity?.sysname || path.basename(jsonPath, ".json");
-
-  const wb = await XlsxPopulate.fromBlankAsync();
-  const sheet = wb.sheet(0);
-  sheet.name("Summary");
-
-  buildSummarySheet(sheet, data, deviceName);
-  buildInterfacesSheet(wb, data);
-  buildRoutingSheet(wb, data);
-  buildHardwareSheet(wb, data);
-  buildAlarmsSheet(wb, data);
-
-  const outPath = path.join(INPUT_DIR, `${path.basename(jsonPath, ".json")}.xlsx`);
-  await wb.toFileAsync(outPath);
-  console.log("✅ Excel created:", outPath);
+// ────────────── Export API ──────────────
+async function exportOne(filePath) {
+  const fullPath = path.resolve(filePath);
+  if (!fs.existsSync(fullPath)) throw new Error(`File not found: ${fullPath}`);
+  return await exportFile(fullPath);
 }
-module.exports = exportFile;
-// ────────────── Main ──────────────
-(async () => {
-  if (!fs.existsSync(INPUT_DIR)) {
-    console.error("❌ ./output not found");
-    process.exit(1);
+
+async function exportAll(dirPath = INPUT_DIR) {
+  const dir = path.resolve(dirPath);
+  if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) {
+    throw new Error(`Not a directory: ${dir}`);
   }
-  const files = fs.readdirSync(INPUT_DIR).filter(f => f.toLowerCase().endsWith(".json"));
-  if (!files.length) {
-    console.error("⚠️ No JSON files found in ./output/");
-    process.exit(1);
+
+  const files = fs.readdirSync(dir).filter(f => f.toLowerCase().endsWith(".json"));
+  if (!files.length) throw new Error(`No JSON files found in: ${dir}`);
+
+  const results = [];
+  for (const f of files) {
+    const fullPath = path.join(dir, f);
+    const res = await exportFile(fullPath);
+    results.push({ file: fullPath, result: res });
   }
-  for (const f of files) await exportOne(path.join(INPUT_DIR, f));
-})();
+  return results;
+}
+
+// Export for programmatic use
+module.exports = { exportFile, exportOne, exportAll };
+
+// ────────────── CLI Runner ──────────────
+if (process.argv[1] === __filename) {
+  (async () => {
+    try {
+      if (!fs.existsSync(INPUT_DIR)) {
+        console.error("❌ ./output not found");
+        process.exit(1);
+      }
+
+      const files = fs.readdirSync(INPUT_DIR).filter(f => f.toLowerCase().endsWith(".json"));
+      if (!files.length) {
+        console.error("⚠️ No JSON files found in ./output/");
+        process.exit(1);
+      }
+
+      console.log(`📂 Found ${files.length} JSON file(s) in ./output/`);
+      for (const f of files) {
+        await exportOne(path.join(INPUT_DIR, f));
+      }
+    } catch (err) {
+      console.error("❌", err.message);
+      process.exit(1);
+    }
+  })();
+}

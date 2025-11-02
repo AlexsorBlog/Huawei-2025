@@ -923,31 +923,51 @@ function parseFile(inFile) {
 // Export parseFile so the analyzer can be required programmatically
 module.exports = parseFile;
 module.exports.parseFile = parseFile;
+function analyzeFile(filePath) {
+  const fullPath = path.resolve(filePath);
+  if (!fs.existsSync(fullPath)) throw new Error(`File not found: ${fullPath}`);
+  ensureOutDir();
+  return parseFile(fullPath);
+}
+
+function analyzeDirectory(dirPath) {
+  const dir = path.resolve(dirPath);
+  if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) {
+    throw new Error(`Not a directory: ${dir}`);
+  }
+  const files = fs.readdirSync(dir).filter(f => f.toLowerCase().endsWith(".txt"));
+  if (!files.length) throw new Error(`No .txt files found in: ${dir}`);
+
+  ensureOutDir();
+  const results = [];
+  for (const f of files) {
+    const file = path.join(dir, f);
+    const model = parseFile(file);
+    results.push({ file, model });
+  }
+  return results;
+}
+
+// export for external use
+module.exports = {
+  parseFile,
+  analyzeFile,
+  analyzeDirectory
+};
 
 // Run as CLI only when invoked directly
 if (require.main === module) {
-  if (DIR_MODE) {
-    const dir = path.resolve(DIR_PATH);
-    if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) {
-      console.error("❌ --dir is not a directory:", dir);
-      process.exit(1);
+  try {
+    if (DIR_MODE) {
+      console.log("📂 Scanning directory:", DIR_PATH);
+      analyzeDirectory(DIR_PATH);
+    } else {
+      const file = FILE_PATH || DEFAULT_FILE;
+      console.log("🔍 Parsing file:", file);
+      analyzeFile(file);
     }
-    const files = fs.readdirSync(dir).filter(f => f.toLowerCase().endsWith(".txt"));
-    if (!files.length) {
-      console.error("⚠️  No *.txt files in:", dir);
-      process.exit(1);
-    }
-    console.log("📂 Scanning directory:", dir, "files:", files.length);
-    ensureOutDir();
-    for (const f of files) parseFile(path.join(dir, f));
-  } else {
-    const file = FILE_PATH ? path.resolve(FILE_PATH) : DEFAULT_FILE;
-    if (!fs.existsSync(file)) {
-      console.error("❌ Input file not found:", file);
-      process.exit(1);
-    }
-    console.log("🔍 Parsing:", file);
-    ensureOutDir();
-    parseFile(file);
+  } catch (err) {
+    console.error("❌", err.message);
+    process.exit(1);
   }
 }
