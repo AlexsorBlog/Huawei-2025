@@ -19,9 +19,63 @@ const fs = require("fs");
 const path = require("path");
 
 // ---------- Settings ----------
-const DEFAULT_FILE = path.join(process.cwd(), "CommonCollectResult.txt");
+// ---------- Base directory & output resolver (EXE/Node safe) ----------
+function isDevElectronExecPath(p) {
+  return /node_modules[\\\/]electron[\\\/]dist/i.test(p || "");
+}
+
+function resolveBaseDir() {
+  if (process.env.PORTABLE_EXECUTABLE_DIR) return process.env.PORTABLE_EXECUTABLE_DIR;
+
+  const exeDir = path.dirname(process.execPath || "");
+  if (isDevElectronExecPath(exeDir)) return process.cwd(); // dev mode
+  return exeDir || process.cwd();
+}
+
+function ensureDir(p) {
+  try {
+    fs.mkdirSync(p, { recursive: true });
+    return true;
+  } catch (e) {
+    console.error("⚠️ ensureDir failed:", p, e.message);
+    return false;
+  }
+}
+
+function canWriteDir(dir) {
+  try {
+    const test = path.join(dir, ".write-test.tmp");
+    fs.writeFileSync(test, "ok");
+    fs.unlinkSync(test);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function getOutputDir() {
+  const base = resolveBaseDir();
+  const primary = path.join(base, "output");
+  if (ensureDir(primary) && canWriteDir(primary)) {
+    console.log("📦 Output dir:", primary, "(primary)");
+    return primary;
+  }
+
+  const appName = "Huawei-Analyzer";
+  const home = process.env.APPDATA || process.env.HOME || process.cwd();
+  const fallback = path.join(home, appName, "output");
+  ensureDir(fallback);
+  console.log("📦 Output dir:", fallback, "(fallback)");
+  return fallback;
+}
+
+// ---------- Settings ----------
+const BASE_DIR = resolveBaseDir();
+const DEFAULT_FILE = path.join(BASE_DIR, "CommonCollectResult.txt");
 const MARKER = "=========######HUAWEI#####=========";
-const OUT_DIR = path.join(process.cwd(), "output");
+const OUT_DIR = getOutputDir();
+
+
 
 // ---------- CLI ----------
 const getArg = (flag) => {
@@ -33,9 +87,7 @@ const FILE_PATH = getArg("--file");
 const DIR_MODE = !!DIR_PATH;
 
 // ---------- Utils ----------
-const ensureOutDir = () => {
-  if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
-};
+const ensureOutDir = () => ensureDir(OUT_DIR);
 const outPathFor = (inFile) =>
   path.join(OUT_DIR, "parsed_" + path.basename(inFile, path.extname(inFile)) + ".json");
 

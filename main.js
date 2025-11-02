@@ -12,29 +12,27 @@ let lastPaths = {}; // Буфер для хранения путей в памя
  * Загружает сохраненные пути из файла.
  */
 async function loadLastPaths() {
-    try {
-        const data = await fs.readFile(settingsPath, 'utf8');
-        lastPaths = JSON.parse(data);
-    } catch (error) {
-        if (error.code === 'ENOENT') {
-            console.log('Last paths file not found, starting fresh.');
-        } else {
-            console.error('Error loading last paths:', error);
-        }
-        lastPaths = {};
+  try {
+    const data = await fs.promises.readFile(settingsPath, 'utf8');
+    lastPaths = JSON.parse(data);
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      console.log('Last paths file not found, starting fresh.');
+    } else {
+      console.error('Error loading last paths:', error);
     }
+    lastPaths = {};
+  }
 }
 
-/**
- * Сохраняет текущие пути в файл.
- */
 async function saveLastPaths() {
-    try {
-        await fs.writeFile(settingsPath, JSON.stringify(lastPaths, null, 2), 'utf8');
-    } catch (error) {
-        console.error('Error saving last paths:', error);
-    }
+  try {
+    await fs.promises.writeFile(settingsPath, JSON.stringify(lastPaths, null, 2), 'utf8');
+  } catch (error) {
+    console.error('Error saving last paths:', error);
+  }
 }
+
 function setupIPC() {
     if (isIPCSetup) return;
     
@@ -132,34 +130,21 @@ function setupIPC() {
 
     // Handle Excel export
     ipcMain.handle('export:excel', async (event, inputPath, mode) => {
-        try {
-            console.log('Path:', inputPath);
-            let result
-            // Execute the export_to_excel.js script
-            const exportToExcel = require('./export_to_excel');
-            if (mode === 'file') {
-                // Присваиваем значение, НЕ используя const/let снова
-                result = await exportToExcel.exportOne(inputPath);
-            } else {
-                // Присваиваем значение, НЕ используя const/let снова
-                result = await exportToExcel.exportAll(inputPath);
-            }
-            console.log('Parsing result:', result);
-            const inputFileName = path.basename(inputPath, path.extname(inputPath));
-            const outputPath = path.join(__dirname, 'output', `${inputFileName}.xlsx`);
-            console.log('Output will be saved to:', outputPath); // Debug log
-            // Ensure output directory exists
-            /*if (!fs.existsSync(outputDir)) {
-                fs.mkdirSync(outputDir, { recursive: true });
-            }
-            */
-            // Execute the export script with the provided JSON file
-            return { success: true, message: 'Excel file has been created successfully' };
-        } catch (err) {
-            console.error('export:excel error', err);
-            return { success: false, error: err.message };
-        }
-    });
+  try {
+    const exportToExcel = require('./export_to_excel');
+    let result;
+    if (mode === 'file') {
+      result = await exportToExcel.exportOne(inputPath);
+    } else {
+      result = await exportToExcel.exportAll(inputPath); // returns array
+    }
+    return { success: true, result }; // includes outPath(s) and outDir
+  } catch (err) {
+    console.error('export:excel error', err);
+    return { success: false, error: err.message };
+  }
+});
+
 
     isIPCSetup = true;
 }
