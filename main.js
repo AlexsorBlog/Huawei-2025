@@ -5,34 +5,97 @@ const path = require('path');
 const fs = require('fs');
 // Setup IPC handlers once
 let isIPCSetup = false;
+const settingsPath = path.join(app.getPath('userData'), 'last_paths.json');
+let lastPaths = {}; // Буфер для хранения путей в памяти
 
+/**
+ * Загружает сохраненные пути из файла.
+ */
+async function loadLastPaths() {
+    try {
+        const data = await fs.readFile(settingsPath, 'utf8');
+        lastPaths = JSON.parse(data);
+    } catch (error) {
+        if (error.code === 'ENOENT') {
+            console.log('Last paths file not found, starting fresh.');
+        } else {
+            console.error('Error loading last paths:', error);
+        }
+        lastPaths = {};
+    }
+}
+
+/**
+ * Сохраняет текущие пути в файл.
+ */
+async function saveLastPaths() {
+    try {
+        await fs.writeFile(settingsPath, JSON.stringify(lastPaths, null, 2), 'utf8');
+    } catch (error) {
+        console.error('Error saving last paths:', error);
+    }
+}
 function setupIPC() {
     if (isIPCSetup) return;
     
     // Handle file dialog opening with proper filters
-    ipcMain.handle('dialog:openFileOrDirectory', async (event, filters) => {
-        const options = {
-            properties: ['openFile'],
-            filters: filters || [
-                { name: 'Text Files', extensions: ['txt'] },
-                { name: 'Log Files', extensions: ['log'] },
-                { name: 'JSON Files', extensions: ['json'] },
-                { name: 'All Files', extensions: ['*'] }
-            ]
-        };
-        const result = await dialog.showOpenDialog(options);
-        if (result.canceled) return null;
-        return result.filePaths[0];
-    });
+ ipcMain.handle('dialog:openFileOrDirectory', async (_, key, filters, mode) => {
+    
+    // 1. Объявляем effectiveFilters и options в общей области видимости (Scope)
+    let effectiveFilters = filters;
+    let properties = [];
+    let options = {};
+    const defaultPath = lastPaths[key];
 
+    // --- Логика определения режима (properties) ---
+    
+    if (mode === 'directory') {
+        properties = ['openDirectory']; // Только папка
+        effectiveFilters = undefined; // Фильтры не нужны для папок
+    } else { // mode === 'file' (по умолчанию)
+        properties = ['openFile']; // Только файл
+    }
+    // 3. Создаем объект options (теперь он виден)
+    options = {
+        properties: properties,
+        // Если effectiveFilters определен, используем его; иначе - не передаем filters
+        ...(effectiveFilters && { filters: effectiveFilters }),
+        ...(defaultPath && { defaultPath: defaultPath })
+    };
+    
+    // 4. Вызов диалога (теперь options доступен)
+    const result = await dialog.showOpenDialog(options);
+
+    if (result.canceled) return null;
+    
+    const selectedPath = result.filePaths[0];
+    
+    // 5. Сохранение пути
+    const dirPath = path.dirname(selectedPath); 
+    lastPaths[key] = dirPath;
+    await saveLastPaths();
+    return selectedPath;
+});
     // Handle analyzer start
-    ipcMain.handle('analyze:start', async (event,  mode,inputPath ) => {
+    ipcMain.handle('analyze:start', async (event,  mode, inputPath ) => {
         try {
+            // Execute the analyzer with the provided input file
+            let result;
+            
             // Execute the analyzer with the provided input file
             const analyzer = require('./analyzer');
             console.log('Running analyzer on:', inputPath); // Debug log
-            const result = await analyzer(inputPath, mode );
-            console.log('Analyzer result:', result); // Debug log
+
+            if (mode === '--file') {
+                // Присваиваем значение, НЕ используя const/let снова
+                result = await analyzer.analyzeFile(inputPath);
+            } else {
+                // Присваиваем значение, НЕ используя const/let снова
+                result = await analyzer.analyzeDirectory(inputPath);
+            }
+
+            // Теперь 'result' доступен здесь и имеет присвоенное значение
+            console.log('Analyzer result:', result);// Debug log
 
             // Get the output file path (assuming it's in the output directory)
             const inputFileName = path.basename(inputPath, path.extname(inputPath));
@@ -68,12 +131,19 @@ function setupIPC() {
     });
 
     // Handle Excel export
-    ipcMain.handle('export:excel', async (event, inputPath) => {
+    ipcMain.handle('export:excel', async (event, inputPath, mode) => {
         try {
             console.log('Path:', inputPath);
+            let result
             // Execute the export_to_excel.js script
             const exportToExcel = require('./export_to_excel');
-            const result = await exportToExcel(inputPath);
+            if (mode === 'file') {
+                // Присваиваем значение, НЕ используя const/let снова
+                result = await exportToExcel.exportOne(inputPath);
+            } else {
+                // Присваиваем значение, НЕ используя const/let снова
+                result = await exportToExcel.exportAll(inputPath);
+            }
             console.log('Parsing result:', result);
             const inputFileName = path.basename(inputPath, path.extname(inputPath));
             const outputPath = path.join(__dirname, 'output', `${inputFileName}.xlsx`);
@@ -116,7 +186,8 @@ function createWindow () {
     mainWindow.webContents.send('app-ready');
   });
 }
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
+    await loadLastPaths();
     setupIPC();  // Setup IPC handlers first
     createWindow();
 });

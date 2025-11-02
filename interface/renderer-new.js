@@ -61,7 +61,7 @@ function renderStructuredTable(title, headers, data, keyForCritical = null, isEx
     const collapsedClass = isExpanded ? '' : 'collapsed';
 
     if (!data || data.length === 0) {
-        return `<h2 class="collapsible-header ${collapsedClass}">${title}</h2><div class="collapsible-content ${collapsedClass}"><div class="table-wrapper"><p class="text-gray-400 p-4">Немає даних.</p></div></div>`;
+        return `<h2 class="collapsible-header ${collapsedClass}">${title}</h2><div class="collapsible-content ${collapsedClass}"><div class="table-wrapper"><p class="text-gray-400 p-4">Empty data.</p></div></div>`;
     }
 
     let html = `<h2 class="collapsible-header ${collapsedClass}">${title}</h2>`;
@@ -99,19 +99,19 @@ function renderStructuredTable(title, headers, data, keyForCritical = null, isEx
                     value = safe(item[keyMap[headerKey]]);
                  }
                  // Для ключів, яких немає в мапінгу
-                 else if (itemKey === "in_util" || itemKey === "out_util" || itemKey === "дуплекс" || itemKey === "швидкість_(mbps)") {
+                 else if (itemKey === "in_util" || itemKey === "out_util" || itemKey === "дуплекс" || itemKey === "швидкість_(mbps)" || itemKey === "Duplex" || itemKey === "Speed_(Mbps)") {
                      const engKey = headerKey.toLowerCase().replace(' (mbps)', '_mbps').split(' ')[0];
                      value = safe(item[engKey]);
-                 } else if (headerKey === "Довжина хвилі (Нм)") {
+                 } else if (headerKey === "Wavelength (nm)" || headerKey === "Довжина хвилі (Нм)") {
                     value = safe(item["wavelength_nm"]);
-                 } else if(headerKey === "Онлайн") {
+                 } else if(headerKey === "online" || headerKey === "Онлайн") {
                     value = safe(item["online"]);
                  }
             }
 
 
             let cellClass = '';
-            if (itemKey.includes('статус') || itemKey.includes('протокол') || headerKey === "Статус" || headerKey === "Протокол") {
+            if (itemKey.includes('status') || itemKey.includes('protocol') || headerKey === "status" || headerKey === "protocol" || itemKey.includes('статус') || itemKey.includes('протокол') || headerKey === "Статус" || headerKey === "Протокол") {
                 if (/up/i.test(value)) cellClass = 'up';
                 if (/down|fail/i.test(value)) cellClass = 'down';
             }
@@ -131,7 +131,7 @@ function renderStructuredTable(title, headers, data, keyForCritical = null, isEx
  * Рендерить Головну сторінку (Summary, Identity, Resources і т.д.) в HTML.
  */
 function makeMainHtml(d) {
-    const deviceName = d.identity?.sysname || "Невідомий пристрій";
+    const deviceName = d.identity?.sysname || "Unknown Device";
     let html = '';
 
     // 1. Summary (Зведення)
@@ -140,24 +140,24 @@ function makeMainHtml(d) {
     const totalPower = (d.resources?.power?.reduce((s, p) => s + (p.total_w || 0), 0) || 0) + " W";
     
     const summaryRows = [
-        ["Ім'я хоста", d.identity?.sysname || deviceName],
-        ["Модель", d.identity?.model || ""],
-        ["Версія", d.software?.version || ""],
-        ["Час роботи", d.software?.uptime || ""],
-        ["CPU (сер.)", (d.resources?.cpu?.[0]?.avg || "") + "%"],
-        ["Загальна потужність", totalPower],
-        ["Критичні тривоги", criticalAlarms],
-        ["Активні інтерфейси", activeInterfaces],
+        ["Device name", d.identity?.sysname || deviceName],
+        ["Model", d.identity?.model || ""],
+        ["Version", d.software?.version || ""],
+        ["Uptime", d.software?.uptime || ""],
+        ["CPU (avg)", (d.resources?.cpu?.[0]?.avg || "") + "%"],
+        ["Total Power", totalPower],
+        ["Critical Alarms", criticalAlarms],
+        ["Active Interfaces", activeInterfaces],
     ];
     // Розгортаємо першу секцію за замовчуванням
-    html += renderKeyValueTable("Зведена інформація (Summary)", summaryRows, true); 
+    html += renderKeyValueTable("Summary", summaryRows, true); 
     
     // 2. Identity & Software
     const identityRows = Object.entries(d.identity || {}).map(([k, v]) => [k, typeof v === 'object' ? JSON.stringify(v, null, 2) : v]);
-    html += renderKeyValueTable("Ідентифікація (Identity)", identityRows);
+    html += renderKeyValueTable("Identity", identityRows);
     
     const softwareRows = Object.entries(d.software || {}).map(([k, v]) => [k, v]);
-    html += renderKeyValueTable("ПЗ (Software)", softwareRows);
+    html += renderKeyValueTable("Software", softwareRows);
 
     // 3. Resources (Ресурси)
     const resourceRows = [];
@@ -172,31 +172,31 @@ function makeMainHtml(d) {
             resourceRows.push([k, safe(v)]);
         }
     });
-    html += renderKeyValueTable("Ресурси (Resources)", resourceRows);
+    html += renderKeyValueTable("Resources", resourceRows);
 
     // 4. Hardware (Плати і SFP)
-    const cardHeaders = ["Слот", "Тип", "Онлайн", "Статус", "Роль"];
-    html += renderStructuredTable("Плати (Hardware Cards)", cardHeaders, d.hardware?.cards, 'Status');
+    const cardHeaders = ["slot", "type", "status"];
+    html += renderStructuredTable("Hardware Cards", cardHeaders, d.hardware?.cards, 'Status');
 
-    const sfpHeaders = ["Порт", "Довжина хвилі (Нм)"];
-    html += renderStructuredTable("SFP-модулі (Hardware SFP)", sfpHeaders, d.hardware?.sfp);
+    const sfpHeaders = ["port", "status", "vendor_pn", "rx_dbm", "tx_dbm"];
+    html += renderStructuredTable("Hardware SFP", sfpHeaders, d.hardware?.sfp);
 
     // 5. Interfaces (Інтерфейси)
-    const interfaceHeaders = ["Ім'я", "Статус", "Протокол", "In Util", "Out Util", "Дуплекс", "Швидкість (Mbps)", "Опис"];
+    const interfaceHeaders = ["name", "status", "protocol", "ip", "mask", "vpn_instance", "bandwidth_mbps", "duplex", "description"];
     const interfaceData = (d.interfaces || []).filter(i => i.name);
-    html += renderStructuredTable("Інтерфейси (Interfaces)", interfaceHeaders, interfaceData, 'Статус');
+    html += renderStructuredTable("Interfaces", interfaceHeaders, interfaceData, 'Status');
 
     // 6. Licenses (Ліцензії)
-    const licenseHeaders = ["Назва", "Використано", "Ліміт", "Опис"];
-    html += renderStructuredTable("Ліцензії (Licenses)", licenseHeaders, d.licenses);
+    const licenseHeaders = ["item_name", "used_value", "control_value", "description"];
+    html += renderStructuredTable("Licenses", licenseHeaders, d.licenses);
 
     // 7. Alarms (Аварійні сигнали)
-    const alarmHeaders = ["Рівень", "Стан", "Дата", "Час", "Опис"];
+    const alarmHeaders = ["severity", "state", "time", "date", "description"];
     const alarmData = (d.alarms || []).map(a => ({ 
         ...a, 
         severity: a.severity || a.level // Нормалізуємо ключ для сортування
     }));
-    html += renderStructuredTable("Аварійні сигнали (Alarms)", alarmHeaders, alarmData, 'severity');
+    html += renderStructuredTable("Alarms", alarmHeaders, alarmData, 'severity');
 
     return html;
 }
@@ -240,8 +240,8 @@ function extractProtocolsHtml(d) {
         }
     }
 
-    const protocolHeaders = ["Протокол", "Поле", "Значення"];
-    return renderStructuredTable("Деталі Протоколів (Protocols Detail)", protocolHeaders, protocolRows);
+    const protocolHeaders = ["Protocol", "Field", "Value"];
+    return renderStructuredTable("Protocols Detail", protocolHeaders, protocolRows);
 }
 
 
@@ -251,7 +251,7 @@ function extractProtocolsHtml(d) {
 // Переименовываем 'file' в 'jsonPath' для ясности
 async function handleFileSelect(jsonPath, button = "view") { 
     if (!jsonPath) { 
-        document.getElementById('json-output').innerHTML = '<p class="text-gray-400">Файл не обрано.</p>';
+        document.getElementById('json-output').innerHTML = '<p class="text-gray-400">File not selected.</p>';
         return;
     }
 
@@ -262,13 +262,13 @@ async function handleFileSelect(jsonPath, button = "view") {
             const ipcResponse = await window.electronAPI.readFile(jsonPath); 
 
             if (!ipcResponse || !ipcResponse.success) {
-                const errorMessage = ipcResponse?.error || "Невідома помилка читання файлу.";
+                const errorMessage = ipcResponse?.error || "Unknown file reading error.";
                 throw new Error(errorMessage);
             }
 
             const jsonString = ipcResponse.content; 
             if (!jsonString) {
-                throw new Error("Файл не містить даних.");
+                throw new Error("File is empty or could not be read.");
             }
 
             // 2. Парсинг строки JSON, полученной из Main Process
@@ -279,15 +279,15 @@ async function handleFileSelect(jsonPath, button = "view") {
             const baseNameWithExt = jsonPath.split(/[/\\]/).pop(); 
             const baseName = baseNameWithExt.replace(/\.json$/i, '');
             const deviceName = data.identity?.sysname || baseName || 'Device';
-            document.getElementById('device-title').textContent = `${deviceName} — Зведений Звіт`;
+            document.getElementById('device-title').textContent = `${deviceName} — Summary View`;
 
             let htmlOutput = makeMainHtml(data);
-            htmlOutput += '<h1>Детальні Протоколи</h1>';
+            htmlOutput += '<h1>Protocol details</h1>';
             htmlOutput += extractProtocolsHtml(data);
             document.getElementById('json-output').innerHTML = htmlOutput;
         } 
     } catch (error) {
-        console.error('Помилка при обробці файлу:', error);
+        console.error('Error processing file:', error);
 
         const errorDiv = `...`;
         document.getElementById('json-output').innerHTML = errorDiv;
@@ -295,95 +295,123 @@ async function handleFileSelect(jsonPath, button = "view") {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    let currentMode = 'file';
+    const modeFileBtn = document.getElementById('mode-file');
+    const modeFolderBtn = document.getElementById('mode-folder');
+
+    modeFileBtn.addEventListener('click', () => updateMode('file'));
+    modeFolderBtn.addEventListener('click', () => updateMode('directory'));
     const jsonFileInput = document.getElementById('json-file-input');
     const logFileInput = document.getElementById('log-file-input');
     const xlsxFileInput = document.getElementById('xlsx-file-input');
     const outputDiv = document.getElementById('json-output');
+    
+    function updateMode(newMode) {
+        currentMode = newMode;
 
+        // Управление стилями
+        if (newMode === 'file') {
+            modeFileBtn.classList.add('bg-[#5865F2]', 'text-white', 'shadow-md');
+            modeFileBtn.classList.remove('text-gray-400', 'hover:bg-[#2f3136]');
+
+            modeFolderBtn.classList.remove('bg-[#5865F2]', 'text-white', 'shadow-md');
+            modeFolderBtn.classList.add('text-gray-400', 'hover:bg-[#2f3136]');
+        } else { // 'directory'
+            modeFolderBtn.classList.add('bg-[#5865F2]', 'text-white', 'shadow-md');
+            modeFolderBtn.classList.remove('text-gray-400', 'hover:bg-[#2f3136]');
+
+            modeFileBtn.classList.remove('bg-[#5865F2]', 'text-white', 'shadow-md');
+            modeFileBtn.classList.add('text-gray-400', 'hover:bg-[#2f3136]');
+        }
+    }
     jsonFileInput.addEventListener('click', async () => {
-                outputDiv.innerHTML = '<p class="text-lg text-gray-400">Очікуємо вибір json-файлу...</p>';
+                outputDiv.innerHTML = '<p class="text-lg text-gray-400">Choosing json file...</p>';
 
         try {
-            const inputPath = await window.electronAPI.openFileDialog([
+            const inputPath = await window.electronAPI.openFileDialog('view_input_path',[
                 { name: 'Json Files', extensions: ['json'] },
                 { name: 'All Files', extensions: ['*'] }
-            ]);
+            ], 'file');
 
             if (!inputPath) {
                 // Обработка отмены
-                outputDiv.innerHTML = '<p class="text-gray-400">Вибір файлу скасовано.</p>';
+                outputDiv.innerHTML = '<p class="text-gray-400">Choose cancelled.</p>';
                 return;
             }
-            outputDiv.innerHTML = '<p class="text-lg text-gray-400">Відкриття перегляду...</p>';
+            outputDiv.innerHTML = '<p class="text-lg text-gray-400">Opening view...</p>';
             
             // Ask main to parse the file (main will call analyzer.parseFile)
             await handleFileSelect(inputPath, "view");
             
         } catch (err) {
-            console.error('Ошибка парсинга:', err);
-            outputDiv.innerHTML = `<p class="text-lg text-red-500">❌ Помилка: ${err.message}</p>`;
+            console.error('Error viewing file:', err);
+            outputDiv.innerHTML = `<p class="text-lg text-red-500">❌ Error: ${err.message}</p>`;
         }
     });
-    
     logFileInput.addEventListener('click', async () => {
-        outputDiv.innerHTML = '<p class="text-lg text-gray-400">Очікуємо вибір лог-файлу...</p>';
+        outputDiv.innerHTML = '<p class="text-lg text-gray-400">Choosing log file...</p>';
 
         try {
             // ПРЯМОЙ ВЫЗОВ СИСТЕМНОГО ДИАЛОГА (Electron API)
-            const inputPath = await window.electronAPI.openFileDialog([
+            const inputPath = await window.electronAPI.openFileDialog('analyze_input_path',[
                 { name: 'Log Files', extensions: ['txt', 'log'] },
                 { name: 'All Files', extensions: ['*'] }
-            ]);
-
+            ], currentMode);
+            console.log('Selected path:', inputPath);
             if (!inputPath) {
                 // Обработка отмены
-                outputDiv.innerHTML = '<p class="text-gray-400">Вибір файлу скасовано.</p>';
+                outputDiv.innerHTML = '<p class="text-gray-400">Choose cancelled.</p>';
                 return;
             }
-            outputDiv.innerHTML = '<p class="text-lg text-gray-400">Парсинг та обробка логу...</p>';
+            outputDiv.innerHTML = '<p class="text-lg text-gray-400">Parsing log file...</p>';
             
             // Ask main to parse the file (main will call analyzer.parseFile)
-            const res = await window.electronAPI.analyzeStart('--file', inputPath);
-            if (!res || !res.success) throw new Error(res?.error || 'Analyzer failed');
-            
+            if (currentMode === 'directory') {
+                const res = await window.electronAPI.analyzeStart('--dir', inputPath);
+                if (!res || !res.success) throw new Error(res?.error || 'Analyzer failed');
+            } else {
+                const res = await window.electronAPI.analyzeStart('--file', inputPath);
+                if (!res || !res.success) throw new Error(res?.error || 'Analyzer failed');
+            }
+
             // store the path to the generated JSON for later (export/view)
-            window.currentJsonPath = res.outputPath;
-            outputDiv.innerHTML = '✅ Аналіз лог-файлу завершено.';
+            //window.currentJsonPath = res.outputPath;
+            outputDiv.innerHTML = '✅ Log file analyzed.';
             
         } catch (err) {
-            console.error('Ошибка парсинга:', err);
-            outputDiv.innerHTML = `<p class="text-lg text-red-500">❌ Помилка: ${err.message}</p>`;
+            console.error('Error parsing log file:', err);
+            outputDiv.innerHTML = `<p class="text-lg text-red-500">❌ Error: ${err.message}</p>`;
         }
     });
 
     xlsxFileInput.addEventListener('click', async () => {
-        outputDiv.innerHTML = '<p class="text-lg text-gray-400">Очікуємо вибір json-файлу...</p>';
+        outputDiv.innerHTML = '<p class="text-lg text-gray-400">Choosing json file...</p>';
 
         try {
             // ПРЯМОЙ ВЫЗОВ СИСТЕМНОГО ДИАЛОГА (Electron API)
-            const inputPath = await window.electronAPI.openFileDialog([
+            const inputPath = await window.electronAPI.openFileDialog('xlsx_input_path',[
                 { name: 'Log Files', extensions: ['json'] },
                 { name: 'All Files', extensions: ['*'] }
-            ]);
+            ], currentMode);
 
             if (!inputPath) {
                 // Обработка отмены
-                outputDiv.innerHTML = '<p class="text-gray-400">Вибір файлу скасовано.</p>';
+                outputDiv.innerHTML = '<p class="text-gray-400">Choose cancelled.</p>';
                 return;
             }
-            outputDiv.innerHTML = '<p class="text-lg text-gray-400">Експортування файлу...</p>';
-            
+            outputDiv.innerHTML = '<p class="text-lg text-gray-400">Exporting file...</p>';
+
             // Ask main to parse the file (main will call analyzer.parseFile)
-            const res = await window.electronAPI.exportToExcel(inputPath);
+            const res = await window.electronAPI.exportToExcel(inputPath, currentMode);
             if (!res || !res.success) throw new Error(res?.error || 'Export failed');
             
             // store the path to the generated JSON for later (export/view)
             window.currentJsonPath = res.outputPath;
-            outputDiv.innerHTML = '✅ Експортування завершено.';
+            outputDiv.innerHTML = '✅ Export completed.';
             
         } catch (err) {
-            console.error('Помилка експорту:', err);
-            outputDiv.innerHTML = `<p class="text-lg text-red-500">❌ Помилка: ${err.message}</p>`;
+            console.error('Error exporting file:', err);
+            outputDiv.innerHTML = `<p class="text-lg text-red-500">❌ Error: ${err.message}</p>`;
         }
     });
 

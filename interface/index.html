@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Огляд даних пристрою</title>
+    <title>Device Data Overview</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Кастомний скролбар */
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -26,24 +26,74 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #18191c;
         }
+        /* Scrollbar style for the new file menu */
+        #file-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        #file-list::-webkit-scrollbar-track {
+            background: #292b2f; /* Scrollbar background */
+            border-radius: 3px;
+        }
+        #file-list::-webkit-scrollbar-thumb {
+            background: #40444B; /* Handle */
+            border-radius: 3px;
+        }
+        #file-list::-webkit-scrollbar-thumb:hover {
+            background: #52575f;
+        }
+        
+        /* Styles for file list items */
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0.75rem; /* 8px 12px */
+            border-radius: 0.375rem; /* 6px */
+            cursor: pointer;
+            color: #b9bbbe; /* 'text-gray-400' */
+            margin-bottom: 0.25rem; /* 4px */
+            transition: background-color 0.2s ease;
+        }
+        .file-item:hover {
+            background-color: #3a3d44;
+            color: #ffffff;
+        }
+        .file-item.active {
+            /* You can add this class via JS for the selected file */
+            background-color: #40444B;
+            color: #ffffff;
+            font-weight: 500;
+        }
+        .file-item svg {
+            width: 1.125rem; /* 18px */
+            height: 1.125rem; /* 18px */
+            margin-right: 0.75rem; /* 12px */
+            flex-shrink: 0;
+        }
+        .file-item span {
+            /* Truncate text if it's too long */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
-        /* * СТИЛІ ДЛЯ ДИНАМІЧНОГО КОНТЕНТУ (з renderer.js)
+
+        /* * STYLES FOR DYNAMIC CONTENT (from renderer.js)
          */
 
-        /* Заголовки секцій (акордеон) */
+        /* Section headers (accordion) */
         #json-output h2 {
             font-size: 1.5rem; /* 24px */
             font-weight: 700;
             color: #ffffff;
             margin-top: 1.5rem; /* 24px */
-            margin-bottom: 0; /* Прибираємо відступ знизу */
+            margin-bottom: 0; /* No margin bottom */
             padding: 0.75rem 0.75rem 0.75rem 2rem; /* 12px 12px 12px 32px */
             border-bottom-width: 1px;
             border-color: #40444B;
             cursor: pointer;
             position: relative;
             background-color: #2f3136;
-            border-radius: 0.5rem 0.5rem 0 0; /* Закруглення тільки зверху */
+            border-radius: 0.5rem 0.5rem 0 0; /* Rounded top only */
             transition: background-color 0.2s ease;
         }
         
@@ -51,7 +101,7 @@
             background-color: #3a3d44;
         }
 
-        /* Іконка-стрілка для акордеону */
+        /* Arrow icon for accordion */
         #json-output h2::before {
             content: '▼';
             position: absolute;
@@ -63,26 +113,25 @@
             color: #b9bbbe;
         }
 
-        /* Стиль для згорнутого заголовка */
+        /* Style for collapsed header */
         #json-output h2.collapsed {
-             border-radius: 0.5rem; /* Закруглення з усіх боків */
-             margin-bottom: 1rem; /* Відступ знизу, коли згорнуто */
+             border-radius: 0.5rem; /* Rounded all sides */
+             margin-bottom: 1rem; /* Margin bottom when collapsed */
         }
 
         #json-output h2.collapsed::before {
             transform: translateY(-50%) rotate(-90deg);
         }
 
-        /* Контент, що згортається (таблиці) */
+        /* Collapsible content (tables) */
         .collapsible-content {
-            /* Таблиці вже мають свої стилі, ми просто керуємо відображенням */
             overflow: hidden;
             transition: max-height 0.3s ease-out, visibility 0.3s ease-out;
-            max-height: 5000px; /* Достатньо велике значення */
+            max-height: 5000px; /* Large enough value */
             visibility: visible;
              border-bottom-left-radius: 0.5rem;
              border-bottom-right-radius: 0.5rem;
-             margin-bottom: 1rem; /* Відступ знизу, коли розгорнуто */
+             margin-bottom: 1rem; /* Margin bottom when expanded */
         }
         
         .collapsible-content.collapsed {
@@ -91,24 +140,23 @@
             margin-bottom: 0;
         }
 
-        /* Обгортка для таблиць (для тіні і закруглення знизу) */
+        /* Table wrapper (for shadow and bottom radius) */
         .table-wrapper {
              background-color: #2f3136;
              box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
              border-bottom-left-radius: 0.5rem;
              border-bottom-right-radius: 0.5rem;
-             overflow: hidden; /* Обрізає таблицю по кутах */
+             overflow: hidden; /* Clips table corners */
         }
 
-        /* Загальні стилі для таблиць */
+        /* General table styles */
         .data-table {
             width: 100%;
-            /* Прибираємо фон і тінь звідси, переносимо на .table-wrapper */
             margin-bottom: 0; 
             border-radius: 0;
         }
 
-        /* Заголовки структурованих таблиць (wide-cols) */
+        /* Headers for structured tables (wide-cols) */
         .data-table.wide-cols thead th {
             background-color: #202225;
             color: #b9bbbe;
@@ -118,7 +166,7 @@
             text-align: left;
         }
         
-        /* Заголовки (ключі) для Key-Value таблиць */
+        /* Headers (keys) for Key-Value tables */
         .data-table:not(.wide-cols) th {
             background-color: #202225;
             color: #ffffff;
@@ -130,7 +178,7 @@
             border-bottom: 1px solid #40444B;
         }
 
-        /* Ячейки даних */
+        /* Data cells */
         .data-table td {
             padding: 0.75rem 1.5rem;
             border-top: 1px solid #40444B;
@@ -138,30 +186,30 @@
             word-break: break-word;
         }
         
-        /* Чередування рядків для Key-Value таблиць */
+        /* Alternating rows for Key-Value tables */
         .data-table:not(.wide-cols) tr:nth-child(even) th,
         .data-table:not(.wide-cols) tr:nth-child(even) td {
              background-color: #32353B;
         }
         
-        /* Перший рядок не має верхнього бордера */
+        /* No top border for first row */
         .data-table tr:first-child td,
         .data-table:not(.wide-cols) tr:first-child th {
             border-top: none;
         }
         
-        /* Останній рядок Key-Value */
+        /* No bottom border for last row (Key-Value) */
         .data-table:not(.wide-cols) tr:last-child th,
         .data-table:not(.wide-cols) tr:last-child td {
              border-bottom: none;
         }
 
-        /* Чередування рядків для структурованих таблиць */
+        /* Hover rows for structured tables */
         .data-table.wide-cols tbody tr:hover {
             background-color: #3a3d44;
         }
 
-        /* СТИЛІ ДЛЯ ВИДІЛЕННЯ */
+        /* HIGHLIGHTING STYLES */
         .critical {
             color: #f04747; /* 'text-red-400' */
             font-weight: 700;
@@ -186,46 +234,88 @@
 <body class="bg-[#36393f] text-[#dcddde]">
 
     <div class="flex h-screen">
-        <!-- Бічна панель для кнопок -->
+        <!-- Sidebar for buttons -->
         <aside class="w-72 bg-[#2f3136] p-6 flex flex-col flex-shrink-0">
-            <h1 class="text-2xl font-bold text-white mb-8">Парсер JSON/Log</h1>
-            
-            <div class="flex-grow">
-                <button id="json-file-input" class="flex items-center justify-center w-full bg-[#5865F2] hover:bg-[#4752C4] text-white font-semibold py-3 px-4 rounded-md transition-colors duration-200 mb-4 cursor-pointer">
+            <h1 class="text-2xl font-bold text-white mb-8">JSON/Log Parser</h1>
+            <div class="mb-6 flex-shrink-0">
+                <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Working mode</h2>
+                <div id="mode-toggle" class="flex bg-[#202225] rounded-lg p-1 text-sm font-medium">
+                    
+                    <button id="mode-file" data-mode="file" 
+                            class="flex-1 text-center py-1.5 rounded-md transition-colors duration-150 
+                                bg-[#5865F2] text-white shadow-md">
+                        File
+                    </button>
+                    
+                    <button id="mode-folder" data-mode="directory" 
+                            class="flex-1 text-center py-1.5 rounded-md transition-colors duration-150 
+                                text-gray-400 hover:bg-[#2f3136]">
+                        Dir
+                    </button>
+                </div>
+            </div>
+    
+            <div class="flex-shrink-0">
+
+                <button id="json-file-input" class="flex items-center justify-center w-full bg-[#5865F2] hover:bg-[#4752C4] text-white font-semibold py-1 px-4 rounded-md transition-colors duration-200 mb-4 cursor-pointer">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l-4 4-4-4M6 16l-4-4 4-4"></path></svg>
-                    Переглянути JSON
+                    Parse JSON
                 </button>
 
-                <button id="log-file-input" class="flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-md transition-colors duration-200 mb-4 cursor-pointer">
+                <button id="log-file-input" class="flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-1 px-4 rounded-md transition-colors duration-200 mb-4 cursor-pointer">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    Парсити TXT/LOG
+                    Parse TXT/LOG
                 </button>
 
-                <button id="xlsx-file-input" class="flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-md transition-colors duration-200 mb-4 cursor-pointer">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    Експортувати в XLSX
+                <button id="xlsx-file-input" class="flex items-center justify-center w-full bg-gray-600 hover:bg-gray-700 text-white font-semibold py-1 px-4 rounded-md transition-colors duration-200 mb-4 cursor-pointer">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Export to XLSX
                 </button>
             </div>
 
-            <div class="bg-[#292b2f] p-4 rounded-lg text-center">
+            <!-- *** DEVICE MENU *** 
+            <div class="mt-4 pt-4 border-t border-gray-700 flex-grow overflow-hidden flex flex-col">
+                <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Devices</h2>
+
+                <div id="file-list" class="flex-grow overflow-y-auto pr-2">
+                    
+                    <div class="file-item active"> 
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0011.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        <span>ta1-kie002.json</span>
+                    </div>
+                    <div class="file-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0011.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        <span>core-sw-01.log</span>
+                    </div>
+                    <div class="file-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0011.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        <span>branch-router.json</span>
+                    </div>
+                    
+                </div>
+            </div>
+            -->
+
+            <!-- Footer (pinned to bottom) -->
+            <div class="mt-auto flex-shrink-0 bg-[#292b2f] p-4 rounded-lg text-center">
                  <p class="text-sm text-gray-400">@ Huawey 2025 Challenge (c)</p>
             </div>
         </aside>
 
-        <!-- Основний контент -->
+        <!-- Main content -->
         <main class="flex-1 p-8 overflow-y-auto">
             <div class="header">
-                <h1 id="device-title" class="text-3xl font-bold text-white mb-6">Огляд Даних Пристрою</h1>
+                <h1 id="device-title" class="text-3xl font-bold text-white mb-6">Device Data Overview</h1>
             </div>
 
             <div id="json-output">
                 <div class="bg-[#2f3136] p-6 rounded-lg shadow-lg">
-                    <p class="text-lg">Будь ласка, завантажте JSON або лог-файл для візуалізації, використовуючи кнопки на панелі зліва.</p>
+                    <p class="text-lg">Please upload a JSON or log file to visualize using the buttons on the left.</p>
                 </div>
             </div>
         </main>
     </div>
-
+    
     <!-- Load renderer script -->
     <script src="renderer-new.js"></script>
 </body>

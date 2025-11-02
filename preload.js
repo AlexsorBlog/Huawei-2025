@@ -10,7 +10,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     },
     // Для вызова проводника/файлового диалога
     // openFileDialog accepts an optional array of filters: [{ name, extensions: [...] }]
-    openFileDialog: (filters) => ipcRenderer.invoke('dialog:openFileOrDirectory', filters), 
+    openFileDialog: (key, filters, mode) => ipcRenderer.invoke('dialog:openFileOrDirectory', key, filters, mode), 
     
     // Для вызова Вашего анализатора (передаем режим и путь)
     analyzeStart: (mode, inputPath) => ipcRenderer.invoke('analyze:start', mode, inputPath),
@@ -19,5 +19,5 @@ contextBridge.exposeInMainWorld('electronAPI', {
     readFile: (filePath) => ipcRenderer.invoke('file:read', filePath),
     
     // Export to Excel
-    exportToExcel: (inputPath) => ipcRenderer.invoke('export:excel', inputPath)
+    exportToExcel: (inputPath, mode) => ipcRenderer.invoke('export:excel', inputPath, mode)
 });
