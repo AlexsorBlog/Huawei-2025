@@ -1,4 +1,6 @@
-// main.js - Главный диспетчер Electron
+// main.js - v14
+// - `analyze:start` now receives and forwards an array of { outputPath, deviceName } objects
+//   to the renderer as `analysisResults`.
 
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
@@ -69,7 +71,7 @@ function setupIPC() {
     const selectedPath = result.filePaths[0];
     
     // 5. Сохранение пути
-    const dirPath = path.dirname(selectedPath); 
+    const dirPath = (mode === 'directory') ? selectedPath : path.dirname(selectedPath); 
     lastPaths[key] = dirPath;
     await saveLastPaths();
     return selectedPath;
@@ -77,42 +79,33 @@ function setupIPC() {
     // Handle analyzer start
     ipcMain.handle('analyze:start', async (event,  mode, inputPath ) => {
         try {
-            // Execute the analyzer with the provided input file
-            let result;
+            // This will be an array of { outputPath, deviceName } objects
+            let analysisResults; 
             
-            // Execute the analyzer with the provided input file
             const analyzer = require('./analyzer');
-            console.log('Running analyzer on:', inputPath); // Debug log
+            console.log(`Running analyzer on: ${inputPath} in mode: ${mode}`); // Debug log
 
             if (mode === '--file') {
-                // Присваиваем значение, НЕ используя const/let снова
-                result = await analyzer.analyzeFile(inputPath);
+                // analyzeFile now returns a single { outputPath, deviceName } object
+                const analysisResult = await analyzer.analyzeFile(inputPath);
+                analysisResults = [analysisResult]; // Wrap in an array
             } else {
-                // Присваиваем значение, НЕ используя const/let снова
-                result = await analyzer.analyzeDirectory(inputPath);
+                // analyzeDirectory now returns an array of { outputPath, deviceName } objects
+                analysisResults = await analyzer.analyzeDirectory(inputPath);
             }
 
-            // Теперь 'result' доступен здесь и имеет присвоенное значение
-            console.log('Analyzer result:', result);// Debug log
+            console.log('Analyzer results:', analysisResults); // Debug log
 
-            // Get the output file path (assuming it's in the output directory)
-            const inputFileName = path.basename(inputPath, path.extname(inputPath));
-            const outputPath = path.join(__dirname, 'output', `parsed_${inputFileName}.json`);
-            console.log('Output will be saved to:', outputPath); // Debug log
-            
-            // Ensure output directory exists
-            //if (!fs.existsSync(path.dirname(outputPath))) {
-            //    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-            //}
-            // Save the result to file
-            //await fs.promises.writeFile(outputPath, JSON.stringify(result, null, 2));
+            if (!analysisResults || analysisResults.length === 0) {
+                 throw new Error("Analyzer finished but returned no valid output files.");
+            }
 
             return { 
                 success: true, 
-                data: result,
-                outputPath: outputPath
+                analysisResults: analysisResults // Pass the array of objects
             };
         } catch (error) {
+            console.error('analyze:start error', error);
             return { success: false, error: error.message };
         }
     });
@@ -130,20 +123,25 @@ function setupIPC() {
 
     // Handle Excel export
     ipcMain.handle('export:excel', async (event, inputPath, mode) => {
-  try {
-    const exportToExcel = require('./export_to_excel');
-    let result;
-    if (mode === 'file') {
-      result = await exportToExcel.exportOne(inputPath);
-    } else {
-      result = await exportToExcel.exportAll(inputPath); // returns array
-    }
-    return { success: true, result }; // includes outPath(s) and outDir
-  } catch (err) {
-    console.error('export:excel error', err);
-    return { success: false, error: err.message };
-  }
-});
+      try {
+        const exportToExcel = require('./export_to_excel');
+        let result; // This will be an array of result objects
+        
+        if (mode === 'file') {
+          // exportOne returns a single { outDir, outPath } object
+          const exportResult = await exportToExcel.exportOne(inputPath);
+          result = [exportResult]; // Wrap in an array
+        } else {
+          // exportAll returns an array of { outDir, outPath } objects
+          result = await exportToExcel.exportAll(inputPath); 
+        }
+        
+        return { success: true, result }; // result is always an array
+      } catch (err) {
+        console.error('export:excel error', err);
+        return { success: false, error: err.message };
+      }
+    });
 
 
     isIPCSetup = true;
@@ -152,8 +150,8 @@ function setupIPC() {
 function createWindow () {
   // Create the main application window
   const mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 700,
+    width: 1200, // Wider for new UI
+    height: 800, // Taller for new UI
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -164,7 +162,7 @@ function createWindow () {
   });
 
   // Load the interface HTML file
-  mainWindow.loadFile(path.join(__dirname, 'interface', 'index.html'));
+  mainWindow.loadFile(path.join(__dirname, 'interface/index.html')); // Assuming index.html is in root
   
   // Prevent any automatic file operations on startup
   mainWindow.webContents.on('did-finish-load', () => {
@@ -178,7 +176,7 @@ app.whenReady().then(async () => {
 });
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+ if (process.platform !== 'darwin') {
+   app.quit();
+ }
 });

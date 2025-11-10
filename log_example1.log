@@ -1,0 +1,442 @@
+#
+clock timezone EET add 02:00:00
+clock daylight-saving-time EEST repeating 03:00 last Sun Mar 04:00 last Sun Oct 01:00 
+#
+sysname vn-msc-ape1
+#
+set neid 2ff955
+#
+FTP server enable
+FTP server-source all-interface
+undo FTP ipv6 server-source all-interface
+#
+FTP client-source -i LoopBack2
+#
+info-center loghost source LoopBack65000
+info-center loghost x.x.x.x vpn-instance UMC local-time
+#
+set service-mode forwarding-mode compatible
+#
+fan speed auto
+#
+service-template template-default0
+#
+service-template template-default1
+#
+service-template template-default2
+#
+service-template template-default3
+#
+service-template template-default4
+#
+snmp-agent trap type entity-trap
+#
+ntp-service server disable
+ntp-service ipv6 server disable
+ntp-service unicast-server x.x.x.x vpn-instance NGN
+#
+alarm
+ alarm-name hwIfMonitorInputRateRising severity Major
+ alarm-name hwIfMonitorOutputRateRising severity Major
+#
+vlan batch 100 to 115 1234 1623
+#
+dot1x-template 1
+#
+multicastbandwidth
+#
+set save-configuration interval 720 delay 60
+#
+undo telnet server enable
+undo telnet ipv6 server enable
+undo telnet server-source all-interface
+undo telnet ipv6 server-source all-interface
+#
+diffserv domain default
+#
+diffserv domain 5p3d
+#
+diffserv domain 5p3dbas
+#
+forward alarm cpu-usage multi-core threshold 95
+forward alarm vcpu-usage multi-core threshold 95
+#
+soc
+#
+ip vpn-instance HW-MBH-OAM
+ ipv4-family
+  route-distinguisher y.y.y.y:1607
+  vpn-target 12345:1607 export-extcommunity
+  vpn-target 12345:1607 import-extcommunity
+#
+ip vpn-instance LTE-Diam
+ ipv4-family
+  route-distinguisher y.y.y.y:1608
+  vpn-target 12345:1608 export-extcommunity
+  vpn-target 12345:1608 import-extcommunity
+#
+ip vpn-instance NGN
+ ipv4-family
+  route-distinguisher y.y.y.y:1600
+  vpn-target 12345:1600 export-extcommunity
+  vpn-target 12345:1600 import-extcommunity
+#
+ip vpn-instance SIG1
+ ipv4-family
+  route-distinguisher y.y.y.y:1624
+  vpn-target 12345:1624 export-extcommunity
+  vpn-target 12345:1624 import-extcommunity
+#
+ip vpn-instance SIG2
+ ipv4-family
+  route-distinguisher y.y.y.y:1724
+  vpn-target 12345:1724 export-extcommunity
+  vpn-target 12345:1724 import-extcommunity
+#
+ip vpn-instance UMC
+ description TO_vn-msc-ngnpe1-UMC
+ ipv4-family
+  route-distinguisher y.y.y.y:65000
+  vpn-target 12345:65000 export-extcommunity
+  vpn-target 12345:65000 import-extcommunity
+#
+ip vpn-instance VOICE
+ ipv4-family
+  route-distinguisher y.y.y.y:1602
+  vpn-target 12345:1602 export-extcommunity
+  vpn-target 12345:1602 import-extcommunity
+#
+ip dcn vpn-instance __dcn_vpn__
+ ipv4-family
+#
+hwtacacs-server template tacacs
+ hwtacacs-server authentication x.x.x.x vpn-instance UMC
+ hwtacacs-server authentication x.x.x.x vpn-instance UMC secondary
+ hwtacacs-server source-ip x.x.x.x
+ hwtacacs-server shared-key cipher %^%#/;uAHf8CC:vN'ICClG!B!WhN9R9X$A$e%/1{1uJK%^%#
+ undo hwtacacs-server user-name domain-included
+#
+vlan 1623
+ description Sv interface
+#
+mpls lsr-id y.y.y.y
+#
+mpls
+#
+mpls l2vpn
+#
+mpls ldp
+ #
+ ipv4-family
+#
+acl number 2000
+#
+acl number 2650
+ description SSH_SNMP to APE
+ rule 10 permit vpn-instance HW-MBH-OAM source 10.254.44.50 0
+ rule 20 permit vpn-instance HW-MBH-OAM source 10.254.44.44 0
+ rule 30 permit vpn-instance HW-MBH-OAM source x.x.x.x 0
+ rule 40 permit vpn-instance UMC source 172.20.2.20 0
+ rule 50 permit vpn-instance UMC source 172.20.176.32 0
+ rule 60 permit vpn-instance UMC source 172.20.254.0 0.0.0.255
+ rule 70 permit vpn-instance HW-MBH-OAM source 10.254.44.109 0
+ rule 80 permit vpn-instance HW-MBH-OAM source 10.253.44.48 0.0.0.15
+ rule 90 permit vpn-instance HW-MBH-OAM source x.x.x.x 0
+ rule 95 permit vpn-instance HW-MBH-OAM source x.x.x.x 0
+#
+aaa
+ local-user user1 password irreversible-cipher
+ local-user user1 service-type ssh
+ local-user user1 state block fail-times 3 interval 5
+ local-user user2 password irreversible-cipher
+ local-user user2 service-type ssh
+ local-user user2 level 3
+ local-user user2 state block fail-times 3 interval 5
+ local-user user3 password irreversible-cipher
+ local-user user3 service-type ftp ssh
+ local-user user3 level 3
+ local-user user3 state block fail-times 3 interval 5
+ local-user user3 ftp-directory cfcard:
+ local-user user4 password irreversible-cipher
+ local-user user4 service-type ftp ssh
+ local-user user4 level 3
+ local-user user4 state block fail-times 3 interval 5
+ local-user user4 ftp-directory cfcard:
+ local-user user4 access-limit 5
+ local-user user5 password irreversible-cipher
+ local-user user5 service-type ssh
+ local-user user5 level 1
+ local-user user5 state block fail-times 3 interval 5
+ #
+ authentication-scheme default0
+  authentication-mode none
+ #
+ authentication-scheme default1
+ #
+ authentication-scheme default
+  authentication-mode local hwtacacs
+ #
+ authorization-scheme default
+ #
+ accounting-scheme default0
+ #
+ accounting-scheme default1
+ #
+ domain default0
+ #
+ domain default1
+ #
+ domain default_admin
+  hwtacacs-server tacacs
+#
+license
+#
+interface Vlanif100
+ description MGW26:HRE_0/0
+ ip binding vpn-instance VOICE
+ ip address x.x.x.x 255.255.255.248
+ vrrp vrid 100 virtual-ip 10.43.0.65
+ vrrp vrid 100 priority 150
+#
+interface Vlanif101
+ description MGW26:HRE_0/1
+ ip binding vpn-instance VOICE
+ ip address x.x.x.x 255.255.255.248
+ vrrp vrid 101 virtual-ip 10.43.0.73
+ vrrp vrid 101 priority 150
+#
+interface Vlanif102
+ description MGW26:HRE_1/0
+ ip binding vpn-instance VOICE
+ ip address x.x.x.x 255.255.255.248
+ vrrp vrid 102 virtual-ip 10.43.0.81
+ vrrp vrid 102 priority 150
+#
+interface Vlanif103
+ description MGW26:HRE_1/1
+ ip binding vpn-instance VOICE
+ ip address x.x.x.x 255.255.255.248
+ vrrp vrid 103 virtual-ip 10.43.0.89
+ vrrp vrid 103 priority 150
+#
+interface Eth-Trunk1
+ portswitch
+ description vn-msc-ape2-Eth-trunk1
+ port link-type trunk
+ port trunk allow-pass vlan 100 to 115 1234 1623
+#
+interface Eth-Trunk1.10
+ vlan-type dot1q 10
+ description vn-msc-ape2-Eth-Trunk1.10
+ ip address x.x.x.x 255.255.255.254
+ statistic enable
+ mpls
+ mpls ldp
+#
+interface Eth-Trunk2.1601
+ vlan-type dot1q 1601
+ description vn-msc-ngnpe1:SIG1
+ ip binding vpn-instance SIG1
+ ip address x.x.x.x 255.255.255.254
+ statistic enable
+#
+interface Eth-Trunk2.1602
+ vlan-type dot1q 1602
+ description vn-msc-ngnpe1:NGN-VOICE
+ ip binding vpn-instance VOICE
+ ip address x.x.x.x 255.255.255.254
+ statistic enable
+#
+interface GigabitEthernet1/0/1
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet1/0/2
+ undo shutdown
+ eth-trunk 2
+ dcn
+#
+interface GigabitEthernet1/0/3
+ undo shutdown
+ eth-trunk 2
+ dcn
+#
+interface GigabitEthernet1/0/4
+ undo shutdown
+ dcn
+#
+interface GigabitEthernet1/0/5
+ description vn-msc-ngnpe1:ge-1/0/1
+ undo shutdown
+ eth-trunk 2
+ dcn
+#
+interface GigabitEthernet1/0/6
+ description vn-msc-ngnpe1:ge-1/1/1
+ undo shutdown
+ eth-trunk 2
+ dcn
+#
+interface GigabitEthernet1/0/7
+ portswitch
+ description MGW27:HRE_0/0
+ undo shutdown
+ port link-type access
+ port default vlan 108
+ dcn
+#
+interface GigabitEthernet1/0/8
+ portswitch
+ description MGW27:HRE_0/1
+ undo shutdown
+ port link-type access
+ port default vlan 109
+#
+interface GigabitEthernet1/0/9
+ portswitch
+ description MGW27:HRE_1/0
+ undo shutdown
+ port link-type access
+ port default vlan 110
+#
+interface GigabitEthernet1/0/10
+ portswitch
+ description MGW27:HRE_1/1
+ undo shutdown
+ port link-type access
+ port default vlan 111
+#
+interface GigabitEthernet1/0/11
+ portswitch
+ description MGW26:HRE_0/0
+ undo shutdown
+ port link-type access
+ port default vlan 100
+#
+interface GigabitEthernet1/0/12
+ portswitch
+ description MGW26:HRE_0/1
+ undo shutdown
+ port link-type access
+ port default vlan 101
+#
+interface GigabitEthernet1/0/13
+ portswitch
+ description MGW26:HRE_1/0
+ undo shutdown
+ port link-type access
+ port default vlan 102
+#
+interface GigabitEthernet1/0/14
+ portswitch
+ description MGW26:HRE_1/1
+ undo shutdown
+ port link-type access
+ port default vlan 103
+#
+interface GigabitEthernet1/0/15
+ portswitch
+ description MGW26:HRE_2/0
+ undo shutdown
+ port link-type access
+ port default vlan 104
+#
+interface GigabitEthernet1/0/16
+ portswitch
+ description MGW26:HRE_2/1
+ undo shutdown
+ port link-type access
+ port default vlan 105
+#
+interface GigabitEthernet1/0/17
+ portswitch
+ description MGW26:HRE_3/0
+ undo shutdown
+ port link-type access
+ port default vlan 106
+#
+interface GigabitEthernet1/0/18
+ portswitch
+ description MGW26:HRE_3/1
+ undo shutdown
+ port link-type access
+ port default vlan 107
+#
+interface LoopBack0
+ ip address y.y.y.y 255.255.255.255
+#
+interface LoopBack1
+ description MGMT_IP
+ ip binding vpn-instance NGN
+ ip address y.y.y.y 255.255.255.255
+#
+interface NULL0
+#
+bgp 65054
+ undo default ipv4-unicast
+ peer x.x.x.x as-number 65054
+ peer x.x.x.x connect-interface LoopBack0
+ #
+ ipv4-family unicast
+  undo synchronization
+  peer x.x.x.x enable
+ #
+ ipv4-family vpnv4
+  policy vpn-target
+  peer x.x.x.x enable
+  peer x.x.x.x route-policy TO-APE2 export
+  peer x.x.x.x next-hop-local
+ #
+ ipv4-family vpn-instance HW-MBH-OAM
+  network x.x.x.x 255.255.255.255
+  network x.x.x.x 255.255.255.255
+  peer 10.254.43.10 as-number 12345
+ #
+ ipv4-family vpn-instance LTE-Diam
+  network x.x.x.x 255.255.255.192
+  auto-frr
+  peer x.x.x.x as-number 12345
+  peer x.x.x.x bfd min-tx-interval 100 min-rx-interval 100
+  peer x.x.x.x bfd enable
+#
+route-policy TO-APE2 permit node 10
+ apply local-preference 200
+#
+lldp enable
+#
+stelnet ipv4 server enable
+snetconf ipv4 server enable
+ssh user user1
+ssh user user1 authentication-type rsa
+ssh user user1 assign rsa-key user1
+ssh user user1 service-type stelnet
+ssh user user2
+ssh user user2 authentication-type password
+ssh user user2 service-type stelnet
+ssh user user5
+ssh user user5 authentication-type password
+ssh user user5 service-type stelnet
+ssh server-source all-interface
+ssh ipv6 server-source all-interface
+ssh server acl 2650
+ssh authorization-type default root
+#
+ssh server cipher aes256_gcm aes128_gcm aes256_ctr aes192_ctr aes128_ctr aes256_cbc aes128_cbc 3des_cbc
+ssh server key-exchange dh_group_exchange_sha256 dh_group_exchange_sha1 dh_group14_sha1 dh_group1_sha1 ecdh_sha2_nistp256 ecdh_sha2_nistp384 ecdh_sha2_nistp521 sm2_kep
+#
+ssh client cipher aes256_gcm aes128_gcm aes256_ctr aes192_ctr aes128_ctr aes256_cbc aes128_cbc 3des_cbc
+ssh client key-exchange dh_group_exchange_sha256 dh_group_exchange_sha1 dh_group14_sha1 dh_group1_sha1 ecdh_sha2_nistp256 ecdh_sha2_nistp384 ecdh_sha2_nistp521 sm2_kep
+#
+set net-manager vpn-instance HW-MBH-OAM
+#
+user-interface maximum-vty 21
+#
+user-interface aux 0
+#
+user-interface vty 0 4
+ authentication-mode aaa
+ user privilege level 3
+#
+local-aaa-server
+#
+return

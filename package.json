@@ -41,7 +41,7 @@
   },
   "build": {
     "appId": "com.huawei2025.analyzer",
-    "productName": "Huawei Log Analyzer",
+    "productName": "Scrappy",
     "directories": {
       "output": "dist"
     },
